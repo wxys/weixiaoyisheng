@@ -1,0 +1,13 @@
+<view class="diseasebiaoti">赵永铭</view><view class="disease">【{{disease}}】随访历次记录</view>
+
+
+ <view class="listBar">
+  <view wx:for="{{followlist}}">
+   <navigator url="../followShow/index?id={{item.id}}">
+    <view class="followlist">
+      <view class="time">{{item.time}}</view><text class="doctor">朱勇</text><image class='followimage' src="../../icon/suifangjilu.png"></image>
+    </view>
+     </navigator>
+  </view>
+ </view>
+ <view  class="add"><navigator url="../follow/index?id=1" class="add" hover-class='none'>添加随访</navigator></view>

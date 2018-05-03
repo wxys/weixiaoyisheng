@@ -1,0 +1,75 @@
+<!--pages/subscribe_attestation/index.wxml-->
+<!--提示框-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<scroll-view scroll-y="true" style="height:{{ScrollHeight}}px">
+  <!--就诊人信息-->
+  <view class="subscribe-person-data-list">
+    <view class="write-remind">*请填写真实信息，一经提交不允许修改</view>
+    <view class="subscribe-person-data-list-li">
+        <text class="subscribe-person-data-text">姓名</text>
+        <input  placeholder=" 请输入真实的姓名" bindblur="NameInput"/>
+    </view>
+
+    <view class="subscribe-person-data-list-li">
+        <text class="subscribe-person-data-text">证件</text>
+        <picker  class="subscribe-person-data-content " value="{{0}}" range="{{credentials}}" bindchange="bindPickerCredentials">
+          {{credentials[0]}}
+          <!--
+          <block wx:if="{{household_contacts.credentials_type}}">{{household_contacts.credentials_type}}</block>
+          <block wx:else>请选择<image src="../../icon/icon-advance.svg"></image></block>
+          -->
+        </picker>
+    </view>
+
+    <view class="subscribe-person-data-list-li">
+        <text class="subscribe-person-data-text">证件号</text>
+        <input type="idcard" placeholder="一经填写，无法修改" bindblur="CredentialsNoInput" maxlength="18"/>
+    </view>
+
+    
+    <view class="subscribe-person-data-list-li">
+        <text class="subscribe-person-data-text">性别</text>
+     
+        <picker  class="subscribe-person-data-content " value="{{select_sex_index}}" range="{{sex}}" bindchange="bindPickerSex">
+            <block wx:if="{{household_contacts.sex}}">{{household_contacts.sex}}</block>
+            <block wx:else> 必填<image src="../../icon/icon-advance.svg"></image></block>
+        </picker>
+    </view>
+    <!--
+    <view class="subscribe-person-data-list-li">
+        <text class="subscribe-person-data-text">生日</text>
+        <picker  class="subscribe-person-data-content " mode="date" value="{{date}}" start="{{start_date}}" end="{{end_date}}" bindchange="bindDateChange">
+            <block wx:if="{{household_contacts.birthday}}">{{household_contacts.birthday}}</block>
+            <block wx:else>必填<image src="../../icon/icon-advance.svg"></image></block>
+        </picker>
+    </view>
+    -->
+    <view class="subscribe-person-data-list-li" style="display:none">
+        <text class="subscribe-person-data-text">地区</text>
+        <navigator url="../select_region/index?type=select_region" class="subscribe-person-data-content " hover-class="none">
+            <block wx:if="{{household_contacts.province}}">
+                {{household_contacts.province}}  {{household_contacts.city}}
+                <block wx:if="{{household_contacts.region_condition=='自动定位'}}"><text class="auto-region">（自动定位）</text></block>
+            </block>
+            <block wx:else>请选择<image src="../../icon/icon-advance.svg"></image></block>
+        </navigator>
+    </view>
+
+    <view class="subscribe-person-data-list-li">
+        <text class="subscribe-person-data-text">联系地址</text>
+        <input  placeholder="非必填" bindblur="AddressInput"/>
+    </view>
+
+    <view class="subscribe-person-data-list-li">
+        <text class="subscribe-person-data-text">手机号</text>
+        <input type="number" placeholder="用于接收预约短信（必填）" bindblur="PhoneInput" maxlength="11"/>
+    </view>
+
+    <view class="subscribe-person-data-list-li">
+        <text class="subscribe-person-data-text">邮箱</text>
+        <input  placeholder="非必填" bindblur="MailInput"/>
+    </view>
+
+  </view>
+</scroll-view>
+<button class="attestation-btn" bindtap="SubscribeAttestation">认 证</button>

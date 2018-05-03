@@ -1,0 +1,44 @@
+<!--pages/add_follow/indx.wxml-->
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+<view class="maxBar">
+    <text class="textkeshi">选择科室</text><text class="text">选择疾病</text>
+  <navigator url="../patient_data/index" hover-class='none' class="surebar">
+  <view  bindtap="sure" data-diseasesure="{{finish}}">
+      完成
+  </view>
+  </navigator>
+</view>
+
+  <view class="select_left" style='height:{{height}}rpx;'>  
+
+  
+<view class="select_left_box">  
+  <block wx:for="{{project}}">
+  <view class="{{_num ==item.id?'select_two':'select_one'}}" bindtap="mySelect" data-height="{{height}}" data-me="{{item.name}}" data-idx="{{item.id}}">
+  <image class="keshiimage" src="{{imagenone==item.id?'../../icon/follow_2018425.png':''}}"></image>
+      {{item.name}}
+  </view>
+  </block>
+ </view>
+</view>
+   <view  class="select_right" style='height:{{height}}rpx;' >  
+    <block wx:for="{{project}}">  
+      <block wx:if="{{item.id==condition}}">
+         <view class="keshibar">
+          <view class="keshiming"><text class="keshiwenben">{{item.name}}</text></view>
+            <block wx:for="{{disease}}" wx:for-item="itemName" data-index='{{index}}' >
+            <view wx:if="{{itemName.pid==item.id}}">
+              <view class="{{itemName.set==1?'diseasebar1':'diseasebar'}}" bindtap="sdisease"data-key='{{index}}'data-project="{{project}}" data-desdata="{{disease}}" data-sid="{{itemName.id}}" >{{itemName.name}}</view>
+            </view>
+            </block>
+          <view class="clearfloat"></view>
+        </view> 
+      </block>    
+   </block>
+</view>
+</block>

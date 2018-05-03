@@ -1,0 +1,31 @@
+<!--pages/doctor_list/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+
+<view class="es-list" wx:for="{{DoctorList}}" wx:key="">
+
+    <navigator class="es-list-li center" url="../doctor_card/index?doctor_cover={{item.doctor_cover}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{item.doctor_departments}}&doctor_hospital={{item.doctor_hospital}}&doctor_subscribe_number=0&doctor_id={{item.doctor_id}}&hospitalId={{item.hospitalId}}&departmentId={{item.departmentId}}"
+      hover-class="none" style="paddng:5px 10px;">
+
+      <image src="{{item.doctor_cover}}" class="doctor-cover" />
+
+      <view class="doctor-data">
+        <text class="doctor-name">{{item.doctor_name}}</text>
+        <text class="doctor-level">{{item.doctor_position}}</text>
+        <!--
+              <view class="doctor-subscribe-data">
+                <image src="../../icon/icon-start.png" class="start-ico"></image>
+
+                <text class="doctor-start">{{item.doctor_start}}</text>
+                <text class="doctor-subscribe-num">接诊量 {{item.doctor_subscribe_number}}</text>
+              </view>
+              -->
+        <text class="doctor-good-at">{{item.doctor_good_at}}</text>
+
+        <view class="doctor-hospital"> {{item.doctor_hospital}}</view>
+      </view>
+
+      <view class="subscribe-btn-sm" data-url="../doctor_subscribe/index?doctor_cover={{item.doctor_cover}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{item.doctor_departments}}&doctor_hospital={{item.doctor_hospital}}&doctor_subscribe_number={{item.doctor_subscribe_number}}&doctor_id={{item.doctor_id}}&hospitalId={{item.hospitalId}}&departmentId={{item.departmentId}}"
+ catchtap="SkipPage">预约</view>
+    </navigator>
+
+  </view>

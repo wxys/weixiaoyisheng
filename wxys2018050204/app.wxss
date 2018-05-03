@@ -1,0 +1,2109 @@
+/**app.wxss**/
+
+page {
+  background: #f8f8f8;
+  font-family: -apple-system-font,
+                 "Helvetica Neue",
+                 "PingFang SC",
+                 "Hiragino Sans GB",
+                 "Microsoft YaHei",
+                 sans-serif;
+}
+p{
+  display: block;
+}
+.h1 {
+  font-size: 25px;
+}
+
+.h2 {
+  font-size: 20px;
+}
+
+.h3 {
+  font-size: 18px;
+}
+
+.strong {
+  font-weight: 600;
+}
+button::after{
+  border:none;
+}
+/*
+    弹窗提醒样式
+*/
+
+.remind {
+  position: absolute;
+  height: 45px;
+  line-height: 45px;
+  width: 200px;
+  z-index: 9999;
+  background: #2a292d;
+  color: #fff;
+  font-size: 0.8rem;
+  border-radius: 9px;
+  text-align: center;
+  top: 50%;
+  margin: -20px 0px 0px -100px;
+  left: 50%;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+
+/*
+  loading样式
+*/
+
+.loading-groups {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  flex-direction: column;
+  /*border-radius: 30%;
+  background: #fff;*/
+  margin: -75px 0px 0px -60px;
+}
+
+.loading-ico {
+  width: 100px;
+  height: 100px;
+  /*border-radius:15px;*/
+}
+
+.loading-text {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/*
+  角标样式
+*/
+
+.corner-mark {
+  background: #d14331;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 10px;
+  position: absolute;
+  line-height: 14px;
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 3px;
+}
+
+/*
+    栏目样式
+*/
+
+.column-title {
+  display: flex;
+  padding: 10px;
+  margin-top: 8px;
+  font-weight: 500;
+  color: #000;
+  font-size: 31rpx;
+  line-height: 15px;
+  align-items: center;
+  background: #fff;
+}
+
+.column-title.no-margin {
+  margin-top: 0px;
+}
+
+.column-text {
+  /*
+  border-left: 4px solid #59bdca;
+  padding-left: 10px;
+  */
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.column-right-text {
+  display: flex;
+}
+
+.column-remind {
+  font-size: 26rpx;
+  color: #666;
+  font-weight: 400;
+  margin: 0px 5px;
+}
+
+.column-ico {
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
+}
+
+.es-list-li {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+ 
+  align-items: center;
+  justify-content: center;
+}
+
+.es-list-li .list-text {
+  flex: 1.0;
+  font-size: 0.8rem;
+  color: #000;
+}
+
+.es-list-li .list-ico {
+  width: 16px;
+  height: 16px;
+}
+
+.es-list-li.flex-start {
+  justify-content: flex-start;
+}
+
+.es-list-li.between {
+  justify-content: space-between;
+}
+
+.es-list-li.flex-column {
+  flex-direction: column;
+}
+
+.es-list-li.center {
+  align-items: center;
+}
+
+.es-list-li.start {
+  align-items: flex-start;
+}
+
+.es-list-li.no-border {
+  border: 0;
+}
+
+.es-list-li.top-border {
+  border-top: 1px solid #f3f3f3;
+}
+
+.es-list-li.relative {
+  position: relative;
+}
+
+/*
+  搜索框部分样式
+*/
+
+.search-ipt-groups {
+  display: flex;
+  background: #fff;
+  padding:0px 5px;
+  align-items: center;
+  height: 45px;
+  /*border-bottom: 1px solid #ebebeb;*/
+}
+
+.search-ipt {
+  height: 35px;
+  border: 0px;
+  background: #f5f5f5;
+  display: block;
+  padding: 0px 30px 0px 35px;
+  font-size: 0.85rem;
+  line-height: 35px;
+  color: #555;
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  flex: 1.0;
+}
+.serach-select-region {
+  padding: 5px 0px;
+  font-size: 0.8rem;
+  /*margin-right:5px;*/
+  display: flex;
+  align-items: center;
+  width: 65px;
+  justify-content: center;
+  background: #fff;
+  margin-right:5px;
+  color:#ff8100;
+}
+.serach-select-region image {
+  width: 19px;
+  height: 19px;
+  margin-left: 2px;
+}
+.search-ipt-ico {
+  position: absolute;
+  z-index: 999;
+  width: 17px;
+  top: 14px;
+  left: 10px;
+}
+.clear-search-ico {
+  position: absolute;
+  z-index: 999;
+  width: 20px;
+  height: 20px;
+  top: 12px;
+  right: 10px;
+
+}
+.li-title {
+  padding: 10px 10px 0px 10px;
+  font-size: 0.8rem;
+  color: #d1d1d1;
+  display: flex;
+}
+
+.li-title-text {
+  height: 20px;
+  line-height: 20px;
+  flex-grow: 1;
+  font-size: 0.75rem;
+}
+
+.clear-search-reacord {
+  width: 20px;
+  height: 20px;
+}
+
+.user-search-record-list {
+  padding: 5px 10px 0px 10px;
+  display: table;
+}
+
+.serach-record {
+  background: #f4f4f4;
+  padding: 8px;
+  border-radius: 15px;
+  font-size: 12px;
+  color: #000;
+  margin: 5px;
+  float: left;
+}
+
+.empty-search-reacord {
+  color: #d1d1d1;
+  text-align: center;
+  font-size: 0.85rem;
+  width: 710rpx;
+  padding: 10px 0px;
+}
+
+.search-li {
+  display: flex;
+}
+
+.search-li-text {
+  color: #58595a;
+  display: block;
+  height: 40px;
+  border-bottom: 1px dashed #ebebeb;
+  font-size: 0.8rem;
+  width: 710rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -moz-binding: url("ellipsis.xml#ellipsis");
+  line-height: 40px;
+  padding: 0px 10px;
+}
+
+.search-li-icon {
+  width: 25px;
+  height: 25px;
+  margin-top: 7.5px;
+  margin-right: 5px;
+}
+
+.empty-remind {
+  padding: 10px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/*
+  科室列表部分
+*/
+
+.departments-list {
+  display: flex;
+  /*border-bottom: 1px solid #f3f3f3;*/
+  flex-wrap: wrap;
+  align-content: flex-start;
+  /*padding: 19.5rpx 0rpx;*//*min-height: 211px;*/
+}
+
+.departments-groups {
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  box-sizing: border-box;
+  background-color: white;
+  flex: 0 0 25%;
+  background: #fff;
+  color: #2f4f4f;
+}
+
+.departments-ico {
+  width: 115rpx;
+  height: 115rpx;
+}
+
+.departments-ico.preload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #59bdca;
+  margin: 0 auto;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.departments-ico {
+  color: #fff;
+}
+
+.departments-more-ico {
+  width: 85rpx;
+  height: 85rpx;
+  margin: 15rpx 0rpx;
+}
+
+.departments-text {
+  margin-top: 6px;
+  font-size: 31rpx;
+}
+
+/*
+  医院列表样式
+*/
+
+.hospital-image {
+  flex: 0 0 85px;
+  height: 60px;
+  border-radius: 10px;
+  align-items: flex-start;
+}
+
+.hospital-image.preload {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  position: relative;
+}
+
+.hospital-data {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.hospital-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #123456;
+  /*width:440rpx;*//*
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -moz-binding: url("ellipsis.xml#ellipsis");
+  */
+}
+
+.hospital-level {
+  font-size: 0.8rem;
+  color: #ea4b35;
+  padding: 4px 0px;
+  font-weight: 500;
+  /*border-bottom: 1px solid #f3f3f3;*/
+}
+
+.hospital-departments-recomend {
+  padding-top: 2px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hospital-departments {
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  border-radius: 13px;
+  border: 1px solid #cacaca;
+  color: #a4a4a4;
+  margin: 5px 3px 0px 3px;
+  height: 15px;
+  line-height: 15px;
+}
+
+/*
+    列表选择
+*/
+
+.hierarchy-list {
+  display: flex;
+}
+.es-selector{
+  background: #efefef;
+}
+
+.first-order-list, .second-order-list {
+  flex: 0 0 50%;
+  font-weight: 400;
+}
+
+.first-order-li {
+  
+  padding: 10px;
+  font-size: 0.75rem;
+  border-bottom: 1px solid #e7e6e2;
+ 
+  color: #666;
+  display: flex;
+  /*width:100%;*/
+}
+
+.first-order-li.active {
+  font-size: 0.8rem;
+  background:#f8f8f8;
+  padding: 10px 0px 10px 0px;
+  width:376rpx;
+}
+
+.first-order-li.active image {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  position: relative;
+  top: 1px;
+}
+
+.second-order-li {
+  padding: 10px;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+/*隐藏滚动条*/
+
+::-webkit-scrollbar, -moz-scrollbar, -ms-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  color: rgba(255, 255, 255, 0);
+  display: none;
+}
+
+/*
+    医生列数据样式
+*/
+
+.doctor-data-groups {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.doctor-cover {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+.doctor-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-data, .departments-data {
+  flex: 1;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+.doctor-name {
+  color: #151515;
+  font-size: 0.85rem;
+  margin-right: 10rpx;
+  font-weight: 500;
+}
+
+.doctor-level {
+  color: #303030;
+  font-size: 0.8rem;
+}
+
+.doctor-subscribe-data {
+  /*padding:2px 0px;*/
+}
+
+.doctor-hospital {
+  margin-right: 6px;
+}
+
+.doctor-hospital, .doctor-departments {
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.start-ico {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+}
+
+.doctor-start {
+  color: #fd9808;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.doctor-subscribe-num {
+  color: #8a8a8a;
+  font-size: 0.75rem;
+  margin-left: 8px;
+}
+
+.doctor-good-at {
+  display: block;
+  color: #848484;
+  font-size: 0.75rem;
+  min-height: 14px;
+  margin-top: 3px;
+  /*
+  margin-bottom: 5px;
+  */
+}
+
+.subscribe-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subscribe-price {
+  font-size:16px;
+  color:#ff8100;
+  font-weight:500;
+  margin-bottom:20rpx;
+}
+
+/*
+    排班号样式
+*/
+
+.pick-groups {
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  background: rgba(51, 51, 51, 0.25);
+}
+
+.pick-groups-area {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  border: 1px solid #efefef;
+  background: #fff;
+}
+
+.pick-header {
+  border: 1px solid #f3f3f3;
+  padding: 5px;
+  text-align: center;
+}
+
+.scheduling-date, .scheduling-noon {
+  font-size: 0.8rem;
+  color: #929292;
+}
+
+.scheduling-noon {
+  margin-left: 6px;
+}
+
+.scheduling-doctor-name {
+  padding-right: 5px;
+}
+
+.scheduling-type, .scheduling-doctor-name {
+  color: #323332;
+  font-size: 0.85rem;
+}
+
+.pick-footer {
+  padding: 10px;
+  text-align: center;
+  background: #f1f1f1;
+  color: #0cb5fb;
+  font-size:16px;
+}
+
+.scheduling-no-list {
+  height: 340rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.scheduling-no-list-li {
+  flex: 0 0 25%;
+  padding: 1.5%;
+}
+
+.scheduling-no-list-li-border {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f3f3f3;
+  height: 90rpx;
+}
+
+.scheduling-no-list-li-border.active {
+  background: #3080e3;
+  border: 0;
+}
+
+.scheduling-no-list-li-border.active .scheduling-no,
+.scheduling-no-list-li-border.active .scheduling-no-time {
+  color: #fff;
+}
+
+.scheduling-no {
+  color: #aaa;
+  font-size: 0.75rem;
+}
+
+.scheduling-no-time {
+  display: block;
+  color: #3c3c3c;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.scheduling-operate {
+  padding: 15px;
+  border-bottom: 1px solid #f3f3f3;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #999;
+  background: #fff;
+}
+
+.scheduling-remind {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 35px;
+}
+
+.scheduling-ico {
+  width: 66px;
+  height: 66px;
+}
+
+.scheduling-remind-text {
+  font-size: 0.8rem;
+  padding-top: 10px;
+}
+
+/*
+  实名认证/预约确认预约人信息样式
+*/
+
+.subscribe-person-data-list {
+  margin-top: 10px;
+  background: #fff;
+}
+
+.subscribe-person-data-list-li {
+  display: flex;
+  padding: 10px;
+  font-size: 0.85rem;
+  align-content: center;
+  border-bottom: 1px solid #f2f4f6;
+  align-items: center;
+}
+
+.subscribe-person-data-text {
+  color: #272727;
+}
+
+.subscribe-person-data-text-right {
+  flex: 1.0;
+  text-align: right;
+}
+
+.subscribe-person-data-content {
+  flex: 1.0;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+.subscribe-person-data-content image {
+  width: 15px;
+  height: 15px;
+  position: relative;
+  top: 2px;
+}
+
+.subscribe-person-data-content.gray {
+  color: #d1d1d1;
+}
+
+/*
+  预约确认、预约成功 预约医生信息样式
+*/
+
+.subscribe-doctor-data-groups {
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.subscribe-docto-name {
+  font-size: 0.85rem;
+  color: #212121;
+  font-weight: 500;
+}
+
+.subscribe-docto-position {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.85rem;
+  color: #8e8e8e;
+}
+
+.subscribe-data-list {
+  background: #fff;
+}
+
+.subscribe-data-list-li {
+  display: flex;
+  align-content: center;
+  padding: 10px;
+  font-size: 0.85rem;
+  align-items: center;
+}
+
+.subscribe-data-text {
+  width: 60px;
+  color: #808080;
+}
+
+.subscribe-data-content {
+  font-weight: 500;
+  color: #171717;
+  margin-left: 10px;
+}
+
+.subscribe-data-content.orange {
+  color: #f2913b;
+}
+
+/*
+  会员服务
+*/
+
+.member-service {
+  display: flex;
+  align-content: center;
+  background: #fff;
+  padding: 20rpx 0rpx;
+  flex-wrap: wrap;
+}
+
+.member-service-li {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  flex:0 0 230rpx;
+  margin:15rpx 9rpx;
+  position: relative;
+}
+
+.member-service-text {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color:#bbb;
+}
+
+.member-service-ico {
+  width: 115rpx;
+  height: 115rpx;
+  margin: 0 auto;
+}
+.member-not-available{
+  width:115rpx;
+  height:115rpx;
+  position:absolute;
+  left:50%;
+  margin-left:-57.5rpx;
+  background:rgba(55,55,55,0.3);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  font-size: 0.75rem;
+  justify-content:center;
+  color:#fff;
+  font-weight:600;
+  top:0rpx;
+}
+/*
+  icon样式
+*/
+
+.icon-view {
+  width: 20px;
+  height: 18px;
+  margin: 0px 5px;
+}
+
+.add-essence {
+  width: 22px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.ico-right {
+  font-weight: 500;
+  color: #bfbfbf;
+}
+
+.strong-text {
+  font-weight: 500;
+}
+
+/*
+  btn
+*/
+
+.es-btn {
+  padding: 3px 12px;
+  background: #fff;
+  color: #000;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  margin-left: 5px;
+  line-height: 2.35555556;
+  margin: 0px 5px;
+  color: #fff !important;
+}
+
+.es-btn.groups {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.es-btn.primary {
+  background: #17abe3;
+}
+
+.es-btn.blue {
+  background: #59bdca !important;
+}
+.es-btn.blue.active {
+  background:#46a8b5 !important;
+}
+
+.es-btn.default {
+  background: #dbdbdb;
+}
+
+.es-btn.warming {
+  background: #ff8100;
+}
+.es-btn.warming.active {
+  background:#e47707 !important;
+}
+.es-btn.no-margin{
+  margin:0px;
+}
+.go-index-btn {
+  background: #59bdca;
+  color: #fff;
+  border-radius: 0;
+  font-size:16px;
+  height:40px;
+  line-height:40px;
+}
+
+.collect-groups {
+  /*width: 60px;*/
+  display: flex;
+  /*flex-direction: column;*/
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.collect-groups text {
+  color: #fff;
+  margin-top: 5px;
+  font-size: 12px;
+}
+.collect-groups2 {
+  /*width: 60px;*/
+  display: flex;
+  /*flex-direction: column;*/
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.collect-groups2 text {
+  color: #fff;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+
+.subscribe-btn-sm {
+  display: block;
+  width: 115rpx;
+  height: 30px;
+  line-height: 30px;
+  background: #ff8100;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+.subscribe-btn-sm.active {
+  background: #ee7a03;
+}
+.delete-ico {
+  width: 18px;
+  height: 18px;
+  padding: 0px 3px;
+}
+
+/*
+.operate-list-li:last-child{
+  background: #949494;
+}
+*/
+
+/*
+  滑动删除
+*/
+
+view {
+  box-sizing: border-box;
+}
+
+.items {
+  width: 100%;
+
+}
+
+.item {
+  position: relative;
+  border-bottom: 1rpx solid #ebebeb;
+
+  overflow: hidden;
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+}
+
+.inner.txt {
+  background-color: #fff;
+  width: 100%;
+  z-index: 5;
+  transition: left 0.2s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inner.del, .inner.set-default {
+  width: 70px;
+  text-align: center;
+  z-index: 4;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  height: 75px;
+  line-height: 75px;
+}
+
+.inner.del {
+  background-color: #e64340;
+  right: 0px;
+}
+
+.inner.set-default {
+  background-color: #bababa;
+  right: 70px;
+}
+
+.item-icon {
+  width: 64rpx;
+  vertical-align: middle;
+  margin-right: 16rpx;
+}
+
+.thumb {
+  width: 200px;
+  height: 200px;
+  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
+}
+
+/*
+  常见科室检查
+*/
+
+.common-check-li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #efefef;
+  background: #fff;
+  font-size: 0.75rem;
+  color: #2f4f4f;
+}
+
+/*
+  诊疗指南
+*/
+
+.clinic-guide-li {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #efefef;
+  background: #fff;
+  font-size: 0.85rem;
+  flex-direction: column;
+}
+
+.clinic-guide-title-groups {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clinic-guide-title {
+  flex: 1;
+  color: #000;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.view-num-groups {
+  width: 70px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.clinic-guide-introduce {
+  padding-top: 3px;
+  color: #666;
+  font-size: 12px;
+}
+.clinic-guide-property{
+  height:14px;
+  background:#59bdca;
+  color:#fff;
+  margin:0px 2px;
+  padding:0px 3px;
+  font-size:13px;
+  border-radius:3px;
+}
+/*
+.clinic-guide-view-num{
+    color:#a7a7a7;
+}
+*/
+
+/*
+  操作提示
+*/
+
+.remind-groups {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 10px;
+  /*align-items: center;*/
+  justify-content: center;
+  color: #4f4f2f;
+  font-size: 0.85rem;
+  background: #f8f8f8;
+}
+
+.remind-groups text {
+  line-height: 1.7;
+  font-size: 0.85rem;
+  color: #2f4f4f;
+  font-weight: 500;
+}
+
+/*
+  数据加载提示
+*/
+
+
+.share-btn {
+  padding: 5px;
+  background: #a58cd2 !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 120rpx;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 20px;
+  height: 30px;
+  margin: 0px 2px;
+  color: #fff !important;
+}
+.load-remind-groups {
+ display: flex;
+flex-direction: column;
+padding: 30px 10px;
+margin-top:180rpx;
+/*align-items: center;*/
+justify-content: center;
+color: #4f4f2f;
+font-size: 0.85rem;
+align-items: center;
+}
+
+.load-remind-groups text {
+ margin-top:25rpx;
+line-height: 1.7;
+font-size: 0.85rem;
+color: #999999;
+font-weight: 500;
+letter-spacing: 3rp
+}
+
+.load-remind-ico {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+/*
+  关注按钮样式
+*/
+
+.attention-btn {
+  padding: 5px;
+  background: #fff !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 120rpx;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  height: 30px;
+  color: #f3856e !important;
+  margin: 0px 2px;
+  /*border:1px solid #f3856e;*/
+}
+
+.attention-btn.active {
+  background: #f3856e !important;
+  line-height: 20px;
+  height: 30px;
+  color: #fff !important;
+  padding: 5px;
+}
+
+.ico-share {
+  width: 26px;
+  height: 25px;
+  margin: 0px 5px;
+}
+
+
+.share-btn2 {
+  padding: 5px;
+  background: #a58cd2 !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 120rpx;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 20px;
+  height: 30px;
+  margin: 0px 2px;
+  color: #fff !important;
+}
+.tc{
+position: absolute;
+bottom: 20px;
+width:100%;
+}
+.share-btn3 {
+  padding: 5px;
+  background: #a58cd2 !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 20px;
+  height: 30px;
+  margin: 0px 2px;
+  color: #fff !important;
+}
+/*
+  关注的医生
+*/
+
+.doctor-belong-to-hospital {
+}
+
+.doctor-belong-to-departments {
+}
+
+/*
+  常见疾病、常见检查样式
+*/
+
+.common-diseases {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  align-items: center;
+  background: #fff;
+}
+
+.common-diseases-li {
+  background: #f3faff;
+  font-size: 0.75rem;
+  padding: 2px;
+  border-radius: 15px;
+  margin: 5px;
+  padding: 5px 8px;
+  color: #89a7ce;
+  border: 1px solid #ccdff1;
+}
+
+/*
+  患者相关样式
+*/
+
+.patient-group-name {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 500;
+  flex: 1.0;
+}
+
+.patient-avatar {
+  width: 100rpx;
+  border-radius:50%;
+}
+
+.fold-ico {
+  width: 15px;
+  height: 15px;
+}
+
+.patient-data {
+  flex: 1.0;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-data text {
+  line-height: 1.5;
+  color: #666;
+}
+
+.patient-data-li {
+  display: flex;
+}
+
+.patient-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  flex: 1.0;
+  color: #000 !important;
+}
+
+.patient-age {
+  font-size: 0.8rem;
+  color: #666;
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+}
+
+.consultant-message {
+  font-size: 0.8rem;
+  color: #666;
+  width: 400rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.remark-time {
+  padding-left: 20rpx;
+  font-size: 0.8rem;
+  color: #666;
+  flex: 1.0;
+  text-align: end;
+}
+
+.patient-sex {
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+}
+
+.patient-remark-text {
+  color: #999;
+  width: 420rpx;
+  font-size: 0.8rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+/*
+  聊天窗口样式
+*/
+
+.chat-content-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-content-time text {
+  padding: 4px 6px;
+  background: #cecece;
+  color: #fff;
+  font-size: 11px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.chat-content-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.receive-content-li {
+  display: flex;
+  padding: 10px;
+}
+
+.send-content-li {
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+}
+
+.chat-receive-img {
+  flex: 0 0 200rpx;
+  background: #fff;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ededed;
+  margin-left: 15px;
+}
+
+.chat-receive-text {
+  font-size: 0.8rem;
+  background: #fff;
+  padding: 10px;
+  max-width: 480rpx;
+  border-radius: 8px;
+  border: 1px solid #ededed;
+  margin-left: 15px;
+}
+
+.chat-send-img {
+  flex: 0 0 200rpx;
+  background: #afe56e;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #bddd9c;
+  margin-right: 15px;
+}
+
+.chat-send-text {
+  font-size: 0.8rem;
+  background: #afe56e;
+  padding: 10px;
+  max-width: 480rpx;
+  border-radius: 8px;
+  border: 1px solid #bddd9c;
+  margin-right: 15px;
+}
+
+.chat-user-avatar {
+  width: 50px;
+}
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-right: 12px solid #fff;
+  border-bottom: 6px solid transparent;
+  margin-top: 19px;
+  margin-left: 5px;
+  margin-right: -2px;
+  position: absolute;
+  z-index: 9;
+  left: 60px;
+}
+
+.triangle-left-shade {
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-right: 13px solid #ededed;
+  border-bottom: 7px solid transparent;
+  margin-top: 18px;
+  margin-left: 5px;
+  margin-right: -2px;
+  position: absolute;
+  z-index: 8;
+  left: 59px;
+}
+
+.triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-left: 12px solid #afe56e;
+  border-bottom: 6px solid transparent;
+  margin-top: 19px;
+  margin-right: 5px;
+  margin-left: -2px;
+  position: absolute;
+  z-index: 9;
+  right: 60px;
+}
+
+.triangle-right-shade {
+  width: 0;
+  height: 0;
+  border-top: 6.5px solid transparent;
+  border-left: 12.5px solid #bddd9c;
+  border-bottom: 6.5px solid transparent;
+  margin-top: 19px;
+  margin-right: 5px;
+  margin-left: -2px;
+  position: absolute;
+  z-index: 8;
+  right: 60px;
+}
+
+.send-msg-groups {
+  /*
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  z-index: 99;
+  */
+}
+
+.send-msg-ipt-groups {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+  background:#f5f4f6;
+  border:1px solid #ebebeb;
+  height:85px;
+  /*
+  position: fixed;
+  width:100%;
+  */
+}
+
+.send-msg-ipt {
+  flex: 1.0;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  margin-right: 5px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  padding: 0px 5px;
+  height: 65px;
+  /*
+  position: relative;
+  z-index: 999;
+  
+  */
+}
+
+.consult-send-btn {
+  height: 33px;
+  font-size: 12px;
+  background: #59bdca;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.send-msg-ipt-ico {
+  width: 20px;
+  height: 20px;
+}
+
+/*
+  跳转登录按钮
+*/
+
+.turn-login-btn {
+  background: #59bdca !important;
+  color: #fff !important;
+  width: 90px;
+  font-size: 0.75rem;
+  margin: 0 auto;
+  text-align: center;
+  padding: 8px 0px;
+  border-radius: 5px;
+}
+
+/*
+  输入框组
+*/
+
+.ipt-groups {
+  display: flex;
+  background: #fff;
+  padding: 5px 10px;
+  align-items: center;
+  height: 45px;
+}
+
+.ipt-groups input {
+  height: 35px;
+  border: 0px;
+  background: #f5f5f5;
+  display: block;
+  padding: 2px 10px 0px 35px;
+  font-size: 0.85rem;
+  line-height: 35px;
+  color: #555;
+  border-radius: 6px 0px 0px 6px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  flex: 1.0;
+}
+
+.ipt-groups-btn {
+  height: 35px;
+  line-height:30px;
+  border-radius:0px 6px 6px 0px;
+  margin:0px;
+}
+
+.ipt-groups-ico {
+  position: absolute;
+  z-index: 999;
+  width: 18px;
+  height: 18px;
+  top: 13px;
+  left: 20px;
+}
+
+.right-btn-ico {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+
+/*
+  短信文章列表样式
+*/
+
+.common-diseases-li.active {
+  background: #59bdca;
+  color: #fff;
+  border: 1px solid #ccdff1;
+}
+
+.note-data {
+  flex: 1;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-title {
+  color: #000;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.note-publish{
+  flex:1.0;
+}
+.note-time{
+  margin-left:10rpx;
+}
+.note-introduce {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #666;
+  padding-top: 5px;
+}
+
+.note-subject {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rpx 20rpx;
+  background: #fafafa;
+  border-bottom: 1px solid #f3f3f3;
+  height: 80rpx;
+}
+
+.note-subject wx-checkbox-group {
+  margin-top: -4rpx;
+}
+
+.note-subject-groups {
+  display: flex;
+  align-items: center;
+  flex: 1.0;
+}
+
+.note-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 650rpx;
+}
+
+.note-subject-label {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+
+.note-subject-name {
+  font-size: 12px;
+  color: #36ab60;
+  margin: 0px 3px;
+}
+
+.remove-collect-note {
+  width: 20px;
+  height: 20px;
+}
+
+/*
+  患者分组设置样式
+*/
+
+.belong-groups-list {
+  display: flex;
+  align-items: center;
+  padding: 10px 5px 0px 5px;
+  background: #fff;
+  flex-wrap: wrap;
+}
+
+.belong-groups-list-li {
+  border:1px solid #59bdca;
+  padding:0px 13px;
+  color:#59bdca !important;
+  background:#fff !important;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  margin: 0px 5px 10px 5px;
+  height:32px;
+  line-height:32px;
+}
+.belong-groups-list-li-active {
+  padding: 0px 13px;
+  background: #59bdca !important;
+  color: #fff !important;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  margin: 0px 5px 10px 5px;
+  height:32px;
+  line-height:32px;
+}
+
+
+
+.empety-remind-text {
+  text-align: center;
+  padding: 15px;
+  background: #fff;
+  display: block;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+.remind-text {
+  padding: 15px;
+  background: #fff;
+  display: block;
+  font-size: 0.8rem;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+.remind-text.no-bck {
+  background: none;
+}
+
+.remind-text .font-strong {
+  color: #000;
+  font-weight: 600;
+}
+
+/*
+  文章部分的样式
+*/
+
+.article-top-tab {
+  background: #fff;
+  /*border-bottom: 1px solid #f3f3f3;*/
+  padding: 20px 15px 0px 15px;
+}
+
+.article-top-tab.no-source {
+  padding: 20px 15px 15px 15px;
+}
+
+.p {
+  display: block;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+.article-title {
+  flex: 1.0;
+  /*font-weight: 600;*/
+  font-size: 22px;
+  line-height: 33px;
+}
+
+.article-content {
+  color: #3e3e3e;
+  line-height: 1.5;
+  padding: 6px 15px;
+  font-size: 0.85rem;
+}
+
+.important-remind {
+  color: #e61414;
+}
+
+.normal-remind {
+  color: #d1d1d1;
+}
+
+.article-content .title {
+  padding-top: 20px;
+  font-size: 18px;
+}
+
+.article-img-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-content .img-2 {
+  width: 90%;
+}
+
+.article-content .href {
+  color: #3080e3;
+}
+
+.message-num {
+  background: #d14331;
+  width: 38rpx;
+  height: 38rpx;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 10px;
+  position: absolute;
+  line-height: 38rpx;
+  text-align: center;
+  top: 15rpx;
+  left: 85rpx;
+}
+
+.search-ico {
+  width: 28px;
+  height: 28px;
+}
+
+/*特殊会员*/
+
+.special-member {
+  background: #fff;
+  color:#8cc341;
+  font-size: 20rpx;
+  margin-left: 16rpx;
+  padding: 0 10rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  border-radius: 30rpx;
+  border: 1px solid #8cc341;
+}
+
+/*小程序logo*/
+
+.logo-groups {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60rpx;
+}
+
+.logo-ico {
+  width: 250rpx;
+  height: 250rpx;
+  border-radius: 50%;
+}
+
+/*
+  底部菜单
+*/
+
+.bottom-operate {
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  padding: 0rpx 20rpx;
+  border-top: 1px solid #ebebeb;
+  z-index: 999;
+}
+
+.bottom-operate checkbox-group {
+  margin-top: -4rpx;
+}
+
+.bottom-operate text {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  flex: 1.0;
+  padding-left: 15rpx;
+}
+
+
+.no-vip-show-area{
+  background: #fff;
+  margin-top:10px;
+}
+
+.member-activate{
+  display: flex;
+  align-items: center;
+  padding:20rpx;
+  font-size: 0.8rem;
+}
+.member-activate.border{
+  border: 1px solid #ebebeb;
+}
+.member-activate-text{
+  flex: 1.0;
+}
+.service-column {
+  clear: both;
+  position: relative;
+  text-align: center;
+  font-size: 0.85rem;
+  padding:20rpx;
+  color: #bf2c2c;
+  font-weight: lighter;
+  background:#fff;
+  margin-top:10px;
+}
+
+.service-column:before {
+  content: "";
+  background-color: #dddddd;
+  display: block;
+  height: 0.03rem;
+  width: 250rpx;
+  position: absolute;
+  top: 50%;
+  left:30rpx;
+  z-index: 1;
+}
+
+.service-column:after {
+  content: "";
+  background-color: #dddddd;
+  display: block;
+  height: 0.03rem;
+  width: 250rpx;
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  z-index: 1;
+}
+
+.service-column text {
+  position: relative;
+  z-index: 5;
+  color: #000;
+}
+
+/*
+  顶部切换面板
+*/
+.btn-groups {
+  display:flex;
+  padding:0px 10px;
+  background:#fff;
+  align-items:center;
+  justify-content:center;
+  height:50px;
+}
+
+.btn-li {
+  width: 280rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #59bdca;
+  background: #fff;
+  padding: 0px 6px;
+  border-top: 1px solid #59bdca;
+  border-bottom: 1px solid #59bdca;
+  height: 30px;
+  line-height: 30px;
+}
+
+.btn-li:first-child {
+  border-left: 1px solid #59bdca;
+  border-radius: 5px 0px 0px 5px;
+  margin-left:10px;
+
+}
+
+.btn-li:not(first-child) {
+  border-right: 1px solid #59bdca;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.btn-li.active {
+  color: #fff;
+  background: #59bdca;
+}
+.doctor-attention-groups{
+  display: flex;
+  flex-direction: column;
+  flex:1.0;
+}
+.doctor-operate{
+   display: flex;
+   align-items: center;
+}
+.doctor-operate-li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1.0;
+  font-size:0.735rem;
+  height:40px;
+  justify-content:center;
+}
+.doctor-operate-li.subscribe{
+  background: #59bdca;
+  color: #fff;
+}
+.doctor-operate-li.consult{
+  background: #ff8100;
+  color: #fff;
+}
+.doctor-operate-li.inquiry{
+  background: #1195db;
+  color: #fff;
+}
+.doctor-operate-li .explain{
+  font-size:0.65rem;
+}
+.doctor-operate-li text{
+  line-height: 1.2;
+}
+.tab-list{
+  display:flex;
+  align-items:center;
+  border-top:1px solid #ebebeb;
+  height:55px;
+
+}
+.tab-list-li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1.0;
+}
+.tab-list-li image{
+  width:23px;
+}
+.tab-list-li text{
+  font-size:13px;
+  margin-top:3px;
+  color:#bfbfbf;
+}
+.tab-list-li.active text{
+  color:#59bdca;
+}
+
+.section_item
+{
+  letter-spacing: 2rpx;
+}

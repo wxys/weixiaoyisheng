@@ -1,0 +1,115 @@
+/* pages/my_subscribe_yuyin/index.wxss */
+.my-subscribe-li {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 16px;
+  color: #666;
+}
+
+.my-subscribe-groups {
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #efefef;
+}
+
+.subscribe-date {
+  color: #333;
+  font-weight: 600;
+}
+
+.my-subscribe-data-ico {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.my-subscribe-data {
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.my-subscribe-data.last {
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 8px;
+}
+
+.my-subscribe-data .hospital, .my-subscribe-data .doctor {
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.subscribe-state {
+  display: flex;
+  padding: 8px 5px 0px 5px;
+  justify-content: space-between;
+}
+
+.subscribe-state .state-ico {
+  width: 55px;
+  padding: 7px 5px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 6px;
+  text-align: center;
+  line-height:1.2
+}
+
+.subscribe-state .not-started {
+  background: #1ecd6e;
+}
+
+.subscribe-state .stopping-admission {
+  background: #d81e06;
+}
+
+.subscribe-state .overdue {
+  background: #bfbfbf;
+}
+
+.operate-groups {
+  display: flex;
+}
+
+.subscribe-state .subscribe-btn {
+  padding: 5px 12px;
+  background: #59bdca !important;
+  color: #fff !important;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-left: 10px;
+  line-height:19px !important;
+}
+
+.subscribe-state .remind-btn {
+  padding: 5px 12px;
+  background: #28b7a3 !important;
+  color: #fff !important;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-left: 10px;
+}
+
+.subscribe-time {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 13px;
+}
+.top{
+  float:left;
+  width:100%;
+  height:40px;
+  padding:5px 0;
+}
+.top-1{
+  float:left;
+  height:30px;
+  width:30.5%;
+  margin:0 0 0 2%;
+  line-height:30px;
+  text-align:center;
+  font-size:14px;
+  border:1px solid black;
+}

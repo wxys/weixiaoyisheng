@@ -1,0 +1,156 @@
+<!--提示样式-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+
+<view style="display:{{PageShow?'':'none'}}">
+  <block wx:if="{{UserAttentionData.attention_doctor}}">
+    <!--关注的医生-->
+    <view class="column-title " style="margin-top:0px;">
+    <image class="icon-atten-doc" src="../../icon/icon-atten-doc.png"></image>
+      <view class="column-text">我关注的医生</view>
+      <view catchtap="DelteAttentionDoctor" class="column-right-text">
+        <block wx:if="{{!IfRemoveAttentionDoctor}}">管理</block>
+        <block wx:else>完成</block>
+       
+      </view>
+    </view>
+    <!--关注的医生-->
+    <view wx:for="{{UserAttentionData.attention_doctor}}" wx:key="" class="attention-groups">
+      <view class="">
+        <navigator class="es-list-li center" url="../doctor_card/index?doctor_cover={{item.ImgUrl}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{item.doctor_departments}}&doctor_hospital={{item.doctor_hospital}}&doctor_subscribe_number=0&doctor_id={{item.doctor_id}}&hospitalId={{item.hospitalId}}&departmentId={{item.departmentId}}"
+          hover-class="none" style="paddng:5px 10px;flex:1.0;">
+
+          <image src="{{item.ImgUrl}}" class="doctor-cover" />
+
+          <view class="doctor-data">
+            <!--专家信息1-->
+            <view>
+              <view class="doctor-name display_inline_block">{{item.doctor_name}}</view>
+              <view class="display_inline_block font_size_24 margin-left_46">
+              <view class="doctor-level">{{item.doctor_position}}</view>
+               <view class="doctor-hospital">{{item.doctor_hospital}}  <view class="doctor-departments">{{item.doctor_departments}}</view>                      
+            
+            
+            </view>
+              </view>
+            </view>
+
+            <!--专家信息2-->
+           <text class="doctor-good-at"  wx:if="{{item.doctor_good_at}}">{{item.doctor_good_at}}</text>
+
+
+          </view>
+
+
+        </navigator>
+        <!--底部医生操作-->
+        <view class="doctor-operate">
+              <block wx:if="{{IfRemoveAttentionDoctor}}">
+        <view class="cancel-attention-btn" catchtap="delItem" data-hospital_id="{{item.hospitalId}}" data-departments_id="{{item.departmentId}}" data-doctor_id="{{item.doctor_id}}" data-type="2" hover-class="active">取消关注</view>
+      </block>
+       <block wx:else>
+          <view  class="subscribe guahao" data-url="../doctor_subscribe/index?doctor_cover={{item.ImgUrl}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{item.doctor_departments}}&doctor_hospital={{item.doctor_hospital}}&doctor_subscribe_number={{item.doctor_subscribe_number}}&doctor_id={{item.doctor_id}}&hospitalId={{item.hospitalId}}&departmentId={{item.departmentId}}"
+            catchtap="SkipPage" >
+            <text class="" hover-class="active">预约挂号</text>
+          </view>
+     </block>
+        </view>
+      </view>
+     
+    </view>
+  </block>
+
+
+  <block wx:if="{{UserAttentionData.attention_departments}}">
+    <!--关注的科室-->
+    <view class="column-title" style="{{!UserAttentionData.attention_doctor?'margin-top:0px':''}}">
+      <view class="column-text">我关注的科室</view>
+      <view catchtap="DelteAttentionDepartments" class="column-right-text">
+        <block wx:if="{{!IfRemoveAttentionDepartments}}">管理</block>
+        <block wx:else>完成</block>
+   
+      </view>
+    </view>
+
+    <view class="es-list-li flex-start center" style="padding:0px;padding-bottom:5px;flex-flow: row wrap;">
+      <view wx:for="{{UserAttentionData.attention_departments}}" wx:key="" wx:for-index="idx" class="attention-departments-groups">
+        <navigator class="es-list-li flex-column center attention-departments-li" url="../departments_subscribe/index?hospital={{item.departments_hospital}}&hospitalId={{item.hospitalId}}&departments={{item.departments_name}}&departmentId={{item.departmentId}}"
+          hover-class="none" style="padding:5px 5px 0px 5px;">
+
+          <!--科室图片预加载-->
+          <block wx:if="{{AttentionDepartmentsList[idx].loaded}}">
+            <image src="{{AttentionDepartmentsList[idx].url}}" class="attention-departments-ico"></image>
+
+          </block>
+          <block wx:else>
+            <view class="departments-ico preload">
+              <text>微笑医生</text>
+            </view>
+          </block>
+          <!--//科室图片预加载-->
+
+          <text class="attention-departments-name">{{item.departments_name}}</text>
+          <text class="attention-departments-hospital">{{item.departments_hospital}}</text>
+        </navigator>
+        <!--移除关注按钮-->
+        <block wx:if="{{IfRemoveAttentionDepartments}}">
+          <image src="../../icon/icon-remove.png" class="cancel-attention-ico" catchtap="delItem" data-hospital_id="{{item.hospitalId}}" data-departments_id="{{item.departmentId}}" data-doctor_id="{{item.doctor_id}}" data-type="2"></image>
+
+        </block>
+      </view>
+
+    </view>
+
+  </block>
+
+  <block wx:if="{{UserAttentionData.attention_hospital}}">
+    <!--关注的医院-->
+    <view class="column-title" style="{{!UserAttentionData.attention_doctor && !UserAttentionData.attention_departments ?'margin-top:0px':''}}">
+    <image class="icon-atten-doc icon-atten-hos" src="../../icon/icon-atten-hos.png"></image>
+      <view class="column-text">我关注的医院</view>
+      <view catchtap="DelteAttentionHospital" class="column-right-text">
+        <block wx:if="{{!IfRemoveAttentionHospital}}">管理</block>
+        <block wx:else>完成</block>
+     
+      </view>
+
+    </view>
+
+    <view wx:for="{{UserAttentionData.attention_hospital}}" wx:key="" wx:for-index="idx" class="attention-groups hospital">
+
+      <navigator class="es-list-li es-list-hos " url="../hospital/index?hospital={{item.HospitalName}}&hospitalId={{item.hospitalId}}" hover-class="none" style="flex:1.0;width:0;">
+
+        <!--医院介绍图片预加载-->
+        <block wx:if="{{AttentionHospitalList[idx].loaded}}">
+          <image alt="" src="{{AttentionHospitalList[idx].url}}"  class="hospital-image" />
+        </block>
+        <block wx:else>
+          <view class="hospital-image preload">
+            <text>微笑医生</text>
+          </view>
+        </block>
+        <!--//医院介绍图片预加载-->
+        <view class="hospital-data">
+          <view class="hospital-name">{{item.HospitalName}}</view>
+          <view class="hospital-level">{{item.HospitalLevel}}</view>
+          <!--<view class="hospital-departments-recomend">
+            <block wx:for="{{item.Departments}}" wx:key="DepartmentsId">
+              <span class="hospital-departments">{{item.DepartmentsName}}</span>
+            </block>
+          </view>-->
+        </view>
+      </navigator>
+      <block wx:if="{{IfRemoveAttentionHospital}}">
+        <view class="cancel-attention-btn-hos" data-hospital_id="{{item.hospitalId}}" data-departments_id="{{item.departmentId}}" data-doctor_id="{{item.doctor_id}}" data-type="1" catchtap="delItem" hover-class="active">取消关注</view>
+      </block>
+    </view>
+  </block>
+
+  <view wx:if="{{UserAttentionData.length==0}}" class="load-remind-groups">
+    <image src="../../icon/icon-empty-content.png" class="load-remind-ico" mode="aspectFit" ></image>
+    <text>您暂无关注的医生</text>
+  </view>
+</view>
+
+<!-- 引入图片预加载组件 -->
+<import src="../../img-loader/img-loader.wxml" />
+<template is="img-loader" data="{{ imgLoadList }}"></template>

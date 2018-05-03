@@ -1,0 +1,14 @@
+<!--pages/add_follow/indx.wxml-->
+<view class="medname">{{name}}</view>
+<view class="wenbenbar">
+  <block wx:for="{{wenbwn}}" wx:for-index="index">
+    <block wx:if="{{index==id}}">
+      <block wx:for="{{item}}" wx:for-item="itemname">
+            <view class="wenben">{{itemname[0]}}</view>
+            <block wx:for="{{itemname[1]}}" wx:for-item="itemlist">
+              <view class="neiron">{{itemlist}}</view>
+            </block>
+      </block>
+    </block>
+  </block>
+</view>

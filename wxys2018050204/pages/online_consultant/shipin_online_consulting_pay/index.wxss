@@ -1,0 +1,116 @@
+/* pages/online_consultant/shipin_online_consultant_pay/index.wxss */
+.doctor-info{
+  float:left;
+  width: 100%;
+  height:80px;
+  background: #59bdca;
+}
+.doctor-photo{
+  float:left;
+  width:80px;
+  height:100%;
+  text-align:center;
+}
+.doctor-cover{
+  width:65px;
+  height:65px;
+  margin-top:6px;
+}
+.doctor-intorduce{
+  float:left;
+  width:60%;
+  height:100%;
+  margin:0 0 0 10px;
+}
+.doctor-name{
+  float:left;
+  height:22px;
+  width:100%;
+  margin: 6px 0 0 0;
+  line-height:22px;
+  font-size:0.8rem;
+  color: white;
+}
+.doctor-zc{
+  float:left;
+  height:22px;
+  width:100%;
+  line-height:22px;
+  font-size:0.8rem;
+  color: white;
+}
+.doctor-ks{
+  float:left;
+  height:22px;
+  width:100%;
+  line-height:22px;
+  font-size:0.9rem;
+  color: white;
+}
+.yyxx{
+  float:left;
+  height: 100px;
+  width:100%;
+  margin:20px 0;
+}
+.yyxx-1{
+  float:left;
+  height:33px;
+  width:100%;
+}
+.yyxx-1-left{
+  float:left;
+  height:33px;
+  width:25%;
+  line-height: 33px;
+  font-size: 16px;
+  text-align: center;
+}
+.yyxx-1-right{
+  float:left;
+  height:33px;
+  width:75%;
+  line-height: 33px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.huixian{
+  float:left;
+  height:10px;
+  margin:10px 0 0 0;
+  width:100%;
+  background: #f2f2f2;
+}
+.xzjzr{
+  float:left;
+  width:100%;
+}
+.bottom-2{
+  position:fixed;
+  bottom:0px;
+  height:36px;
+  width:100%;
+  background: #59bdca;
+}
+.bottom-2-left{
+  float:left;
+  width:50%;
+  height:36px;  
+  text-align:right;
+  line-height:36px;
+  font-size:18px;
+  color:#ffffff;
+}
+.bottom-2-right{
+  float:left;
+  width:50%;
+  height:36px;
+  line-height:36px;
+  font-size:14px;
+  color:#ffffff;
+}
+.bottom1{
+  float:left;
+  width:100%;
+  height:36px;
+}

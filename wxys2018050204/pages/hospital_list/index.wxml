@@ -1,0 +1,97 @@
+<!--pages/hospital_list/index.wxml-->
+<!--顶部医生搜索-->
+<view class="section search-ipt-groups">
+  <navigator url="../select_region/index" class="serach-select-region" hover-class="none">
+    <image src="../../icon/icon-location.svg" class=""></image>
+    <block wx:if="{{UserData.Userlocation.location_city}}">
+      {{UserData.Userlocation.location_city}}
+    </block>
+    <block wx:else>
+      全国
+    </block>
+
+  </navigator>
+
+  <image src="../../icon/icon-ipt-search.svg" class="search-ipt-ico" mode="widthFix"></image>
+  <input placeholder="搜索医院" class="search-ipt" bindinput="SearchInput" bindblur="SureSearchInput" focus="{{focus}}" value="{{search_content}}" bindfocus="ShowRecentSearch" confirm-type="search" placeholder-style="color:#dddddd;" />
+  <block wx:if="{{search_content}}">
+    <image src="../../icon/icon-remove.svg" class="clear-search-ico" catchtap="ClearSearch"></image>
+  </block>
+
+</view>
+
+<scroll-view scroll-y="true" style="height:{{ScrollHeight}}px">
+
+  <!--医院列表-->
+  <view class="es-list" style="display:{{IndexShow}}">
+    <block wx:if="{{Hospital.length>0}}" wx:for="{{Hospital}}" wx:key="">
+      <navigator class="es-list-li" url="../hospital/index?hospital={{item.HospitalName}}&hospitalId={{item.HospitalId}}" hover-class="none" open-type="redirect">
+        <image alt="" src="{{item.HospitalCover}}" class="hospital-image" mode="widthFix" />
+        <view class="hospital-data">
+          <view class="hospital-name">{{item.HospitalName}}</view>
+          <view class="hospital-level">{{item.HospitalLevel}}</view>
+          <view class="hospital-departments-recomend">
+            <block wx:for="{{item.Departments}}" wx:key="">
+              <span class="hospital-departments">{{item.DepartmentsName}}</span>
+            </block>
+          </view>
+        </view>
+      </navigator>
+    </block>
+    <!--如果没有医院数据-->
+    <view wx:if="{{Hospital.length==0}}" class="load-remind-groups">
+      <image src="../../icon/icon-empty-content.png" class="load-remind-ico"></image>
+      <text>该地区暂无可预约医院</text>
+    </view>
+  </view>
+
+  <!--最近搜索-->
+  <view style="display:{{RecentSearchShow}}">
+
+    <view class="li-title">
+      <view class="li-title-text">最近搜索</view>
+      <image src="../../icon/icon-remove.svg" class="clear-search-reacord" bindtap="ClearSearchReacord"></image>
+    </view>
+    <block wx:if="{{hospital_search.length>0}}">
+      <view class="user-search-record-list">
+        <text class="serach-record" wx:for="{{hospital_search}}" wx:key="" catchtap="SetSearch" data-value="{{item.search_content}}">{{item.search_content}}</text>
+      </view>
+    </block>
+    <block wx:else>
+
+      <view class="empty-search-reacord">暂无搜索历史</view>
+    </block>
+  </view>
+
+
+  <!--搜索结果-->
+  <view class="search-result-list" style="display:{{SearchResultShow}}">
+    <!--搜索结果-->
+    <block wx:if="{{search_result.length>0}}">
+      <view class="es-list">
+        <block wx:for="{{search_result}}" wx:key="">
+          <navigator class="es-list-li" url="../hospital/index?hospital={{item.HospitalName}}&hospitalId={{item.HospitalId}}" hover-class="none" open-type="redirect">
+            <image alt="" src="{{item.HospitalCover}}" class="hospital-image" mode="widthFix" />
+            <view class="hospital-data">
+              <view class="hospital-name">{{item.HospitalName}}</view>
+              <view class="hospital-level">{{item.HospitalLevel}}</view>
+              <view class="hospital-departments-recomend">
+                <block wx:for="{{item.Departments}}" wx:key="">
+                  <span class="hospital-departments">{{item.DepartmentsName}}</span>
+                </block>
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </block>
+
+    <block wx:else>
+      <view class="load-remind-groups">
+        <image src="../../icon/icon-no-search-result.png" class="load-remind-ico"></image>
+        <text>暂无搜索结果相匹配</text>
+      </view>
+
+    </block>
+  </view>
+</scroll-view>

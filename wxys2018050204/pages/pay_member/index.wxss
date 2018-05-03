@@ -1,0 +1,38 @@
+/* pages/pay_member/index.wxss */
+.order-data{
+    background: #fff;
+}
+.order-data-li{
+    display: flex;
+    padding:10px;
+}
+.order-data-li-title{
+    font-size:16px;
+    font-weight:800;
+}
+.order-data-li-text{
+    font-size:15px;
+    flex-grow:1;
+    text-align: right;
+    color:#666666;
+    font-weight:500;
+}
+
+.order-btn {
+    width:45%;
+    border-radius:10px;
+    height: 36px;
+    line-height: 36px;
+   
+    /* border-radius: 3px; */
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+.order-btn.sure{
+    background-color: #59bdca;
+}
+.order-btn.cancel{
+    background-color: #ea4b35;
+}

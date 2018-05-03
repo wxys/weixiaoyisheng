@@ -1,0 +1,17 @@
+/* pages/add_follow/indx.wxss */
+.wenbenbar{
+  padding:0 50rpx 50rpx 50rpx;
+  font-size:30rpx;
+}
+.wenben{
+  margin-bottom:20rpx;
+  margin-top:60rpx;
+}
+.neiron{
+  line-height: 45rpx;
+}
+.medname{
+  text-align:center;
+  font-size:45rpx;
+  padding-top:35rpx;
+}

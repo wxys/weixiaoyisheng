@@ -1,0 +1,1030 @@
+
+<!--pages/follow/index.wxml-->
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+<!--     遮罩     -->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{show_jihuo}}"></view>  
+<view class="drawer_box" wx:if="{{show_jihuo}}" > </view>
+
+  <!-- <view class='disease_title'>{{disease.name}}随访记录</view>  -->
+  <view class='head_title'>
+    <view class="project_title">项目类别</view>
+    <view class="xueya_title">{{xueya_title}}</view>
+  </view>
+
+
+<scroll-view scroll-y  class="swiper-tab-left page-bottom {{menu?'menu_show':'menu_hide'}}"  style="height:{{height}}px">
+    <block wx:for="{{leftMenu}}"  wx:key=""> 
+    <view class='first_menu' bindtap='showSMenu' data-idx='{{index}}' >
+    <block wx:if="{{item.isshow==0}}">
+       <image src="../../icon/xiala.png" class="sc_left_img sc_left_img_2"></image>
+       </block>
+       <block wx:else>
+       <image src="../../icon/shangla.png" class="sc_left_img sc_left_img_2"></image>
+       </block>
+       {{item.name}}</view>
+    <block  wx:for="{{item.child}}"  wx:key="" wx:for-item='vitem'>
+
+        <view class="s_title swiper-tab-list {{currentTab== vitem.idx ? 'on' : ''}}  {{item.isshow==1 ? 'show' : 'hide'}} " data-name='{{vitem.name}}'  data-current="{{vitem.idx}}" bindtap="swichNav" >
+       <block wx:if="{{currentTab==vitem.idx}}">
+       <view class="triangle"></view>
+    
+       </block>
+       {{vitem.name}}</view> 
+    </block>
+    </block>
+</scroll-view>
+
+
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==0 ? 'swiper-tab-list-content-show' : ''}} page-top" style="height:{{scrolH}}px;{{translate}}"bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start">   
+<image bindtap="tap_ch" src="../../images/btn.png"></image>   
+
+<view wx:if="{{showHis==0}}" class='cont'>
+<view  class='zhichi_cont'>
+<view class='title'><text class="xueyaming">收缩压</text>
+
+  <block wx:if="{{shouVal<140}}"><text class="val" style="color:green">{{shouVal}}</text></block>
+  <block wx:elif="{{shouVal>=140 && shouVal< 179}}"><text class="val"  style="color:blue">{{shouVal}}</text></block>
+  <block wx:else><text  class="val"  style="color:red">{{shouVal}}</text></block>
+  <text class="danwei">mmHg</text>
+    <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="statureRoll"   class='scroll-box'>
+      <view  class="scroll-empty_1"></view>
+<view class="cav-box" >
+    <block  wx:for="{{shou_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{maxValueH}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+ </view>
+ <view class='title'><text class="xueyaming">舒张压</text>
+ <block wx:if="{{shuVal<60}}"><text class="val" style="color:green"> {{shuVal}}</text></block>
+ <block wx:elif="{{shuVal>=60 &&shuVal< 89}}"><text  class="val" style="color:blue"> {{shuVal}}</text></block>
+ <block wx:else><text class="val" style="color:red"> {{shuVal}}</text></block>
+  <text class='danwei' >mmHg</text>
+    <view class="clear"></view></view>
+  <view class='relative mb20'>
+     <scroll-view scroll-x bindscroll="weightRoll" scroll-left="{{weightLeft}}" class='scroll-box'>     
+      <view  class="scroll-empty_1"></view>
+     <view class="cav-box" >
+    <block  wx:for="{{shu_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{maxValueW}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+        </scroll-view>
+        <view class='point'></view>
+    </view>
+  </view>
+<view class='saveBtn' bindtap="saveXueya">保存</view>
+<view  class="show_result" wx:if="{{show_state==1}}">
+<view class="record_time_title">记录时间</view>
+<view class="record_time">{{date}}</view>
+<view class="result_val"><text style="margin-right:30rpx;">血压</text>{{SaveshouVal}} / {{SaveshuVal}}mmHg</view> 
+<view class="font-28"><view  class="record_time_title">结论</view>
+<view class="pa_34">该血压水平分类为<text class="jiacu">【{{state}}】</text>。
+<block wx:if="{{state!='正常血压'}}" >血压治疗控制未达标。</block>
+<block wx:else>血压治疗控制达标。</block>
+<block wx:if="{{state=='3级高血压'}}">停止随访，建议病人到医院就诊。</block>
+</view>
+</view>
+<view class="font-28">
+<view  class="record_time_title">达标参考值</view>
+<view class="pa_34">收缩压90-139mmHg，舒张压60-89mmHg</view>
+</view>
+</view>
+</view>
+  <scroll-view scroll-y  wx:if="{{showHis==1}}" class="all_his">
+   <view class="his-item"><view class="list_time"></view><view class="time_acl timw_Mo">早晨</view><view class="time_acl">睡前</view></view>
+<view wx:for="{{allHis}}" wx:key=""  class="his-item">
+<view class="list_time">{{item.show_time}}</view>
+<block wx:if="{{item.zaoshang}}">
+
+<block wx:if="{{item.zaoshang.state=='正常血压'}}">
+<view class="list_val "  style="color:#54b2af">
+{{item.zaoshang.shouVal}}/{{item.zaoshang.shuVal}}
+</view>
+</block>
+<block wx:if="{{item.zaoshang.state=='1级高血压'}}">
+<view class="list_val "  style="color:#f19149">
+{{item.zaoshang.shouVal}}/{{item.zaoshang.shuVal}}
+</view>
+</block>
+<block wx:if="{{item.zaoshang.state=='2级高血压'}}">
+<view class="list_val "  style="color:#ec5d6d">
+{{item.zaoshang.shouVal}}/{{item.zaoshang.shuVal}}
+</view>
+</block>
+<block wx:if="{{item.zaoshang.state=='3级高血压'}}">
+<view class="list_val "  style="color:#a24040">
+{{item.zaoshang.shouVal}}/{{item.zaoshang.shuVal}}
+</view>
+</block>
+</block>
+<block wx:else>
+<view class="list_val">未测量</view>
+</block>
+<block wx:if="{{item.xiawu}}">
+<block wx:if="{{item.zaoshang.state=='正常血压'}}">
+<view class="list_val "  style="color:#54b2af">
+{{item.xiawu.shouVal}}/{{item.xiawu.shuVal}}
+</view>
+</block>
+<block wx:if="{{item.zaoshang.state=='1级高血压'}}">
+<view class="list_val "  style="color:#f19149">
+{{item.xiawu.shouVal}}/{{item.xiawu.shuVal}}
+</view>
+</block>
+<block wx:if="{{item.zaoshang.state=='2级高血压'}}">
+<view class="list_val "  style="color:#ec5d6d">
+{{item.xiawu.shouVal}}/{{item.xiawu.shuVal}}
+</view>
+</block>
+<block wx:if="{{item.zaoshang.state=='3级高血压'}}">
+<view class="list_val "  style="color:#a24040">
+{{item.xiawu.shouVal}}/{{item.xiawu.shuVal}}
+</view>
+</block>
+</block>
+<block wx:else>
+<view class="list_val">未测量</view>
+</block>
+<view>
+</view>
+</view>
+</scroll-view>
+<view class="lookHisBtn" bindtap="lookHis" wx:if="{{showHis==0}}">查看历史</view>
+<view class="bakeHisBtn" bindtap="comebake" wx:if="{{showHis==1}}">返回</view>
+</scroll-view>
+
+<!--    24  小时    -->
+<view  class="swiper-tab-list-content {{currentTab==1 ? 'swiper-tab-list-content-show' : ''}}" style="height:{{scrolH}}px">   
+<view class="electrocardiogram">
+    <view class="topbiaoti">24小时动态血压</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" bindtap='showimages' src='{{imageurl1}}' data-imageurl="{{imageurl1}}"></image><image class="image1" bindtap='showimages' src='{{imageurl}}' data-imageurl="{{imageurl}}"></image><view class="addimage" bindtap='uploadimage' data-mess="1"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+    <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+
+<view class='saveBtn' bindtap="saveXl">保存</view>
+</view>
+<!--   心率    -->
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==2 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px">   
+<view wx:if="{{showXlHis==0}}"  class='cont'>
+<view  class='zhichi_cont'>
+<view class='title'><text class="xueyaming">心率</text>
+  <block wx:if="{{xlVal<60}}"><text class="val" style="color:green">{{xlVal}}</text></block>
+  <block wx:elif="{{xlVal>=60 && shouVal< 100}}"><text class="val"  style="color:blue">{{xlVal}}</text></block>
+  <block wx:else><text  class="val"  style="color:red">{{xlVal}}</text></block>
+  <text class="danwei">bpm</text>
+    <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="xlRoll" scroll-left="{{xlLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{xl_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{maxxlV}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+ </view>
+</view>
+ <view class='saveBtn' bindtap="saveXl">保存</view>
+<view  class="show_result" wx:if="{{show_xinlv_state==1}}">
+<view class="record_time_title">记录时间</view>
+<view class="record_time">{{date}}</view>
+<view class="result_val"><text style="margin-right:30rpx;">心率</text>{{SaveXl}}bpm</view> 
+<view class="font-28"><view  class="record_time_title">结论</view>
+<view class="pa_34">该心率水平分类为<text class="jiacu">【{{ xlState}}】</text>。
+</view>
+</view>
+</view>
+ </view>
+ <scroll-view scroll-y  wx:if="{{showXlHis==1}}" class="all_his">
+   <view class="his-item"><view class="list_time"></view><view class="time_acl timw_Mo">早晨</view><view class="time_acl">睡前</view></view>
+<view wx:for="{{allXlHis}}" wx:key=""  class="his-item">
+<view class="list_time">{{item.show_time}}</view>
+<block wx:if="{{item.zaoshang}}">
+<block wx:if="{{item.zaoshang.xlval>=60  &&  item.zaoshang.xlval<=100}}">
+<view class="list_val "  style="color:#54b2af">
+{{item.zaoshang.xlval}}
+</view>
+</block>
+<block wx:if="{{item.zaoshang.val <60 }}">
+<view class="list_val "  style="color:#f19149">
+{{item.zaoshang.xlval}}
+</view>
+</block>
+<block wx:if="{{item.zaoshang.xlval>100}}">
+<view class="list_val "  style="color:#ec5d6d">
+{{item.zaoshang.xlval}}
+</view>
+</block>
+</block>
+<block wx:else>
+<view class="list_val">未测量</view>
+</block>
+<block wx:if="{{item.xiawu}}">
+<block wx:if="{{item.xiawu.xlVal>=60  &&  item.xiawu.xlVal<=100}}">
+<view class="list_val"  style="color:#54b2af">
+{{item.xiawu.xlVal}}
+</view>
+</block>
+<block wx:if="{{item.xiawu.xlVal <60 }}">
+<view class="list_val"  style="color:#f19149">
+{{item.xiawu.xlVal}}
+</view>
+</block>
+<block wx:if="{{item.xiawu.xlVal>100}}">
+<view class="list_val"  style="color:#ec5d6d">
+{{item.xiawu.xlVal}}
+</view>
+</block>
+</block>
+<block wx:else>
+<view class="list_val">未测量</view>
+</block>
+<view>
+</view>
+</view>
+</scroll-view>
+<view class="lookHisBtn" bindtap="lookXlHis" wx:if="{{showXlHis==0}}">查看历史</view>
+<view class="bakeHisBtn" bindtap="comebakeXl" wx:if="{{showXlHis==1}}">返回</view>
+</scroll-view>
+
+
+
+
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==3 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px">   
+
+
+
+<view class="cont_2">
+ 
+  <view class="drug_title"> <text>用法用量</text></view>
+ 
+      <view class="drug_guifan drug_guifan_text" >80 mg*qd</view>
+        <view class="drung_qingkuang_c  drug_guifan">
+    <view class="op_c" ></view>
+    <block wx:if="{{op==1}}"><view class='select_true'>✔</view></block>遵照医嘱
+    </view>
+   
+    <view class="drung_qingkuang_c  drug_guifan">
+    <view class="op_c" ></view>
+    <block wx:if="{{op==1}}"><view class='select_true'>✔</view></block>未遵医嘱
+    </view>
+
+   <view class="drug_guifan drug_guifan_text" >每天同一时间用药</view>
+        <view class="drung_qingkuang_c  drug_guifan">
+    <view class="op_c" ></view>
+    <block wx:if="{{op==1}}"><view class='select_true'>✔</view></block>遵照医嘱
+    </view>
+   
+    <view class="drung_qingkuang_c  drug_guifan">
+    <view class="op_c" ></view>
+    <block wx:if="{{op==1}}"><view class='select_true'>✔</view></block>未遵医嘱
+    </view>
+  </view>
+  <view class="clear"></view>
+
+ <view class="drug_title"> <text>不良反应</text></view>
+ <view style='border:1rpx solid #eee;border-bottom:none;margin-left:20rpx;margin-top:30rpx;marign-right:20rpx'>
+<view wx:for="{{daiwen_un_effect}}" class="hang" wx:for-index="key"  wx:key="">
+<view class='p_1'>{{index}}</view>
+<view class='p_3'>{{item.name}}</view>
+<view class='p_4'>
+<block wx:for="{{item.option}}" wx:key=""   wx:for-item="op"  >
+        <view class="option" data-idx="{{op}}">
+          <view class="opV"  bindtap="chiceuneffect" data-idx='{{key}}' data-op="{{op}}">
+              <view class="op_c" ></view>
+              <block wx:if="{{item.select==op}}"><view class='select_true'>✔</view></block>
+              <view class="flex">{{op}}</view>
+          </view>
+        </view>
+      </block>
+
+</view>
+</view>
+
+ <view class="clear"></view>
+
+
+ <view>
+
+</view>
+ </view>
+
+  <view>
+  <view class="drug_title"> <text>不良反应</text></view>
+  <view class="inputbar"><text class="bottext">肾功能</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">肝功能</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">电解质</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">血清钾</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">血清锂</text><input class="botinput"></input></view>
+
+ <view class="un_effect_inp"><input type="text" class=""   /></view>
+ </view>
+
+  <view class="clear"></view>
+
+  <view class="drug_title_2"> <text>药物相互作用</text></view>
+  <view style='border:1rpx solid #eee;border-bottom:none;margin-left:20rpx;margin-top:30rpx;marign-right:20rpx' >
+  <view  class="hang_2" wx:for="{{daiwen_relation}}" wx:key="">
+
+<view class='p_3_2'>{{item.name}}</view>
+<view class='p_4_2'>
+
+<block wx:for="{{item.option}}" wx:key="" wx:for-index="key"  wx:for-item="op"  >
+        <view class="option" data-index="{{op}}">
+          <view class="opV"  bindtap="chicedaiwen_relation" data-idx="{{key}}"  data-op='{{op}}'>
+              <view class="op_c" ></view>
+              <block wx:if="{{item.select==op}}"><view class='select_true'>✔</view></block>
+              <view class="flex">{{op}}</view>
+          </view>
+        </view>
+      </block>
+
+</view>
+
+  </view>
+  <view class="clear"></view>
+  </view>
+
+
+    <view class="drug_title_2"> <text>注意事项</text></view>
+  <view style='border:1rpx solid #eee;border-bottom:none;margin-left:20rpx;margin-top:30rpx;marign-right:20rpx' >
+  <view  class="hang_2" wx:for="{{daiwen_attent}}" wx:key="" wx:for-index="key">
+
+<view class='p_3_2'>{{item.name}}</view>
+<view class='p_4_2'>
+
+<block wx:for="{{item.option}}" wx:key=""  wx:for-item="op"  >
+        <view class="option" data-index="{{op}}">
+          <view class="opV"  bindtap="chicedaiwen_attent" data-op='{{op}}' data-idx='{{key}}'>
+              <view class="op_c" ></view>
+              <block wx:if="{{item.select==op}}"><view class='select_true'>✔</view></block>
+              <view class="flex">{{op}}</view>
+          </view>
+        </view>
+      </block>
+
+</view>
+
+  </view>
+  <view class="clear"></view>
+  </view>
+
+<view class='saveBtn' >保存</view>
+ 
+
+
+
+</scroll-view>
+
+<view class="swiper-tab-list-content {{currentTab==5 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px">   
+  <view class="electrocardiogram">
+    <view class="topbiaoti">心电图</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl3}}'bindtap='showimages' data-imageurl="{{imageurl3}}"></image><image class="image1" src='{{imageurl2}}' bindtap='showimages' data-imageurl="{{imageurl2}}"></image><view class="addimage" bindtap='uploadimage' data-mess="2"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+     <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+   <view class="electrocardiogram">
+    <view class="topbiaoti">超声波心电图</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl5}}'bindtap='showimages' data-imageurl="{{imageurl5}}"></image><image class="image1" src='{{imageurl4}}'bindtap='showimages' data-imageurl="{{imageurl4}}"></image><view class="addimage" bindtap='uploadimage' data-mess="3"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+     <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+   <view class="electrocardiogram">
+    <view class="topbiaoti">胸片</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl7}}'bindtap='showimages' data-imageurl="{{imageurl7}}"></image><image class="image1" src='{{imageurl6}}'bindtap='showimages' data-imageurl="{{imageurl6}}"></image><view class="addimage" bindtap='uploadimage' data-mess="4"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+    <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+  <view class="clearboth"></view>
+<view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+</view>
+<view  class="swiper-tab-list-content {{currentTab==6 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px">   
+  <view class="electrocardiogram">
+    <view class="topbiaoti">劲动脉超声</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl9}}'bindtap='showimages' data-imageurl="{{imageurl9}}"></image><image class="image1" src='{{imageurl8}}'bindtap='showimages' data-imageurl="{{imageurl8}}"></image><view class="addimage" bindtap='uploadimage' data-mess="5"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+    <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+   <view class="electrocardiogram">
+    <view class="topbiaoti">脉搏波传导速度</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl11}}'bindtap='showimages' data-imageurl="{{imageurl11}}"></image><image class="image1" src='{{imageurl10}}'bindtap='showimages' data-imageurl="{{imageurl10}}"></image><view class="addimage" bindtap='uploadimage'data-mess="6"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+    <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+  <view class="inputbar"><text class="bottext">踝/臂血压指数</text><input class="botinput"></input></view>
+<view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+</view>
+<view  class="swiper-tab-list-content {{currentTab==7 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px"> 
+<view class="inputbar"><text class="bottext">肾小球滤过率
+（eGFR）</text><input class="botinput"></input></view>  
+<view class="inputbar"><text class="bottext">血清肌酐</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">血尿酸</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">尿微量白蛋白</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">尿蛋白定量</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">尿白蛋白定量</text><input class="botinput"></input></view>
+  <view class="electrocardiogram">
+    <view class="topbiaoti">尿沉渣镜检</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl13}}'bindtap='showimages' data-imageurl="{{imageurl13}}"></image><image class="image1" src='{{imageurl12}}'bindtap='showimages' data-imageurl="{{imageurl12}}"></image><view class="addimage" bindtap='uploadimage' data-mess="7"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+   <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+  
+  
+<view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+</view>
+
+<view class="swiper-tab-list-content {{currentTab==8 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px"> 
+
+  <view class="electrocardiogram">
+    <view class="topbiaoti">眼底镜检查</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl15}}'bindtap='showimages' data-imageurl="{{imageurl15}}"></image><image class="image1" src='{{imageurl14}}'bindtap='showimages' data-imageurl="{{imageurl14}}"></image><view class="addimage" bindtap='uploadimage'data-mess="8"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+   <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+  
+ <view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+
+</view>
+<view  class="swiper-tab-list-content {{currentTab==9 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px"> 
+
+  <view class="electrocardiogram">
+    <view class="topbiaoti">头颅MRA</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl17}}'bindtap='showimages' data-imageurl="{{imageurl17}}"></image><image class="image1" src='{{imageurl16}}'bindtap='showimages' data-imageurl="{{imageurl16}}"></image><view class="addimage" bindtap='uploadimage'data-mess="9"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+    <view class="electlistbom"><input class="headinput" style="z-index:{{textareashow}}" placeholder="请输入病理报告的结论"></input></view>
+  </view>
+  <view class="huozhe">或者</view>
+  <view class="electrocardiogram">
+    <view class="topbiaoti">头颅CTA</view>
+    <view class="electlisttop">
+    <text class="imagetxt">报告照片</text><image class="image2" src='{{imageurl19}}'bindtap='showimages' data-imageurl="{{imageurl19}}"></image><image class="image1" src='{{imageurl18}}'bindtap='showimages' data-imageurl="{{imageurl18}}"></image><view class="addimage" bindtap='uploadimage' data-mess="10"><image class="addjia" src='../../icon/add-image.png'></image></view>
+    </view>
+    <view class="electlistbom"><textarea class="headinput" style="z-index:{{textareashow}}"  placeholder="请输入病理报告的结论"></textarea></view>
+  </view>
+  
+  
+<view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+</view>
+<view  class="swiper-tab-list-content {{currentTab==10 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px"> 
+ 
+ <view class="biaotitop">
+    <view class="topbiaoti1">吸烟频度</view>
+</view>
+  <view class="selectlist">
+ 
+<checkbox class="checklist" color="#000">无吸烟</checkbox><checkbox class="checklist" color="#000">偶尔吸烟</checkbox><checkbox class="checklist" color="#000">经常吸烟</checkbox>
+</view>
+   
+  
+<view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+
+</view>
+
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==12 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px"> 
+ 
+ <view class="inputbar"><text class="bottext">总胆固醇</text><input class="botinput"></input></view>  
+<view class="inputbar"><text class="bottext">甘油三酯</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">高密度脂蛋白胆固醇</text><input class="botinput"></input></view>
+<view class="inputbar"><text class="bottext">低密度脂蛋白胆固醇</text><input class="botinput"></input></view>
+
+
+<view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+</scroll-view>
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==15 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px"> 
+ 
+ <view class="biaotitop">
+    <view class="topbiaoti1">减少钠盐摄入</view>
+</view>
+<view class="kongyan">每日用盐6g（差不多一个酒瓶盖容量）</view>
+
+  <view class="selectlist">
+ <text class="kongyan1">控制情况：</text>
+<checkbox class="checklist" color="#000">达标</checkbox><checkbox class="checklist" color="#000">不达标</checkbox>
+</view>
+   
+  
+<view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+
+</scroll-view>
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==17 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px"> 
+ 
+ <view class="biaotitop">
+    <view class="topbiaoti1">戒烟</view>
+</view>
+  <view class="selectlist">
+ 
+<checkbox class="checklist" color="#000">已戒烟</checkbox><checkbox class="checklist" color="#000">偶尔吸烟</checkbox><checkbox class="checklist" color="#000">未戒烟</checkbox>
+</view>
+   
+  
+<view class="tijiaobar">
+  <view class="tijiaob">提交</view>
+</view>
+
+</scroll-view>
+
+
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==11 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px">   
+<view  class='cont'>
+<view  class='zhichi_cont'>
+<view class='title'><text class="xueyaming">糖耐量受损</text>
+  <block wx:if="{{xlVal<60}}"><text class="val" style="color:green">{{tangnaiVal}}</text></block>
+  <block wx:elif="{{xlVal>=60 && shouVal< 100}}"><text class="val"  style="color:blue">{{tangnaiVal}}</text></block>
+  <block wx:else><text  class="val"  style="color:red">{{tangnaiVal}}</text></block>
+  <text class="danwei">mmol/L</text>
+    <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="tangnaiRoll" scroll-left="{{xlLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{tangnai_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{tangnaiMax}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+
+ </view>
+
+<view class='title'><text class="xueyaming">空腹血糖受损</text>
+  <block wx:if="{{kongfuxuetangVal<60}}"><text class="val" style="color:green">{{kongfuxuetangVal}}</text></block>
+  <block wx:elif="{{kongfuxuetangVal>=60 && shouVal< 100}}"><text class="val"  style="color:blue">{{kongfuxuetangVal}}</text></block>
+  <block wx:else><text  class="val"  style="color:red">{{kongfuxuetangVal}}</text></block>
+  <text class="danwei">mmol/L</text>
+    <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="kongfuxuetangRoll" scroll-left="{{kongfuxuetangLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{tangnai_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{tangnaiMax}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+
+ </view>
+
+
+
+ <view class='title'><text class="xueyaming">糖尿病</text>
+  <block wx:if="{{xlVal<60}}"><text class="val" style="color:green">{{tangniaoVal}}</text></block>
+  <block wx:elif="{{xlVal>=60 && shouVal< 100}}"><text class="val"  style="color:blue">{{tangniaoVal}}</text></block>
+  <block wx:else><text  class="val"  style="color:red">{{tangniaoVal}}</text></block>
+  <text class="danwei">mmol/L</text>
+  <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="tangniaoRoll" scroll-left="{{xlLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{tangnai_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{tangniaoMax}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+
+ </view>
+
+
+</view>
+<view class='saveBtn' bindtap="saveXueya">保存</view>
+</view>
+
+</scroll-view>
+
+
+ </block>
+
+
+ <scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==13 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px">   
+<view  class='cont'>
+<view  class='zhichi_cont'>
+<view class='title'><text class="xueyaming">身高</text>
+<text class="val" style="color:green">{{shengaoVal}}</text>
+  <text class="danwei">cm</text>
+    <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="shengaoRoll" scroll-left="{{shengaoLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{shengao_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{maxshengao}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+
+ </view>
+
+<view class='title'><text class="xueyaming">体重</text>
+  <text class="val" style="color:green">{{tizhongVal}}</text>
+  <text class="danwei">Kg</text>
+    <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="tizhongRoll" scroll-left="{{tizhongLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{tizhong_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{maxtizhong}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+
+ </view>
+
+
+
+ <view class='title'><text class="xueyaming">腰围</text>
+<text class="val" style="color:green">{{yaoweiVal}}</text>
+ 
+  <text class="danwei">cm</text>
+  <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="yaoweiRoll" scroll-left="{{xlLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{yaowei_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{maxyaowei}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+
+ </view>
+
+
+</view>
+<view class='saveBtn' bindtap="saveXueya">保存</view>
+</view>
+
+
+</scroll-view>
+<!-- 用量 -->
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==24 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px">   
+  <view class='cure_one'>
+    <view class='cure_one_name'>
+    用量
+    </view> 
+    <view>
+      <text class='cure_one_text'>服用剂量</text>
+      
+      <view class='select_count'>
+        每次
+      </view>
+      <view class='sleect_box'>
+      <view  class='select_title'>
+              {{orginVaole}}
+        <image src='../../images/selectbtn.png'  bindtap='showOption'> </image>
+      </view>
+        <view  class="{{selectShow?'show':'hide'}} select_value">
+            <view bindtap='selectValue' data-value="克（g）">
+                克（g）
+            </view>
+            <view bindtap='selectValue' data-value='豪克（g）'>
+                豪克（g）
+            </view>
+            <view bindtap='selectValue' data-value='微克（g）'>
+                微克（g）
+            </view>
+            <view bindtap='selectValue' data-value='纳克（g）'>
+                纳克（g）
+            </view>
+            <view bindtap='selectValue' data-value='升（L）'>
+                升（L）
+            </view>
+            <view bindtap='selectValue' data-value='豪升（L）'>
+                豪升（L）
+            </view>
+            <view bindtap='selectValue' data-value='国际单位(UI)'>
+                国际单位(UI)
+            </view>
+            <view bindtap='selectValue' data-value='单位（U）'>
+              单位（U）
+            </view>
+        </view>
+      </view>
+      <input type='text' class='cure_one_input'></input>
+    </view>
+    <view style="margin-top:{{drugmargin}}rpx">
+      <text class='cure_one_text' style='float:left;margin-top:8rpx;'>给药频数</text>
+      <view class='sleect_box' style='margin-right:20rpx'>
+      <view  class='select_title' style='width:278rpx;'>
+              {{drugValue}}
+        <image src='../../images/selectbtn.png'  bindtap='drugNumber'> </image>
+      </view>
+        <view  class="{{drugShow?'show':'hide'}} select_value">
+            <view bindtap='drugValue' data-value="bid(每日一次)">
+                bid(每日一次)
+            </view>
+            <view bindtap='drugValue' data-value='bid(每日两次)'>
+                bid(每日两次)
+            </view>
+            <view bindtap='drugValue' data-value='tid(每日三次)'>
+                tid(每日三次)
+            </view>
+            <view bindtap='drugValue' data-value='qid(每日)'>
+                qid(每日)
+            </view>
+            <view bindtap='drugValue' data-value='qod(隔日一次)'>
+                qod(隔日一次)
+            </view>
+            <view bindtap='drugValue' data-value='qw(每周一次)'>
+                qw(每周一次)
+            </view>
+            <view bindtap='drugValue' data-value='biw(每周两次)'>
+               biw(每周两次)
+            </view>
+            <view bindtap='drugValue' data-value='qow(隔周一次)'>
+              qow(隔周一次)
+            </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==16 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px">   
+<view  class='cont'>
+<view  class='zhichi_cont'>
+<view class='title'><text class="xueyaming">身高</text>
+<text class="val" style="color:green">{{shengaoVal}}</text>
+  <text class="danwei">cm</text>
+    <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="shengaoRoll" scroll-left="{{shengaoLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{shengao_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{maxshengao}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+
+ </view>
+
+<view class='title'><text class="xueyaming">体重</text>
+  <text class="val" style="color:green">{{tizhongVal}}</text>
+  <text class="danwei">Kg</text>
+    <view class="clear"></view>
+</view>
+<view class='relative mb40'>
+<scroll-view scroll-x  bindscroll="tizhongRoll" scroll-left="{{tizhongLeft}}"  class='scroll-box'>
+<view  class="scroll-empty"></view>
+<view class="cav-box" >
+ <block  wx:for="{{tizhong_arr}}" wx:key='' > 
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i" wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+      <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+      <block  wx:for="{{[0,1,2,3]}}" wx:for-item="i"  wx:key="">
+      <view class="smaill_zhi" style="margin-right:{{ratio}}px" ></view>
+      </block>
+       <view class='zhi_val'>{{item}}</view>
+    </view>    
+    </block>
+    <view class="cav-item">
+    <view class="big_zhi" style="margin-right:{{ratio}}px"></view>
+    <view class='zhi_val'>{{maxtizhong}}</view>
+    </view>
+    </view>
+    <view class='scroll-empty2'></view>
+</scroll-view>
+ <view class='point'></view>
+
+ </view>
+
+
+
+
+
+
+</view>
+<view class='saveBtn' bindtap="saveXueya">保存</view>
+</view>
+
+
+</scroll-view>
+
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==18 ? 'swiper-tab-list-content-show' : ''}}"  style="height:{{scrolH}}px"> 
+<view class="cont">
+
+<view class='Tab16_title'>饮酒容量</view>
+<view class="wine-box">
+
+<block wx:for="{{wine_box_arr}}" wx:key="" wx:for-item="op">
+ <view class="opV"  bindtap="chiceWineBox" data-idx="{{index}}" data-option='{{op.name}}'>
+       <view class="op_c" ></view>
+           <block wx:if="{{op.select==1}}"><view class='select_true'>✔</view></block>
+        <view class="flex">{{op.name}}</view>
+      </view>
+
+</block>
+
+</view>
+
+</view>
+<view class='saveBtn' bindtap="saveXueya">保存</view>
+</scroll-view>
+
+<view class="{{isshowimage==1?'showimageBar1':'showimageBar'}}"><image class="bigimage" src="{{imageurlbig}}"></image><image class="showbigicon" src="../../icon/icon-clar-search.png" bindtap='isshowbigimage'></image></view>
+

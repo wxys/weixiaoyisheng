@@ -1,0 +1,87 @@
+<!--pages/doctor_card/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+
+<view style="display:{{PageShow?'':'none'}}">
+
+
+  <!--顶部医生资料-->
+  <view class="doctor-card">
+    <image src="{{doctor_data.doctor_cover}}" class="doctor-cover"></image>
+    <text class="doctor-name">{{doctor_data.doctor_name}}</text>
+
+ 
+       <view class="display_inline_block font_size_24 margin-left_46">
+              <view class="doctor-level">{{doctor_data.doctor_position}}
+              <view class="doctor-departments">{{doctor_data.doctor_departments}}                 </view></view>
+               <view class="doctor-hospital">{{doctor_data.doctor_hospital}}</view>
+            </view>
+
+
+ 
+    <view class="collect-groups">
+      <image wx:if="{{!Collect}}" class="doc-attention-btn " bindtap="AttentionDoctor" disabled="{{AttentionBtnDisabled}}" src="../../icon/icon-no-collete.png"></image>
+      <image wx:else class="doc-attention-btn" bindtap="CancelAttentionDoctor" disabled="{{CancelAttentionBtnDisabled}}" src="../../icon/icon-collete.png"></image>
+      <!--转发按钮-->
+  
+ <image src="../../icon/icon-share.png" class="share-btn_1"></image>
+    </view>
+      <view class="collect-groups2">
+     
+
+    </view>
+  </view>
+
+  <scroll-view scroll-y="true" style="height:{{ScrollHeight}}px;margin-top:580rpx;">
+    <!--医生擅长-->
+<view class="height_320">
+    <view class="column-title" style="margin-top:0px;">
+      <view class="column-text"><view class="boder_view"></view>擅长</view>
+     <view class="icon_more"  data-text="{{doctor_good_at}}" data-text_cut="{{doctor_good_at_cut}}" catchtap="ShowMoreTextGoodAt" >展开  <image src="{{is_show_more_goodAt?'../../icon/icon-no-more-text.png':'../../icon/icon-more-text.png'}}" class="more_icon" ></image></view>
+    </view>
+    <view class="doctor-introduce">
+      <block wx:if="{{doctor_good_at}}">
+    
+         <text>{{doctor_good_at_show}}</text>
+      </block>
+      <block wx:else>
+        <text>该医生暂无擅长数据。</text>
+      </block>
+      
+    </view>
+</view>
+    <!--医生资料-->
+<view class="height_320">
+    <view class="column-title" style="margin-top:0px;">
+      <view class="column-text"><view class="boder_view"></view>简介</view>
+         <view class="icon_more"  data-text="{{doctor_introduce}}" data-text_cut="{{doctor_introduce_cut}}" catchtap="ShowMoreText" >展开  <image src="{{ShowMoreText?'../../icon/icon-no-more-text.png':'../../icon/icon-more-text.png'}}" class="more_icon" ></image></view>
+    </view>
+    <view class="doctor-introduce">
+      <block wx:if="{{doctor_introduce}}">
+        <text>{{doctor_introduce_show}}</text>
+        <block wx:if="{{doctor_introduce!=doctor_introduce_cut}}">
+  
+         
+        </block>
+
+      </block>
+      <block wx:else>
+        <text>该医生暂无简介数据。</text>
+      </block>
+
+    </view>
+ </view>
+
+
+
+
+
+
+     <!--图文咨询-->
+
+
+  
+  </scroll-view>
+
+  <view class="yuyue_btn" data-url="../doctor_subscribe/index?doctor_cover={{doctor_data.doctor_cover}}&doctor_name={{doctor_data.doctor_name}}&doctor_position={{doctor_data.doctor_position}}&doctor_departments={{doctor_data.doctor_departments}}&doctor_hospital={{doctor_data.doctor_hospital}}&doctor_id={{doctor_data.doctor_id}}&hospitalId={{doctor_data.hospital_id}}&departmentId={{doctor_data.department_id}}"
+   catchtap="SkipPage">预约挂号</view>
+</view>

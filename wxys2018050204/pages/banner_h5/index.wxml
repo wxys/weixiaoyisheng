@@ -1,0 +1,5 @@
+<!--pages/banner_h5/index.wxml-->
+
+<image src="https://h5.12590.com/SlowDiseaseTreasure/icon/banner_h5.png" class="bg_img" > </image>
+
+<view class="dingzhi_btn">马上定制</view>

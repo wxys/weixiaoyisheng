@@ -1,0 +1,149 @@
+/* pages/doctor_regist_complete/index.wxss */
+page{
+  background: #59bdca;
+}
+.remind-text{
+  background: none;
+}
+.user-data-groups {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-user-cover {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  background: #ebebeb;
+}
+
+.login-user-name {
+  margin-top: 10px;
+  text-align: center;
+  color: #666;
+}
+
+.ipt-group-top,.ipt-group  {
+  background: #fff;
+  padding: 10rpx 30rpx;
+  display: flex;
+  align-items: center;
+  
+}
+
+.ipt-group-import {
+  height:35px;
+  line-height: 35px;
+  flex:1;
+  color:#666666 !important;
+  font-size:16px;
+}
+
+.ipt-group{
+  padding-top:10px;
+  color:#666666;
+}
+
+.ipt-phone-ico{
+  width:26px;
+  height:25px;
+  margin-right:10px;
+  margin-left:-3px;
+
+}
+.select-hospital-ico,.select-departments-ico,.select-professional-title-ico{
+  width:26px;
+  height:26px;
+  margin-right:10px;
+  margin-left:-3px;
+}
+.ipt-code-ico{
+  width:20px;
+  height:20px;
+  margin-right:10px;
+}
+.code-ipt{
+  width:auto;
+  flex:1.0;
+  padding-right:10px;
+
+}
+.send-btn {
+  background: #24c56d !important;
+  color: #fff !important;
+  width: 190rpx;
+  height: 60rpx;
+  font-size: 12px;
+  padding: 6rpx;
+  line-height: 53rpx;
+}
+
+.remind-strong {
+  font-weight: 600;
+}
+
+.logo-groups {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding:50px 50px 0px 50px;
+
+}
+
+.logo-ico {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.section {
+  width: 580rpx;
+  margin: 0 auto;
+  border-bottom:1px solid #efefef;
+  font-size:16px;
+  color:#dddddd;
+}
+
+.code-img{
+  max-width:80px;
+  max-height:30px;
+
+}
+.top-tab-text {
+  padding:8px 8px 30px 8px;
+  font-size: 17px;
+  line-height: 1.5;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  padding-top: 20px;
+}
+
+.btn-group {
+  padding: 30rpx 20rpx;
+  background: #fff;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 0;
+  background: none;
+}
+
+.regist-btn {
+  background:#fff !important;
+  color:#59bdca !important;
+  border-radius:15px;
+  height:40px;
+  line-height:40px;
+  margin-top:20px;
+  width:290px;
+
+}
+
+.select-picker{
+  flex: 1.0;
+}

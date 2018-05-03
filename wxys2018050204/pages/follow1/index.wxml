@@ -1,0 +1,352 @@
+<!--pages/follow/index.wxml-->
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{show_jihuo}}"></view>  
+<view class="drawer_box" wx:if="{{show_jihuo}}" >
+   <view class="addtitle">添加</view>
+    <view>
+        <view class='textF'>随访内容:</view>
+         <input type="text" class="f_name" placeholder='请输入'  bindblur="nameInputChange"  />
+           <view class="tips">{{tips}}</view>
+    </view>
+    <view>
+       <view class="btn save" bindtap="saveE">保存</view>
+       <view class="btn exit" bindtap='exitE'>退出</view>
+    </view>
+  </view>
+
+
+
+
+  <view class='disease_title'>{{disease.name}}随访记录</view>
+  <view class="content_f">
+
+
+
+<view class="swiper-tab">
+  <block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+ 
+      <block wx:if="{{item.type=='symptom'}}">
+      <view  class="s_title swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav" >临床症状</view>
+      </block>
+
+      <block wx:elif="{{item.type=='check'}}">
+      <view  class="s_title swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav"  >辅助检查</view>
+      </block>
+
+
+     
+
+      <block wx:elif="{{item.type=='drug'}}">
+      <view  class="s_title swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav" >用药状况</view>
+      </block>
+   
+</block>
+  <view class="s_title swiper-tab-list {{currentTab==5 ? 'on' : ''}}" data-current="5" bindtap="swichNav">医嘱填写</view>
+
+</view>
+<scroll-view scroll-y class="swiper-tab-list-content {{currentTab==0 ? 'swiper-tab-list-content-show' : ''}}">   
+<block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+<block wx:if="{{item.type=='symptom'}}">
+   <view wx:for="{{item.list}}"  class="hang" wx:key="key"  wx:for-item="val" >
+     
+      <view class='p_3'>{{index+1}}、{{val.name}}</view>
+      <view  class='p_4'>
+      <block wx:if="{{val.option.length>0}}">
+    
+      <block wx:for="{{val.option}}" wx:key=""  wx:for-item="op"  >
+        <view class="option" data-index="{{op.option}}">
+          <view class="opV"  bindtap="chice" data-type="{{item.type}}" data-idx="{{val.id}}" data-option='{{op.option}}'>
+              <view class="op_c" ></view>
+              <block wx:if="{{op.select==1}}"><view class='select_true'>✔</view></block>
+              <view class="flex">{{op.option}}</view>
+          </view>
+        </view>
+      </block>
+    
+ 
+    </block>
+    <block wx:else>
+    <input type="text" class="input userI"   data-type="{{item.type}}" data-idx="{{val.id}}" bindblur='userItap'  placeholder="请输入" />
+    </block>
+    <view class="clear"></view>
+      </view>
+      <view class="clear"></view>
+    
+     </view>
+        <block wx:for="{{item.addlist}}" wx:key='' wx:for-item='aitem'>
+          <view class='p_1'>{{item.list.length+index+1}}</view>
+        <view class='p_3'>{{aitem}}</view>
+        <view  class='p_4'>新增医嘱</view>
+         <view class="clear clear_b"></view>
+     </block>
+      <view data-type="{{item.type}}" class="add_btn" bindtap='addshow'>新增</view>
+     
+      </block>
+
+
+
+
+</block>
+
+ </scroll-view>
+<scroll-view scroll-y  class="swiper-tab-list-content {{currentTab==1 ? 'swiper-tab-list-content-show' : ''}}">   
+<block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+<block wx:if="{{item.type=='check'}}">
+   <view wx:for="{{item.list}}"  class="hang" wx:key="key"  wx:for-item="val" >
+       <view class='p_3'>{{index+1}}、{{val.name}}</view>
+      <view  class='p_4'>
+      <block wx:if="{{val.option.length>0}}">
+  
+      <block wx:for="{{val.option}}" wx:key=""  wx:for-item="op"  >
+        <view class="option" data-index="{{op.option}}">
+          <view class="opV"  bindtap="chice" data-type="{{item.type}}" data-idx="{{val.id}}" data-option='{{op.option}}'>
+              <view class="op_c" ></view>
+              <block wx:if="{{op.select==1}}"><view class='select_true'>✔</view></block>
+              <view class="flex">{{op.option}}</view>
+          </view>
+        </view>
+      </block>
+    
+ 
+    </block>
+    <block wx:else>
+    <input type="text" class="input userI"   data-type="{{item.type}}" data-idx="{{val.id}}" bindblur='userItap'  placeholder="请输入" />
+    </block>
+    <view class="clear"></view>
+      </view>
+      <view class="clear"></view>
+    
+     </view>
+        <block wx:for="{{item.addlist}}" wx:key='' wx:for-item='aitem'>
+          <view class='p_1'>{{item.list.length+index+1}}</view>
+        <view class='p_3'>{{aitem}}</view>
+        <view  class='p_4'>新增医嘱</view>
+         <view class="clear clear_b"></view>
+     </block>
+      <view data-type="{{item.type}}" class="add_btn" bindtap='addshow'>新增</view>
+     
+      </block>
+
+
+
+
+</block>
+
+
+ </scroll-view>
+
+
+
+
+
+
+
+<scroll-view scroll-y   class="swiper-tab-list-content {{currentTab==3 ? 'swiper-tab-list-content-show' : ''}}">   
+<block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+<block wx:if="{{item.type=='photo'}}">
+   <view wx:for="{{item.list}}"  class="hang" wx:key="key"  wx:for-item="val" >
+       <view class='p_3'>{{index+1}}、{{val.name}}</view>
+      <view  class='p_4'>
+      <block wx:if="{{val.option.length>0}}">
+    
+      <block wx:for="{{val.option}}" wx:key=""  wx:for-item="op"  >
+        <view class="option" data-index="{{op.option}}">
+          <view class="opV"  bindtap="chice" data-type="{{item.type}}" data-idx="{{val.id}}" data-option='{{op.option}}'>
+              <view class="op_c" ></view>
+              <block wx:if="{{op.select==1}}"><view class='select_true'>✔</view></block>
+              <view class="flex">{{op.option}}</view>
+          </view>
+        </view>
+      </block>
+     
+ 
+    </block>
+    <block wx:else>
+    <input type="text" class="input userI"   data-type="{{item.type}}" data-idx="{{val.id}}" bindblur='userItap'  placeholder="请输入" />
+    </block>
+    <view class="clear"></view>
+      </view>
+      <view class="clear"></view>
+    
+     </view>
+        <block wx:for="{{item.addlist}}" wx:key='' wx:for-item='aitem'>
+          <view class='p_1'>{{item.list.length+index+1}}</view>
+        <view class='p_3'>{{aitem}}</view>
+        <view  class='p_4'>新增医嘱</view>
+         <view class="clear clear_b"></view>
+     </block>
+      <view data-type="{{item.type}}" class="add_btn" bindtap='addshow'>新增</view>
+     
+      </block>
+
+
+
+
+</block>
+
+</scroll-view>
+
+
+<scroll-view scroll-y   class="swiper-tab-list-content {{currentTab==4 ? 'swiper-tab-list-content-show' : ''}}">   
+<block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+<block wx:if="{{item.type=='drug'}}">
+   <view wx:for="{{item.list}}"  class="hang" wx:key="key"  wx:for-item="val" >
+        <view class='p_3'>{{index+1}}、{{val.name}}</view>
+      <view  class='p_4'>
+      <block wx:if="{{val.option.length>0}}">
+    
+      <block wx:for="{{val.option}}" wx:key=""  wx:for-item="op"  >
+        <view class="option" data-index="{{op.option}}">
+          <view class="opV"  bindtap="chice" data-type="{{item.type}}" data-idx="{{val.id}}" data-option='{{op.option}}'>
+              <view class="op_c" ></view>
+              <block wx:if="{{op.select==1}}"><view class='select_true'>✔</view></block>
+              <view class="flex">{{op.option}}</view>
+          </view>
+        </view>
+      </block>
+
+ 
+    </block>
+    <block wx:else>
+    <input type="text" class="input userI"   data-type="{{item.type}}" data-idx="{{val.id}}" bindblur='userItap'  placeholder="请输入" />
+    </block>
+    <view class="clear"></view>
+      </view>
+      <view class="clear"></view>
+    
+     </view>
+      <block wx:for="{{item.addlist}}" wx:key='' wx:for-item='aitem'>
+          <view class='p_1'>{{item.list.length+index+1}}</view>
+        <view class='p_3'>{{aitem}}</view>
+        <view  class='p_4'>新增医嘱</view>
+         <view class="clear clear_b"></view>
+     </block>
+      <view data-type="{{item.type}}" class="add_btn" bindtap='addshow'>新增</view>
+     
+      </block>
+
+
+
+
+</block>
+
+
+
+
+
+</scroll-view>
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==5 ? 'swiper-tab-list-content-show' : ''}}">   
+
+<textarea placeholder="请输入医嘱"  bindblur="bindTextAreaBlur" bindinput="bindTextAreaBlur" class="yizhu" />
+
+</scroll-view>
+
+<view class="subBtn" bindtap="subthing" >提交</view>
+
+</view>
+   <!-- 
+
+        <view wx:for="{{item.list}}"  class="hang" wx:key=""  wx:for-item="val" >
+     <view class='p_1_2'>{{index+1}}</view>
+    <view class='p_3_2'>{{val.name}}</view>
+    <view  class='p_4_2'>
+   
+
+    <block wx:if="{{val.option.length>0}}">
+  <block wx:if='{{val.show==1}}'>
+    <block wx:for="{{val.option}}" wx:key=""  wx:for-item="op"  >
+
+       <view class="option" data-index="{{op.option}}">
+          <view class="opV"  bindtap="chice" data-type="{{item.type}}" data-idx="{{val.id}}" data-option='{{op.option}}'><view class="op_c" >
+          
+          </view>
+          <block wx:if="{{op.select==1}}"><view class='select_true'>✔</view></block>
+         <view class="flex">{{op.option}}</view>
+         </view>
+    </view>
+  
+    </block>
+      </block>
+     <block wx:else>
+     <view data-type="{{item.type}}" data-idx="{{val.id}}" bindtap='showOp' >点击选择</view>
+    </block>
+ 
+    </block>
+    <block wx:else>
+   <input class="input userI" data-type="{{item.type}}" data-idx="{{val.id}}" bindblur='userItap'  placeholder="请输入"  />
+
+    </block>
+    </view>
+  </view>
+ 
+
+
+  </block>
+ <block wx:else> 
+
+     <view wx:for="{{item.list}}"  class="hang" wx:key="key"  wx:for-item="val" >
+    <view class='p_1'>{{index+1}}</view>
+    <view class='p_3'>{{val.name}}</view>
+    <view  class='p_4'>
+   
+
+    <block wx:if="{{val.option.length>0}}">
+  <block wx:if='{{val.show==1}}'>
+    <block wx:for="{{val.option}}" wx:key=""  wx:for-item="op"  >
+
+       <view class="option" data-index="{{op.option}}">
+          <view class="opV"  bindtap="chice" data-type="{{item.type}}" data-idx="{{val.id}}" data-option='{{op.option}}'><view class="op_c" >
+          
+          </view>
+          <block wx:if="{{op.select==1}}"><view class='select_true'>✔</view></block>
+         <view class="flex">{{op.option}}</view>
+         </view>
+    </view>
+ 
+    </block>
+      </block>
+     <block wx:else>
+     <view data-type="{{item.type}}" data-idx="{{val.id}}" bindtap='showOp' >点击选择</view>
+    </block>
+ 
+    </block>
+    <block wx:else>
+    <input type="text" class="input userI"   data-type="{{item.type}}" data-idx="{{val.id}}" bindblur='userItap'  placeholder="请输入" />
+    </block>
+    <view class="clear"></view>
+    </view>
+      <view class="clear"></view>
+  </view>
+
+ 
+  </block>
+    
+     <block wx:for="{{item.addlist}}" wx:key='' wx:for-item='aitem'>
+    <view class='p_1'>{{item.list.length+index+1}}</view>
+        <view class='p_3'>{{aitem}}</view>
+        <view  class='p_4'>新增医嘱</view>
+     
+     </block>
+      <view class="clear"></view>
+  
+   <view data-type="{{item.type}}" class="add_btn" bindtap='addshow'>新增</view>
+  </view>
+  
+  <view>
+<view class="s_title">【医嘱】</view>
+<textarea placeholder="请输入医嘱"  bindblur="bindTextAreaBlur"class="yizhu" />
+</view>
+  </view>
+
+<view class="subBtn" bindtap="subthing" >提交</view>
+<view>
+
+
+</view>
+ --> 
+ </block>

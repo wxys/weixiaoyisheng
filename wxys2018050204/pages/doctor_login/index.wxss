@@ -1,0 +1,159 @@
+/**index.wxss**/
+page{
+  background: #59bdca;
+}
+.user-data-groups {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-user-cover {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  background: #ebebeb;
+}
+
+.login-user-name {
+  margin-top: 10px;
+  text-align: center;
+  color: #666;
+}
+
+.ipt-group-top,.ipt-group  {
+  background: #fff;
+  padding: 10rpx 30rpx;
+  display: flex;
+  align-items: center;
+  
+}
+
+.ipt-group-import {
+  height:35px;
+  line-height: 35px;
+  flex:1;
+  color:#666666 !important;
+}
+
+.ipt-group{
+  padding-top:10px;
+}
+
+.ipt-phone-ico{
+  width:15px;
+  margin-right:10px;
+}
+.ipt-password-ico{
+  width:15px;
+  margin-right:10px;
+}
+.ipt-code-ico{
+  width:20px;
+}
+
+.send-btn {
+  background: #24c56d !important;
+  color: #fff !important;
+  width: 190rpx;
+  height: 60rpx;
+  font-size: 12px;
+  padding: 6rpx;
+  line-height: 53rpx;
+}
+
+.remind-strong {
+  font-weight: 600;
+}
+
+.logo-groups {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 50px;
+}
+
+.logo-ico {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+
+.section {
+  width: 580rpx;
+  margin: 0 auto;
+  border-bottom:1px solid #efefef;
+  font-size:15px;
+  display: flex;
+  align-items: center;
+}
+
+
+.code-img{
+  max-width:80px;
+  max-height:30px;
+
+}
+.remind-text {
+  padding:25rpx;
+  font-size:15px;
+  line-height:1.5;
+  color:#fff;
+  font-weight:600;
+  padding-top:20px;
+  text-align:left;
+
+}
+
+.btn-group {
+  padding: 30rpx 20rpx;
+  background: #fff;
+  width: 100%;
+  padding: 0;
+  background: none;
+}
+
+.regist-user,.exit-doctor-login{
+  color:#fff;
+  font-weight:600;
+  letter-spacing:4px;
+  font-size:15px;
+  /*width:305rpx;*/
+}
+
+.login-btn {
+  background:#fff!important;
+  color:#59bdca;
+  border-radius:15px;
+  margin-top:20px;
+  height:40px;
+  line-height:40px;
+  width:580rpx;
+  margin-bottom:15px;
+  font-size:16px;
+}
+.remind-text {
+  background: none;
+}
+
+.botom-href{
+  display: flex;
+  align-items: center;
+  padding:20rpx;
+  position: absolute;
+  bottom:10rpx;
+  width:100%;
+  justify-content: center;
+  line-height:13px;
+}
+
+.exit-doctor-login{
+  border-right:3px solid #ebebeb;
+  padding-right:10px;
+  margin-right:13px;
+  text-align:right;
+}

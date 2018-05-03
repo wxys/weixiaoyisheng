@@ -1,0 +1,118 @@
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+
+<view wx:if="{{article.type!='isTheme'}}" class="padding_20">
+<view  class="base_info">
+  <view class="info_1">{{article.title}}</view>
+  <view class="info_2">
+ <view  wx:if="{{article.publisher ==''}}" class="info_name" >同步短信</view>
+    <view wx:else class="info_name">{{article.publisher}}</view>
+
+
+    <view class="info_time">{{article.s_time}}</view>
+      <view  wx:if="{{article.isMsg =='1' }}" class="tongbu_icon">同步短信</view>
+    <view class="info_collect" bindtap='collect'>
+   <!-- <button open-type="share" class="share-btn">转发</button> --> 
+    </view>
+
+    <view class='clear'></view>
+  </view>
+</view>
+  <view class="article">
+
+  <import src="../../wxParse/wxParse.wxml"/>
+
+ <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+</view>
+</view>
+
+
+
+
+<view wx:if="{{article.type=='isTheme'}}" class="padding_30">
+<image src="{{article.coverImg}}" class="themeImg"></image>
+<button class="shareBtn" bindtap='onShareAppMessage'>分享专题</button>
+<view>
+<view class='clear'></view>
+<view class="orgPoint"></view><view class="themeExplain">专题说明</view>
+<view class="article margin_top_30">
+<import src="../../wxParse/wxParse.wxml"/>
+
+ <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+</view>
+<view class="margin_bottom_20" wx:for="{{article.ariticle}}" wx:key='' >
+<navigator url="../article/index?autoid={{item.autoid}}" class="nav_a">
+    <image src="{{item.img}}" class="article_img"></image>
+    <view class="base_info_1">
+      <view class="info_1_1">{{item.title}}</view>
+      <view  class="info_2_2">
+        <text>{{item.publisher}}</text>
+        <text style="float:right;margin-right:10rpx;color:#999;font-size:22rpx;">{{item.s_time}}</text>
+      </view>
+    </view>
+    <view class="clear"></view>
+</navigator>
+  <navigator url='../defTags/index?autoid={{item.autoid}}' class="over_hidden">
+    <view class="tags d_tags">
+    <image src="../../icon/biaoqian-icon.png" class="tags_image"></image>
+    </view>
+    <block wx:for="{{item.tags}}" wx:key=""  wx:for-item="val">
+    <view class="tags item_tag">{{val.topic_name}}</view>
+    </block>
+
+</navigator>
+</view>
+</view>
+
+<view class="department">
+<image src="../../icon/a_icon.png" class="a_icon"></image>
+<view class='text_zhao'> 找对医生看对科</view>
+<view class="clear"></view>
+<view wx:for="{{article.department}}" wx:key=''>
+<navigator  class="{{item.class}} de_item" url="../departments_subscribe/index?hospital={{item.rehospital}}&hospitalId={{item.rehospital}}&departments={{item.topic_name}}&departmentId={{item.department}}">{{item.topic_name}}</navigator> 
+</view>
+<view class="clear"></view>
+</view>
+
+<view>
+<view wx:for="{{article.directory}}" wx:key="" class="margin_30">
+  <view class="orgPoint"></view><view class="themeExplain">{{item.title}}</view>
+  <view class="margin_bottom_30" wx:for="{{item.ariticle}}" wx:key='' >
+<navigator url="../article/index?autoid={{item.autoid}}" class="nav_a">
+    <image src="{{item.img}}" class="article_img"></image>
+    <view class="base_info_1">
+      <view class="info_1_1">{{item.title}}</view>
+      <view  class="info_2_2">
+        <text>{{item.publisher}}</text>
+        <text style="float:right;margin-right:10rpx;color:#999;font-size:22rpx;">{{item.s_time}}</text>
+      </view>
+    </view>
+    <view class="clear"></view>
+</navigator>
+  <navigator url='../defTags/index?autoid={{item.autoid}}' class="over_hidden">
+    <view class="tags d_tags">
+    <image src="../../icon/biaoqian-icon.png" class="tags_image"></image>
+    </view>
+    <block wx:for="{{item.tags}}" wx:key=""  wx:for-item="val">
+    <view class="tags item_tag">{{val.topic_name}}</view>
+    </block>
+
+</navigator>
+</view>
+
+</view>
+</view>
+
+
+
+
+
+
+
+<view class="empty"></view>
+</view>
+</block>

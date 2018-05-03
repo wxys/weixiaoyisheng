@@ -1,0 +1,132 @@
+/* pages/doctor_regist/index.wxss */
+page{
+  background: #59bdca;
+}
+
+.user-data-groups {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-user-cover {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  background: #ebebeb;
+}
+
+.login-user-name {
+  margin-top: 10px;
+  text-align: center;
+  color: #666;
+}
+
+.ipt-group-top,.ipt-group  {
+  background: #fff;
+  padding: 10rpx 30rpx;
+  display: flex;
+  align-items: center;
+  
+}
+
+.ipt-group-import {
+  height:35px;
+  line-height: 35px;
+  flex:1;
+  color:#666666 !important;
+}
+
+.ipt-group{
+  padding-top:10px;
+}
+
+.ipt-phone-ico{
+  width:18px;
+  margin-right:14px;
+}
+.ipt-password-ico{
+  width:20px;
+  margin-right:10px;
+}
+.ipt-code-ico{
+  width:25px;
+  margin-right:9px;
+  margin-left:-3px;
+}
+.code-ipt{
+  width:auto;
+  flex:1.0;
+  padding-right:10px;
+
+}
+.send-btn {
+  background: #fff !important;
+  color: #59bdca !important;
+  width: 210rpx;
+  height: 60rpx;
+  font-size: 16px;
+  padding: 6rpx;
+  line-height: 53rpx;
+  outline:none;
+  border-style:none;
+}
+.send-btn.disabled{
+  color: #d1d1d1 !important;
+}
+.remind-strong {
+  font-weight: 600;
+}
+
+
+.logo-groups {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding:50px 50px 0px 50px;
+
+}
+
+.logo-ico {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+
+.section {
+  width: 580rpx;
+  margin: 0 auto;
+  border-bottom:1px solid #efefef;
+  font-size:16px;
+}
+.code-img{
+  max-width:80px;
+  max-height:30px;
+}
+.remind-text {
+  padding:8px 8px 30px 8px;
+  font-size:16px;
+  line-height:1.5;
+  text-align:center;
+  color:#fff;
+  font-weight:600;
+  padding-top:20px;
+  background: none;
+}
+
+.regist-btn {
+  background: #fff !important;
+  color: #59bdca !important;
+  border-radius:15px;
+  height:40px;
+  line-height:40px; 
+  text-align: center;
+  width:580rpx;
+  margin-top:40px;
+}
+
+

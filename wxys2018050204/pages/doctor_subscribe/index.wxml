@@ -1,0 +1,145 @@
+<!--pages/doctor_subscribe/index.wxml-->
+<!--自定义提示样式-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<!--加载效果-->
+<view class="loading-groups" style="display:{{PageShow?'none':''}}">
+   <image src="../../icon/icon-loading.png" class="loading-ico"></image>
+  <text class="loading-text">努力加载中...</text>
+</view>
+
+<view style="display:{{PageShow?'':'none'}}">
+
+  <!--顶部医生资料-->
+  <view class="doctor-data-groups">
+    <image src="{{doctor_data.doctor_cover}}" class="doctor-cover"></image>
+    <view class="doctor-data">
+      <text class="doctor-name-wh">{{doctor_data.doctor_name}}</text>
+      <view>
+        <text class="doctor-position-wh">{{doctor_data.doctor_position}}</text>
+        <text class="doctor-departments-wh">{{doctor_data.doctor_departments}}</text>
+      </view>
+      <text class="doctor-hospital-wh">{{doctor_data.doctor_hospital}}</text>
+    </view>
+    <view class="collect-groups">
+      <button wx:if="{{!Collect}}"  class="attention-btn" bindtap="AttentionDoctor" disabled="{{AttentionDisabled}}">收藏
+      </button>
+      <button wx:else class="attention-btn active" bindtap="CancelAttentionDoctor" disabled="{{CancelAttentionDisabled}}">已收藏 </button>
+      <!--转发按钮-->
+      <button open-type="share" class="share-btn">转发</button>
+    </view>
+  </view>
+
+  <scroll-view scroll-y="true" style="height:{{ScrollHeight}}px;margin-top:85px;">
+    <!--医生排班信息-->
+    <view class="column-title no-margin">
+      <view class="column-text">排班信息</view>
+      <!--
+      预约规则
+      <image src="../../icon/icon-right4.png" class="column-ico"></image>
+      -->
+    </view>
+    <view class="hospital-name">{{doctor_data.doctor_departments}}-{{doctor_data.doctor_hospital}}</view>
+
+    <!--排班信息-->
+    <view class="scheduling-groups">
+      <view class="scheduling-time">
+        <view class="scheduling-time-li border">排班</view>
+        <view class="scheduling-time-li border">上午</view>
+        <view class="scheduling-time-li ">下午</view>
+      </view>
+      <block wx:if="{{scheduling_show.length>0}}">
+        <!--排班信息可滑动查看-->
+        <scroll-view scroll-x="true" class="date-scroll" style="width:{{date_scroll}}px">
+          <view class="date-scroll-area">
+            <view class="date-select-groups" wx:for="{{scheduling_show}}" wx:key="scheduling_id">
+              <view class="date-select-li">
+                <text class="date">{{item.scheduling_date1}}</text>
+                <text class="week">{{item.scheduling_date_mean}}</text>
+              </view>
+              <view class="date-select-li {{(item.date_forenoon.scheduling_condition!='约满' && item.date_forenoon.scheduling_condition!='停诊' && item.date_forenoon.scheduling_condition)?'can':''}} {{(item.date_forenoon.scheduling_condition=='约满' || item.date_forenoon.scheduling_condition=='停诊' )?'no-can':''}}"
+              data-id="{{item.date_forenoon.scheduling_id}}" bindtap="ViewScheduling" data-date="{{item.scheduling_date2}}" data-week="{{item.scheduling_date_mean}}" data-noon="上午" data-type="{{item.date_forenoon.scheduling_condition}}门诊" data-fee="{{item.date_forenoon.inspecting_fee}}">
+                <block wx:if="{{item.date_forenoon}}">
+                  <text>{{item.date_forenoon.scheduling_condition}}</text>
+                  <text>{{item.date_forenoon.inspecting_fee}}</text>
+                </block>
+              </view>
+              <view class="date-select-li last {{(item.date_afternoon.scheduling_condition!='约满' && item.date_afternoon.scheduling_condition!='停诊' && item.date_afternoon.scheduling_condition)?'can':''}} {{(item.date_afternoon.scheduling_condition=='约满' || item.date_afternoon.scheduling_condition=='停诊' )?'no-can':''}}"
+              data-id="{{item.date_afternoon.scheduling_id}}" bindtap="ViewScheduling" data-date="{{item.scheduling_date2}}" data-week="{{item.scheduling_date_mean}}" data-noon="下午" data-type="{{item.date_afternoon.scheduling_condition}}门诊" data-fee="{{item.date_afternoon.inspecting_fee}}">
+                <block wx:if="{{item.date_afternoon}}">
+                  <text>{{item.date_afternoon.scheduling_condition}}</text>
+                  <text>{{item.date_afternoon.inspecting_fee}}</text>
+                </block>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+
+      </block>
+      <block wx:else>
+        <view class="empty-scheduling">
+          <text>系统维护中</text>
+        </view>  
+      </block>
+
+
+    </view>
+    <view class="scheduling-operate" style="display:{{ IfTotal? '':'none'}}" bindtap="ShowCanScheduling">显示可预约排班
+    </view>
+    <view class="scheduling-operate" style="display:{{ IfTotal? 'none':''}}" bindtap="ShowTotalScheduling">显示全部排班
+    </view>
+
+    <block wx:if="{{our_expert}}">
+      <!--推荐医生-->
+      <view class="column-title">
+        <view class="column-text">推荐医生</view>
+      </view>
+      <view class="es-list">
+        <block wx:for="{{our_expert}}" wx:key="" wx:for-index="idx" data-idx="{{idx}}">
+          <view class="es-list-li center" data-url="../doctor_card/index?doctor_cover={{item.doctor_cover}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{item.doctor_departments}}&doctor_hospital={{item.doctor_hospital}}&doctor_subscribe_number=0&doctor_id={{item.doctor_id}}&hospitalId={{item.hospitalId}}&departmentId={{item.departmentId}}" catchtap="SkipPage">
+            <image src="{{item.doctor_cover}}" class="doctor-cover" />
+            <view class="doctor-data">
+              <text class="doctor-name">{{item.doctor_name}}</text>
+              <text class="doctor-level">{{item.doctor_level}}</text>
+              <view>
+                <text class="doctor-hospital">{{item.doctor_hospital}}</text>
+                <text class="doctor-departments">{{item.doctor_departments}}</text>
+              </view>
+              
+              <text class="doctor-good-at">{{item.doctor_good_at}}</text>
+            </view>
+            <view class="subscribe-btn-sm" data-url="../doctor_subscribe/index?doctor_cover={{item.doctor_cover}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{departments}}&doctor_hospital={{hospital}}&doctor_subscribe_number={{item.doctor_subscribe_number}}&doctor_id={{item.doctor_id}}&hospitalId={{item.hospitalId}}&departmentId={{item.departmentId}}"
+              catchtap="SkipPage">挂号</view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </scroll-view>
+  
+  <!--排班排号情况-->
+  <view class="pick-groups" style="display:{{PickShow}}">
+    <view class="pick-groups-area">
+      <view class="pick-header">
+        <view>
+          <text class="scheduling-date">{{scheduling_date}}</text>
+          <text class="scheduling-noon">{{scheduling_noon}}</text>
+        </view>
+        <view>
+          <text class="scheduling-type">{{scheduling_type}}</text>
+        </view>
+      </view>
+      <scroll-view scroll-y="true" class="pick-scroll">
+        <block wx:if="{{scheduling_condition}}=''">
+          <view class="scheduling-no-list">
+            <view class="scheduling-no-list-li" wx:for="{{SchedulingNo}}" wx:key="scheduling_no_id" bindtap="SchedulingDoctor" data-id="{{item.scheduling_no_id}}" data-no="{{item.scheduling_no}}" data-no_time="{{item.scheduling_no_time}}">
+              <view class="scheduling-no-list-li-border {{scheduling_no_id==item.scheduling_no_id? 'active':''}}" >
+                <text class="scheduling-no">{{item.scheduling_no}}</text>
+                <text class="scheduling-no-time">{{item.scheduling_no_time}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+      <view class="pick-footer" bindtap="HidePick">取消</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,96 @@
+/* pages/note_collect/index.wxss */
+/*page{
+  background: #f1f1f4;
+}*/
+.search-ico{
+  margin-left:5px;
+}
+.common-diseases {
+  padding:0px 5px;
+  height: 45px;
+}
+.note-subject{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  background: #fafafa;
+  border-bottom:1px solid #f3f3f3;
+}
+.note-subject-groups{
+  display: flex;
+  align-items: center;
+}
+.note-subject-label{
+  width:36rpx;
+  height:36rpx;
+  margin-right:10rpx;
+}
+.note-subject-name{
+  font-size:0.75rem;
+  color:#36ab60;
+  margin:0px 3px;
+}
+.remove-collect-note{
+  width: 35rpx;
+  height: 35rpx;
+}
+.tab-default{
+  background:#f3faff !important;
+  color:#89a7ce !important;
+  border:1px solid #ccdff1;
+}
+.right-search{
+  flex:1.0;
+  display: flex;
+  justify-content: flex-end;
+}
+.note-label{
+  display: flex;
+  align-items: center;
+  width:620rpx;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+
+.operate-menu {
+  position:fixed;
+  right:10px;
+  bottom:5px;
+  z-index:999;
+}
+.operate-menu-li {
+  border-radius:50%;
+  height:53px;
+  width:53px;
+  background:#59bdca;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:5px;
+}
+.operate-menu-ico{
+  width:18px;
+  height:18px;
+}
+.is-doctor{
+  width:25px;
+  height:25px;
+}
+.operate-menu-text{
+  font-size:12px;
+  color:#fff;
+  margin-top:3px;
+
+}
+.operate-ico{
+  width: 40rpx;
+  margin-left:20rpx;
+}
+.share-collect-data{
+  flex:1.0;
+  font-size:16px;
+  color: #999;
+}

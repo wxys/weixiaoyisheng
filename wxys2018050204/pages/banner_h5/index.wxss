@@ -1,0 +1,36 @@
+/* pages/banner_h5/index.wxss */
+ 
+page{
+  height:100%;
+  overflow: hidden;} 
+ 
+ .bg_img
+  {
+    width:100%;
+    height:100%;
+    margin:0 auto;
+    padding:0;
+  }
+  .bg-box{
+    position: relative;
+    width : 100%;
+    height : auto;
+    box-sizing: border-box;
+}
+  .dingzhi_btn
+  {
+    position: absolute;
+ bottom:50rpx;
+    z-index: 10;
+    width: 400rpx;
+    height: 100rpx;
+    background-color:#e7912f;
+    color:white;
+    margin-left:23%;
+    font-size:30rpx;
+    text-align: center;
+    line-height: 100rpx;
+    border-radius: 15rpx;
+    letter-spacing: 4rpx;
+
+  }

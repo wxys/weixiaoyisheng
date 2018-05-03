@@ -1,0 +1,65 @@
+.disease{
+  
+  font-size: 35rpx;
+  float: left;
+  margin-top:18rpx;
+  margin-left:15rpx;
+  text-align: center;
+  overflow: hidden;
+}
+.diseasebiaoti{
+  float: left;
+  margin-top:18rpx;
+  margin-left:40rpx;
+  font-size: 35rpx;
+}
+.add{
+ width:460rpx;
+  height:60rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color:#FFFFFF;
+  left:165rpx;
+  bottom:20rpx;
+  background-color:#54B3AF;
+  border-radius: 20px; 
+  position:fixed;
+  z-index: 777;
+
+}
+
+.followlist{
+  width:100%;
+  height:80rpx;
+  border-bottom:1rpx solid #F3F3F3;
+  font-size: 30rpx;
+}
+.listBar{
+  width:100%;
+  border-top:1rpx solid #F3F3F3;
+  margin-top:100rpx;
+  position:absolute;
+  background-color: #FFFFFF;
+  left:0;
+  top:0;
+}
+.followimage{
+  width:50rpx;
+  height:50rpx;
+  float: right;
+  margin-top:15rpx;
+  margin-right:15rpx;
+}
+.time{
+  margin-left:20rpx;
+  width:300rpx;
+  line-height: 80rpx;
+  overflow: hidden;
+  float: left;
+  height:80rpx;
+}
+.doctor{
+  margin-left: 20rpx;
+  line-height: 80rpx;
+}

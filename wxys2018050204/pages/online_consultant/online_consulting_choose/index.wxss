@@ -1,0 +1,168 @@
+/* pages/online_consultant/online_consulting_choose/index.wxss */
+.top{
+  float:left;
+  width:100%;
+  height:36px;
+  border-bottom:1px solid #dadada;
+}
+.top-1{
+  float:left;
+  width:25%;
+  height:36px;
+  line-height:40px;
+  text-align:center;
+  font-size:14px;
+}
+.content{
+  float:left;
+  height:160px;
+  width:96%;
+  margin:10px 0 0 2%;
+  border:1px solid black;
+}
+.content-top{
+  float:left;
+  height:90px;
+  width:96%;
+  margin:10px 0 0 2%;  
+}
+.content-top-left{
+  float:left;
+  width:20%;
+  height:100%;
+}
+.content-top-right{
+  float:left;
+  width:80%;
+  height:100%;
+}
+.content-jj{
+  float:left;
+  width:100%;
+  height:40px;
+}
+.content-xm{
+  float:left;
+  width:28%;
+  height:100%;
+  line-height:40px;
+}
+.content-zcks{
+  float:left;
+  width:72%;
+  height:100%;
+}
+.content-zk{
+  float:left;
+  width:100%;
+  height:20px;  
+  font-size:14px;
+  line-height:20px;
+}
+.content-sc{
+  float:left;
+  width:100%;
+  height:45px;
+  margin:5px 0 0 0;
+  font-size:14px;
+}
+.content-xian{
+  float:left;
+  width:96%;
+  height:0.5px;
+  margin:0 0 0 2%;
+  background: #eae8e8;
+}
+.content-bottom{
+  float:left;
+  height:44px;
+  width:100%;
+  margin:5px 0 0 0;  
+}
+.content-bottom-left{
+  float:left;
+  width:12%;
+  height:44px;
+  margin: 0 0 0 2%;
+  font-size:16px;
+  line-height:20px;
+  text-align:center;
+  border:1px solid black;
+  border-radius:4px;
+}
+.content-bottom-right{
+  float:left;
+  width:25%;
+  height:44px;
+  margin: 0 0 0 2%;
+  border:1px solid black;
+  border-radius:4px;
+}
+.content-bottom-right-zx{
+  width:100%;
+  height:26px;
+  font-size:16px;
+  line-height:26px;
+  text-align: center;
+}
+.content-bottom-right-q{
+  width:100%;
+  height:18px;
+  font-size:12px;
+  text-align: center;
+}
+.hierarchy-list{
+  float:left;
+}
+.choose-1{
+  float:left;
+  width:96%;
+  height:40px;
+  margin:5px 2%;
+  font-size:16px;
+  line-height: 40px;
+}
+.choose-2{
+  float:left;
+  width:100%;
+  height:30px;
+}
+.choose-2-1{
+  float:left;
+  width:22.5%;
+  height:30px;
+  margin:0 0 0 2%;
+  background: #dbdbdb;
+  font-size:16px;
+  line-height: 30px;
+  text-align: center;
+}
+.choose-3{
+  float:left;
+  height:40px;
+  width:100%;
+  margin:30px 0;
+}
+.choose-3-1{
+  float:left;
+  height:40px;
+  width:47%;
+  margin:0 0 0 2%;
+  font-size:18px;
+  line-height: 40px;
+  text-align: center;
+  border:1px solid black;
+  border-radius: 4px;
+}
+.choose-3-2{
+  float:left;
+  height:40px;
+  width:47%;
+  margin:0 0 0 2%;
+  font-size:18px;
+  line-height: 40px;
+  text-align: center;
+  color:white;
+  background: #169bd5;
+  border-radius: 4px;
+}

@@ -1,0 +1,54 @@
+<!--pages/household_contacts/index.wxml-->
+<!--提示框-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<view style="display:{{PageShow}}">
+
+  <!--家庭联系人数量提示/添加-->
+  <view class="contact-num" catchtap="AddHouseholdContacts">
+    <block wx:if="{{MaxNum>household_contacts.length}}">
+      <text>已添加{{household_contacts.length}}人，还能添加{{MaxNum-household_contacts.length}}人</text>
+      <image src="../../icon/icon-add.png"></image>
+    </block>
+    <block wx:else>
+      最多只能添加6位家庭联系人
+    </block>
+  </view>
+
+  <!--家庭联系人列表-->
+  <view class="items">
+    <view wx:for="{{household_contacts}}" wx:key="" class="item">
+      
+      <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}"  style="{{item.txt_style}}" class="inner txt">
+ 
+        <navigator class="contact-list-li slide-content {{!item.YB_CardId && !item.JZ_CardId?'no-bind':''}}" url="../add_household_contacts/index?autoid={{item.Family_User_Autoid}}&name={{item.User_Name}}&credentials_type={{item.Card_Type}}&credentials_no={{item.Card_Type_Id}}&sex={{item._sex}}&birthday={{item.Birthday}}&city={{item.City}}&province={{item.Province}}&address={{item.Address}}&phone={{item.User_Phone}}&mail={{item.Email}}&yb_cardid={{item.YB_CardId}}&jz_cardid={{item.JZ_CardId}}&IfUpdate=true"
+        hover-class="none" wx:key="">
+          <view class="contact-list-row">
+            <view>
+              <text>{{item.User_Name}}</text>
+              <text>{{item._sex}}</text>
+              <text>{{item.Age}}</text>
+              <block wx:if="{{item.IsDefault}}">
+                <text>[默认]</text>
+              </block>
+            </view>
+            <text class="no-bind-remind">
+              <block wx:if="{{!item.JZ_CardId&&!item.YB_CardId}}">未绑定就诊卡/医保卡</block>
+
+            </text>
+          </view>
+          <view class="contact-list-row">
+            <view>
+              <text>{{item.Card_Type}}</text>
+              <text>{{item.card_show}}</text>
+            </view>
+            <view>
+              <text>{{item.phone_show}}</text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view data-index="{{index}}" data-id="{{item.Family_User_Autoid}}" class="inner set-default" catchtap="SetDefault" >设为默认</view>
+      <view data-index="{{index}}" data-id="{{item.Family_User_Autoid}}" catchtap="delItem" class="inner del">删除</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,51 @@
+<!--pages/tuwen_online_consultant/online_consulting/index.wxml-->
+<view class="row-1">
+  <view class="row-1-1">
+  </view>
+  <view class="row-1-2">
+    已开通服务
+  </view>
+</view>
+<view class="row-2">
+  <view class="row-2-1">
+    <view class="row-2-1-top">
+      <image src="https://f.12590.com/SlowDiseaseTreasure/icon/tuwenzixun.png" class="departments-ico"></image>
+    </view>
+    <view class="row-2-1-bottom">
+      图文咨询
+    </view>
+  </view>
+  <view class="row-2-1">
+    <view class="row-2-1-top">
+      <image src="https://f.12590.com/SlowDiseaseTreasure/icon/yuyinzixun.png" class="departments-ico"></image>
+    </view>
+    <view class="row-2-1-bottom">
+      语音咨询
+    </view>
+  </view>
+  <view class="row-2-1">
+    <view class="row-2-1-top">
+      <image src="https://f.12590.com/SlowDiseaseTreasure/icon/shipinzixun.png" class="departments-ico"></image>
+    </view>
+    <view class="row-2-1-bottom">
+      视频咨询
+    </view>
+  </view>
+</view>
+<view class="row-1">
+  <view class="row-1-1">
+  </view>
+  <view class="row-1-2">
+    待开通服务
+  </view>
+</view>
+<view class="row-2">
+  <view class="row-2-1">
+    <view class="row-2-1-top">
+      <image src="https://f.12590.com/SlowDiseaseTreasure/icon/jiatingyisheng.png" class="departments-ico"></image>
+    </view>
+    <view class="row-2-1-bottom">
+      家庭医生
+    </view>
+  </view>
+</view>

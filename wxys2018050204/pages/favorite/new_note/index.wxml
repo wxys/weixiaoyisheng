@@ -1,0 +1,38 @@
+<!--pages/new_note/index.wxml-->
+<view style="display:{{PageShow?'':'none'}}">
+  <!-- 短信列表 -->
+  <view class="es-list" wx:if="{{NoteList.length>0}}">
+    <block wx:for="{{NoteList}}" wx:key="" wx:for-index="idx">
+      <navigator class="es-list-li " url="../note_detail/index?note_title={{item.note_title}}&note_id={{item.note_id}}" hover-class="none">
+        <!--短信封面图片预加载-->
+        <block wx:if="{{NoteCoverList[idx].loaded}}">
+          <image alt="" src="{{NoteCoverList[idx].url}}" mode="widthFix" class="hospital-image" />
+        </block>
+        <block wx:else>
+          <view class="hospital-image preload">
+            <text>微笑医生</text>
+          </view>
+        </block>
+        <!--//短信封面图片预加载-->
+        <view class="note-data">
+          <view class="note-title">{{item.note_title}}</view>
+          <view class="note-introduce">
+            <text>《全球通健康俱乐部会员专享》</text>
+            <text>{{item.note_time}}</text>
+          </view>
+        </view>
+      </navigator>
+    </block>
+
+  </view>
+
+  <!--如果没有短信数据-->
+  <view wx:else class="load-remind-groups">
+    <image src="../../icon/icon-empty-content.png" class="load-remind-ico"></image>
+    <text>暂无最新内容</text>
+  </view>
+ </view>
+
+<!-- 引入图片预加载组件 -->
+<import src="../../img-loader/img-loader.wxml" />
+<template is="img-loader" data="{{ imgLoadList }}"></template>

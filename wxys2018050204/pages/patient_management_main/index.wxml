@@ -1,0 +1,181 @@
+<!--pages/patient_management_main/index.wxml-->
+<view style="display:{{PageShow?'':'none'}}">
+  <scroll-view style="height:{100}px;" scroll-y="true">
+  <view class="doctor-info">
+  <view class="doctor-photo">  
+      <image class="doctor-cover" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/doctor.png"></image>
+  </view>
+  <view class="doctor-intorduce">
+    <view class="doctor-name" style="color:white">
+      朱勇
+    </view>
+    <view class="doctor-zc" style="color:white">
+      主治医师
+    </view>
+    <view class="doctor-ks" style="color:white">
+      西岸中医门诊部    中医康复科
+    </view>
+  </view>
+
+</view>
+  </scroll-view>
+  <view style="height:{{ScrollHeight-35}}px;">
+   <block >
+    <!--关注的医生-->
+
+    <!--关注的医生-->
+    <view class="attention-groups">
+      <view class="doctor-attention-groups">
+        <navigator class="es-list-li center" url="../tuwen_online_consulting_window/index"
+          hover-class="none" style="paddng:5px 10px;flex:1.0;">
+
+          <image src="{{doctor_data.doctor_cover}}" class="doctor-cover" />
+
+          <view class="doctor-data">
+            <!--专家信息1-->
+            <view>
+              <text class="doctor-name">张毅</text>
+              <text class="doctor-level">付费咨询</text>
+            </view>
+
+            <!--专家信息2-->
+            <view>
+              <text class="doctor-hospital" style="font-size:15px">医生您好麻烦帮我看下我需要...</text>
+              <text class="doctor-departments" style="font-size:10px;align:1px">五分钟前</text>
+            </view>
+          
+
+
+          </view>
+
+
+        </navigator>
+         <view style="background:#cccccc;height:1px">
+   </view>
+        <!--底部医生操作-->
+         <navigator class="es-list-li center" url="../tuwen_online_consulting_window/index"
+          hover-class="none" style="paddng:5px 10px;flex:1.0;">
+
+          <image src="{{doctor_data.doctor_cover}}" class="doctor-cover" />
+
+          <view class="doctor-data">
+            <!--专家信息1-->
+            <view>
+              <text class="doctor-name">郑咸宁</text>
+              <text class="doctor-level">付费咨询</text>
+            </view>
+
+            <!--专家信息2-->
+            <view>
+              <text class="doctor-hospital" style="font-size:15px">医生您好麻烦帮我看下我需要...</text>
+              <text class="doctor-departments" style="font-size:10px;align:1px">十五分钟前</text>
+            </view>
+          
+
+
+          </view>
+
+
+        </navigator>
+  <view style="background:#cccccc;height:1px">
+   </view>
+        <!--底部医生操作-->
+         <navigator class="es-list-li center" url="../tuwen_online_consulting_window/index"
+          hover-class="none" style="paddng:5px 10px;flex:1.0;">
+
+          <image src="{{doctor_data.doctor_cover}}" class="doctor-cover" />
+
+          <view class="doctor-data">
+            <!--专家信息1-->
+            <view>
+              <text class="doctor-name">黄天赐</text>
+              <text class="doctor-level">家庭医生</text>
+            </view>
+
+            <!--专家信息2-->
+            <view>
+              <text class="doctor-hospital" style="font-size:15px">医生您好麻烦帮我看下我需要...</text>
+              <text class="doctor-departments" style="font-size:10px;align:1px">1小时</text>
+            </view>
+          
+
+
+          </view>
+
+
+        </navigator>
+
+
+      </view>
+
+
+
+       <view style='text-align:center;width:100%;color:#cccccc;font-size:15px'>
+       已结束的对话
+   </view>
+
+
+ <navigator class="es-list-li center" url="../tuwen_online_consulting_window/index"
+          hover-class="none" style="paddng:5px 10px;flex:1.0;">
+
+          <image src="{{doctor_data.doctor_cover}}" class="doctor-cover" />
+
+          <view class="doctor-data">
+            <!--专家信息1-->
+            <view>
+              <text class="doctor-name">陈羽</text>
+              <text class="doctor-level">家庭医生</text>
+            </view>
+
+            <!--专家信息2-->
+            <view>
+              <text class="doctor-hospital" style="font-size:15px">医生您好麻烦帮我看下我需要...</text>
+              <text class="doctor-departments" style="font-size:10px;align:1px">1天前</text>
+            </view>
+          
+
+
+          </view>
+
+
+        </navigator>
+  <view style="background:#cccccc;height:1px">
+   </view>
+
+
+
+    </view>
+  </block>
+ </view>
+
+
+
+
+
+<view class="tab-list ">
+<view class="tab-list-li ">
+<image src="../../icon/icon-subscribe-selected.png " mode="widthFix"></image>
+<text >图文咨询</text>
+</view>
+<view class="tab-list-li " catchtap="goyy">
+<image src="../../icon/icon-my.png " mode="widthFix" ></image>
+<text >预约记录</text>
+</view>
+
+<view class="tab-list-li " catchtap="gohz">
+<image src="../../icon/icon-subscribe.png " mode="widthFix" ></image>
+<text >患者</text>
+</view>
+<view class="tab-list-li " catchtap="gofuwu">
+<image src="../../icon/iocn-my-attention.png " mode="widthFix"  ></image>
+<text >服务</text>
+</view>
+<view class="tab-list-li " data-url="../doctor_set/index" catchtap="SkipPage">
+<image src="../../icon/icon-personal.png " mode="widthFix">></image>
+<text >设置</text>
+
+
+</view>
+</view>
+
+</view>

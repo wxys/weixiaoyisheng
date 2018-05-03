@@ -1,0 +1,33 @@
+<!--pages/inform/index.wxml-->
+<view style="display:{{PageShow}}">
+    <block wx:if="{{inform}}">
+      <view class="inform-list">
+
+          <view class="inform-li" wx:for="{{inform}}" wx:key="inform_id">
+              <view class="inform-groups">
+                  <view class="inform-title-groups">
+                      <image src="../../icon/icon-notice.svg" mode="widthFix"></image>
+                      <text class="inform-title">{{item.inform_title}}</text>
+                  </view>
+                  <text class="inform-content">{{item.inform_content}}</text>
+                  <view class="inform-time">
+                      <image src="../../icon/icon-time.png"></image>
+                      <text>{{item.inform_time}}</text> 
+                  </view>
+                  <!--
+                  <view class="inform-view">
+                      <text>查看详情</text>
+                      <image src="../../icon/icon-right-2.png"></image>
+                  </view>
+                  -->
+              </view>
+          </view>
+
+      </view>
+    </block>
+
+     <view wx:else class="load-remind-groups">
+      <image src="../../icon/icon-empty-content.png" class="load-remind-ico" mode="aspectFit" ></image>
+      <text>您没有通知</text>
+    </view>
+</view>

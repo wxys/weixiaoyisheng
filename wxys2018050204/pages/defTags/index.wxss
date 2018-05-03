@@ -1,0 +1,189 @@
+/* pages/defTags/index.wxss */
+page
+{
+  background-color:#EBE9E9;
+
+}
+.base_info_
+{
+  width:100%;
+}
+.info_name,.info_time
+{
+  float: left;
+    height: 60rpx;
+  line-height: 60rpx;
+}
+.base_info_1
+{
+  position: relative;
+}
+.info_time
+{
+  margin-left:40rpx;
+}
+.item
+{
+
+
+background-color: #fff;
+}
+.weidingyi
+{
+  font-size:28rpx;
+  float: left;
+  line-height: 60rpx;
+  margin-top:3%;
+}
+.tag_item
+{
+  font-size:28rpx;
+  padding:6rpx 10rpx;
+  border:1px solid #F1EFEF;
+  float:left;
+  margin-left:10rpx;
+  display: block;
+  min-height: 40rpx;
+  min-width:40rpx;
+  border-radius: 20rpx;
+margin-bottom:20rpx;
+  line-height: 40rpx;
+    margin-top:20rpx;
+    background-color:#F1EFEF;
+
+}
+.click_tag
+{
+  border:1px solid #65B25B;
+  color:#65B25B;
+  background-color: #fff;
+}
+.input_item1
+{
+
+  height: 40rpx;
+  text-align: center;
+margin-left:50rpx;
+margin-right:30rpx;
+}
+.input_item
+{
+  width:160rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+
+}
+.all_tag
+{
+  text-align: center;
+  font-size:28rpx;
+  color:#989898;
+
+  margin-bottom:20rpx;
+}
+.padding_20
+{
+  padding:20rpx;
+ 
+}
+
+.clear
+{
+  clear: both;
+    height:0;
+    overflow:hidden;
+}
+.info_name,.info_time
+{
+  float: left;
+ height: 60rpx;
+ font-size: 30rpx;
+ color:#989898;
+  line-height: 60rpx;
+}
+/* pages/favorite/label_edit/index.wxss */
+
+page {
+  background: #f0eff3;
+}
+
+.label-edit-scroll {
+  background: #fff;
+}
+
+.label-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px 5px;
+}
+
+.label-list-li {
+  background: #fff;
+  border: 1px solid #a9dfae;
+  color: #53c931;
+  font-size: 14px;
+  padding: 0px 7px;
+  border-radius: 15px;
+  margin: 0px 5px;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  display: block;
+}
+.label-list-li.active {
+  background:#5dbd40;
+  color:#fff;
+  border: 1px solid #5dbd40;
+}
+.label-list-li.not-have {
+  background: none;
+  border: 1px solid #bdbdbd;
+  color: #000;
+}
+
+.label-edit {
+  font-size: 15px;
+  margin-left: 5px;
+  padding: 0px 7px;
+  height: 1.6rem;
+  line-height: 1.9rem;
+  border-radius: 15px;
+  border: 1px solid #fff;
+}
+
+.label-edit.border {
+  border: 1px dashed #ebebeb;
+}
+
+.label-groups {
+  position: relative;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left:16rpx solid transparent;
+  border-right:16rpx solid transparent;
+  border-bottom:8px solid #151515;
+  position:absolute;
+  top:36px;
+  left:50%;
+  margin-left:-16rpx;
+  z-index:999;
+}
+.label-delete{
+  background:#151515;
+  color:#fff;
+  position:absolute;
+  font-size:13px;
+  width:3.0rem;
+  border-radius:10px;
+  top:43px;
+  left:50%;
+  margin-left:-1.5rem;
+  height:1.8rem;
+  line-height:1.8rem;
+  text-align:center;
+  z-index:999;
+}

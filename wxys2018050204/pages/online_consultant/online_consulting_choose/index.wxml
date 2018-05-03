@@ -1,0 +1,166 @@
+<!--pages/online_consultant/online_consulting_choose/index.wxml-->
+<view class="top">
+  <view class="top-1" bindtap='show_ks' style="color:{{ks_color}}">
+    儿科
+  </view>
+  <view class="top-1" bindtap='show_province' style="border-left:1px solid #dadada;color:{{province_color}}">
+    全部地区
+  </view>
+  <view class="top-1" style="border-left:1px solid #dadada;">
+    排序
+  </view>
+  <view class="top-1" bindtap='show_choose' style="border-left:1px solid #dadada;color:{{choose_color}}">
+    筛选
+  </view>
+</view>
+
+<view class="hierarchy-list" style="display:{{show_province}}">
+    <!--省份选择-->
+    <scroll-view class="first-order-list es-selector" style="height:{{ScrollHeight}}px;width:180px" scroll-y="true">
+        <block wx:for="{{province}}" wx:key="id"  wx:for-index="idx" data-idx="{{idx}}">
+            <view class="first-order-li {{first_hierarchy_id==item.id ? 'active' : ''}}" bindtap="ShowSecondHierarchy" data-id="{{item.id}}"  data-province="{{item.fullname}}" style="width:180px">
+                <block wx:if="{{first_hierarchy_id==item.id}}">
+                    <image src="../../../icon/icon-right-3.png"></image>
+                </block>
+                {{item.name}}
+            </view>                
+        </block>
+    </scroll-view>
+
+    <!--城市选择-->
+    <scroll-view class="second-order-list" style="height:{{ScrollHeight}}px;" scroll-y="true">
+    <view class="second-order-li" wx:for="{{city}}" wx:key="id" bindtap="SelectedCity" data-city="{{item.fullname}}">{{item.name}}</view>
+    </scroll-view>
+</view>
+
+  <view class="hierarchy-list" style="display:{{show_ks}}">
+    <!--一级科室分类选择-->
+    <scroll-view class="first-order-list es-selector" style="height:{{ScrollHeight}}px;width:180px" scroll-y="true">
+      <block wx:for="{{FirstHierarchy}}" wx:key="first_hierarchy_id" wx:for-index="idx" data-idx="{{idx}}">
+        <view class="first-order-li {{first_hierarchy_id==item.first_hierarchy_id ? 'active' : ''}}" bindtap="ShowSecondHierarchy" data-id="{{item.first_hierarchy_id}}" style="width:180px">
+          <block wx:if="{{first_hierarchy_id==item.first_hierarchy_id}}">
+            <image src="../../../icon/icon-right-3.png"></image>
+          </block>
+          {{item.first_hierarchy_name}}
+        </view>
+
+      </block>
+    </scroll-view>
+
+    <!--二级科室选择-->
+    <scroll-view class="second-order-list" style="height:{{ScrollHeight}}px" scroll-y="true">
+      <block wx:for="{{SecondHierarchy}}" wx:key="first_hierarchy_id">
+        <view style="display:{{first_hierarchy_id==item.first_hierarchy_id ? '' : 'none'}}">
+          <block wx:for="{{item.data}}" wx:key="second_hierarchy_id">
+            <navigator class="second-order-li" url="../departments_subscribe/index?hospital={{hospital}}&hospitalId={{hospitalId}}&departments={{item.second_hierarchy_name}}&departmentId={{item.second_hierarchy_id}}" hover-class="none">{{item.second_hierarchy_name}}</navigator>
+          </block>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+
+<scroll-view style="float:left;height:{{ScrollHeight}}px;width:100%;display:{{show_doctor}}" scroll-y="true">
+  <view class="content">
+    <view class="content-top">
+      <view class="content-top-left">
+        <image class="doctor-cover" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/doctor.png"></image>
+
+      </view>
+      <view class="content-top-right">
+        <view class="content-jj">
+          <view class="content-xm">
+            朱勇
+          </view>
+          <view class="content-zcks">
+            <view class="content-zk">
+              主治医师
+            </view>
+            <view class="content-zk">
+              西岸中医门诊部    中医康复科
+            </view>
+          </view>
+        </view>
+        <view class="content-sc">
+          擅长：肌肉、骨骼损伤、神经系统疾病的诊断与中西医综合康复治疗。
+        </view>
+      </view>
+    </view>
+    <view class="content-xian">
+    </view>
+    <view class="content-bottom">
+      <view class="content-bottom-left">
+          预约挂号
+      </view>
+      <navigator class="content-bottom-right" url="../tuwen_online_consulting/index">
+        <view class="content-bottom-right-zx">
+          图文咨询
+        </view>
+        <view class="content-bottom-right-q">
+          50元/次
+        </view>
+      </navigator>
+      <navigator class="content-bottom-right" url="../yuyin_online_consulting/index">
+        <view class="content-bottom-right-zx">
+          语音咨询
+        </view>
+        <view class="content-bottom-right-q">
+          6元/分钟
+        </view>
+      </navigator>
+      <navigator class="content-bottom-right" url="../shipin_online_consulting/index">
+        <view class="content-bottom-right-zx">
+          视频咨询
+        </view>
+        <view class="content-bottom-right-q">
+          50元/分钟
+        </view>
+      </navigator>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="choose" style="height:{{ScrollHeight}}px;width:100%;float:left;">
+  <view class="choose-1">
+    服务类型
+  </view>
+  <view class="choose-2">
+    <view class="choose-2-1">
+      挂号预约
+    </view>
+    <view class="choose-2-1">
+      图文咨询
+    </view>
+    <view class="choose-2-1">
+      语音咨询
+    </view>
+    <view class="choose-2-1">
+      视频咨询
+    </view>
+  </view>
+  <view class="choose-1">
+    价格区间
+  </view>
+  <view class="choose-2">
+    <view class="choose-2-1">
+      0-10
+    </view>
+    <view class="choose-2-1">
+      11-30
+    </view>
+    <view class="choose-2-1">
+      31-50
+    </view>
+    <view class="choose-2-1">
+      50以上
+    </view>
+  </view>
+  <view class="choose-3">
+    <view class="choose-3-1">
+      重置
+    </view>
+    <view class="choose-3-2">
+      完成
+    </view>
+  </view>
+</view>

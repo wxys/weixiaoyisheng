@@ -1,0 +1,22 @@
+
+<view class="cent">
+<view bindtap="stoichToH"  data-me="患者"  class="huanzhe">
+<image src="../../icon/huanzhe.png" class="is-huanzhe"></image>
+<view>我是患者</view>
+</view>
+
+<view  data-me="医生" bindtap="stoichToH"  class="doc">
+
+<image src="../../icon/icon-is-doctor.png" class="is-doctor"></image>
+<view>我是医生</view>
+</view>
+<view  data-me="管理员" bindtap="stoichToH" class="doc">
+
+<image src="../../icon/me.png"  class="is-doctor"></image>
+<view>我是管理员</view>
+</view>
+</view>
+
+
+
+

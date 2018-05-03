@@ -1,0 +1,330 @@
+/* pages/my_attention/index.wxss */
+.get-position-groups{
+	height:30px;
+	font-size:30rpx;
+	color:#666666;
+	align-content: center;
+	background:#fff;
+	display:flex;
+	justify-content:center;
+	line-height:30px;
+}
+
+.user-location-ico{
+  height:18px;
+  width:18px;
+}
+.cancel-attention-h-btn
+{
+  
+}
+.doctor-cover
+{
+  width:140rpx;
+  height: 140rpx;
+}
+.doctor-name
+{
+  font-size:44rpx;
+  color:#333;
+  letter-spacing: 4rpx;
+ float: left;
+}
+.display_inline_block
+{
+  display: inline-block;
+}
+.font_size_24
+{
+  font-size:24rpx;
+   color:#666;
+}
+.doctor-data
+{
+  padding:0;
+  margin-left:18rpx;
+}
+.es-list-li
+{
+  padding:28rpx 44rpx;
+  padding-top:86rpx;
+}
+.es-list-hos
+{
+  padding-top:46rpx;
+}
+.margin-left_46
+{
+  margin-left:36rpx;
+}
+.doctor-hospital,.doctor-level
+{
+  font-size:24rpx;
+  color:#666;
+}
+.user-location{
+  color:#ff8100;
+  display:flex;
+  align-items: center;
+  padding-left:5px;
+}
+.guahao
+{
+  width:500rpx;
+  height: 85rpx;
+  background: #8cc341;
+  line-height: 85rpx;
+  color:#fff;
+  text-align: center;
+  font-size: 30rpx;
+  border-radius: 5rpx;
+  margin-left:17%;
+}
+
+.switch-index{
+	padding:10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom:1px solid #efefef;
+}
+.doctor-good-at
+{
+  font-size: 28rpx;
+  color:#333;
+  margin-top: 20rpx;
+}
+.switch-btn{
+	background:#28b7a3;
+	width:150px;
+	font-size:14px;
+	color:#fff;
+	padding:6px;
+	border-radius:5px;
+	text-align:center;
+
+}
+
+
+.attention-departments-ico{
+	width:60px;
+	height:60px;
+}
+.attention-departments-li{
+	height:120px;
+	border:0;
+	flex:0 0 110px;
+}
+.attention-departments-name{
+	font-size:13px;
+	margin-top:2px;
+	color:#b5b5b5;
+
+}
+.attention-departments-hospital{
+  font-size:13px;
+  margin-top:5px;
+  color:#353535;
+  font-weight:600;
+  width:110px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  text-align: center;
+}
+
+
+
+/*
+  关注操作
+*/
+.operate-menu{
+  position: fixed;
+  left: 10px;
+  bottom:5px;
+  z-index:999;
+}
+.operate-menu-li{
+  border-radius:50%;
+  height:53px;
+  width:53px;
+  background:#59bdca;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content: center;
+  margin-bottom:5px;
+}
+.operate-menu-ico{
+  width:16px;
+  height:16px;
+}
+.is-doctor{
+  width:25px;
+  height:25px;
+}
+.operate-menu-text{
+  font-size:10px;
+  color:#fff;
+  margin-top:3px;
+
+}
+.attention-groups{
+  display: flex;
+  border-bottom: 1rpx solid #e5e5e5;
+  background:#fff;
+}
+.doctor-departments
+{
+  float: right;
+  border: 2rpx solid #f59696;
+  color:#f59696;
+  font-size:20rpx;
+  
+  padding:4rpx 15rpx;
+
+  border-radius: 30rpx;
+  margin-left:16rpx;
+
+}
+.doctor-operate
+{
+  margin-bottom:45rpx;
+}
+.cancel-attention-btn{
+  display:flex;
+  justify-content:center;
+  font-size:30rpx;
+  background:#ff8100;
+  color:#fff;
+  align-items: center;
+  width: 280rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  margin-bottom:0rpx;
+  margin-left:220rpx;
+  
+
+}
+.cancel-attention-btn-hos
+{
+   display:flex;
+  justify-content:center;
+  font-size:31rpx;
+  background:#b2d233;
+  color:#fff;
+  align-items: center;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+  padding:20rpx;
+  letter-spacing: 4rpx;
+  text-align: center;
+  margin-top:50rpx;
+  margin-right:30rpx;
+
+
+}
+.cancel-attention-btn.active{
+  background:#ee7a03;
+}
+
+
+.attention-departments-groups{
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+
+.cancel-attention-sbtn{
+  display:flex;
+  justify-content:center;
+  font-size:13px;
+  background:#cc5849;
+  color:#fff;
+  height:30px;
+  line-height:30px;
+  border-right:1px solid #fff;
+
+}
+.cancel-attention-ico{
+  width:25px;
+  height:25px;
+  padding-bottom:5px;
+
+}
+.column-title
+{
+  height: 112rpx;
+  border-bottom:3rpx solid #eeeeee;
+
+}
+.hospital
+{
+  height: 250rpx;
+}
+.column-title
+{
+  height: 112rpx;
+  border-bottom:3rpx solid #eeeeee;
+  padding-left:45rpx;
+  padding-right:45rpx;
+
+}
+.hospital-image
+{
+width: 240rpx;
+height: 150rpx;
+border-radius: 5rpx;
+}
+.load-remind-ico
+{
+  margin-bottom:30rpx;
+
+}
+.load-remind-groups
+{
+  margin-top:40%;
+}
+.hospital-level
+{
+  color:#f9a64a;
+  font-size: 28rpx;
+    letter-spacing: 2rpx;
+}
+.hospital-name
+{
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  color:#333;
+}
+.icon-atten-doc
+{
+  width:35rpx;
+  height: 50rpx;
+  margin-left:15rpx;
+  margin-right:30rpx;
+}
+.icon-atten-hos
+{
+  width:43rpx;
+  height: 41rpx;
+  margin-left:15rpx;
+  margin-right:30rpx;
+}
+.column-text
+{
+  color:#666;
+  font-size: 30rpx;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+}
+.column-right-text
+{
+  color:#5cb3ad;
+  font-size:28rpx;
+  letter-spacing: 4rpx;
+}

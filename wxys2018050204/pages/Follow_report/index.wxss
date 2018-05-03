@@ -1,0 +1,522 @@
+/* pages/Follow_report/index.wxss */
+.select_left
+{
+  width: 50%;
+    color:rgb(34, 154, 181);
+    text-align: center;
+    float: left;
+}
+.select_right{
+  width: 50%;
+  color:rgb(34, 154, 181);
+  text-align: center;
+  float:right;
+}
+.select_all{
+  height: auto;
+}
+.clear_both{
+  clear:both;
+  height:0;
+  overflow:hidden;
+}
+.base_info{
+  text-align: left !important ;
+  width: 100%;
+}
+.base_info>view{
+  text-align: left !important ;
+}
+/**index.wxss**/  
+.swiper-tab{  
+    width: 100%;  
+    border-top: 2rpx solid #EEEEEE;  
+    line-height: 78rpx;
+    margin-top:4rpx;
+}  
+.swiper-tab-list{  
+  font-size: 30rpx;  
+  display: inline-block;  
+  width: 13%;  
+  margin:0 6%;
+  text-align: center;  
+  color: #606060;  
+  font-weight: 700;
+}  
+.on{ 
+  color: #54B2B2;  
+  border-top: 6rpx solid #54B2B2;
+}  
+  
+.swiper-box{ 
+  display: block; 
+  height: 100%; 
+  width: 100%; 
+  overflow: hidden; 
+}  
+.bottom-jielun{
+  float:left;
+  margin-top:100rpx;
+  width:650rpx;
+  margin:50rpx 50rpx 100rpx 50rpx;
+  min-height:320rpx;
+}
+.jielun{
+  float:left;
+  height:60rpx;
+  width:680rpx;
+  line-height: 60rpx;
+  font-size:30rpx;
+  color:#1DA196;
+  font-weight: 700;
+}
+.top-vieo{
+  width:100%;
+  text-align: center;
+  margin-top:50rpx;
+  height:400rpx;
+}
+.videotype{
+  display: none;
+}
+.top-jiancha{
+  float:left;
+  width:650rpx;
+  margin:50rpx 50rpx 0 50rpx;
+}
+.top-jiancha-list{
+  float:left;
+  width:100%;
+  height:80rpx;
+  border-bottom: 2rpx solid #F2F2F2;
+  margin:0 0 22rpx 0;
+}
+.top-jiancha-list1{
+  float:left;
+  height:80rpx;
+  width:80%;
+  line-height:80rpx;
+  font-size:30rpx;
+}
+.top-jiancha-list2{
+  float:right;
+  margin-right:20rpx;
+  height: 100%;
+}
+.zongjie_text{
+  float:left;
+  width:100%;
+  font-size:28rpx;
+  line-height:48rpx;
+}
+
+.top-jibing{
+  float:left;
+  width:650rpx;
+  margin:30rpx 50rpx 0 50rpx;
+}
+.top-jibing-list{
+  float:left;
+  width:100%;
+  height:80rpx;
+  border-bottom: 2rpx solid #F2F2F2;
+  margin:0 0 40rpx 0;
+}
+.top-jibing-list1{
+  float:left;
+  height:80rpx;
+  width:80%;
+  line-height:80rpx;
+  font-size:30rpx;
+}
+.top-jibing-list2{
+  float:right;
+  margin-right:20rpx;
+}
+.top-diease{
+  float:left;
+  width:200rpx;
+  height:56rpx;
+  background-color: #70BFBC;
+  color:#FFF;
+  border-radius: 56rpx;
+  text-align: center;
+  font-size:28rpx;
+  line-height:56rpx;
+  margin:20rpx 225rpx;
+}
+.top-use-drug{
+  float:left;
+  height:60rpx;
+  width:580rpx;
+  margin:20rpx 86rpx;
+}
+.top-use-drug-list{
+  float:left;
+  height:56rpx;
+  width:33.2%;
+  line-height: 52rpx;
+  border-left:2rpx solid #F9A64A;
+  border-top:2rpx solid #F9A64A;
+  border-bottom:2rpx solid #F9A64A;
+  text-align:center;
+  font-size:25rpx;
+  color: #F9A64A;
+}
+.use-drug-tab{
+  color:#FFF;
+  background-color: #F9A64A;
+}
+.use-drug-tab-content{
+  float:left;
+  display: none;
+  width:650rpx;
+  margin:0 56rpx;
+  height:960rpx;
+}
+.use-drug-tab-content-type{
+  display: block;
+}
+.table-tr{
+  float:left;
+  min-height:76rpx;
+  width:650rpx;
+  border-bottom:2rpx solid #D5D5D5;
+}
+.table-th{
+  float:left;
+  min-height:76rpx;
+  text-align: center;
+  font-size:28rpx;
+  font-weight: bold;
+  line-height: 76rpx;
+  border-right:2rpx solid #D5D5D5;
+}
+.table-td{
+  float:left;
+  min-height:76rpx;
+  text-align: center;
+
+}
+.w_100_1
+{
+  width: 100%;
+  display:block;
+  height: 26rpx;
+  margin-top:0;
+  padding: 0 10rpx;
+  margin-left:50rpx;
+}
+.table-width4
+{
+  padding:10rpx 20rpx;
+}
+/*
+.table-width1{
+  width:91rpx;
+}
+.table-width2{
+  width:236rpx;
+}
+.table-width3{
+  width:178rpx;
+}
+.table-width4{
+  width:160rpx;
+}
+*/
+.table-width1{
+  flex-grow:1;
+  
+}
+.table-width2{
+  flex-grow:3;
+  padding-top:50%;
+}
+.table-width3{
+  flex-grow:3;
+}
+.table-width4{
+  flex-grow:2;
+}
+.table {
+  border:1px solid #dadada;
+  border-right: 0;
+  border-bottom: 0;
+  width: 98%;
+}
+.tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+
+
+}
+.th,.td {
+  padding: 10rpx;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  font-size:26rpx;
+  text-align: center;
+display: flex;
+    justify-content:center;
+    align-items: center;
+
+  width: 0;
+}
+.th {
+  font-weight: 400;
+  background-color: #dadada;
+  color:#FFF;
+}
+.disease-use-drug-drug{
+  float:left;
+  margin:30rpx 0 6rpx 0;
+  width:100%;
+  height:48rpx;
+  line-height: 48rpx;
+  color:#90C23F;
+  font-size: 32rpx;
+  font-weight: 500
+}
+.disease-use-drug-table{
+  float:left;
+  width:100%;
+  margin:10rpx 0 20rpx 0;
+}
+.use-drug-time-list{
+  float:left;
+  width:100%;
+  margin-bottom:20rpx;
+}
+.use-drug-time{
+  float:left;
+  height:76rpx;
+  width:100%;
+  line-height:76rpx;
+  font-size:30rpx;
+  color:#1D9896;
+}
+.use-drug-time-table{
+  float:left;
+  width:100%;
+  margin-bottom:10rpx;
+}
+.icon-wenhao{
+  float:right;
+  height:32rpx;
+  width:32rpx;
+}
+.alert-bottom{
+  position: fixed;
+  top:0rpx;
+  left: 0rpx;
+  width:750rpx;
+  height:1334rpx;
+  z-index: 2017;
+  background-color: #000;
+  opacity:0.3;
+}
+.alert-top{
+  position: fixed;
+  top:52rpx;
+  left: 68rpx;
+  width:620rpx;
+  height:1000rpx;
+  z-index: 2018;
+  background-color: #FFF;
+  border-radius: 12rpx;
+}
+.alert-close{
+  width:50rpx;
+  height:50rpx;
+  margin:20rpx 0  0rpx 552rpx;
+}
+.alerttype{
+  display: none;
+}
+.alert-title{
+  float:left;
+  height:70rpx;
+  width:100%;
+  line-height:70rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 500;
+  margin-top:-8rpx;
+  color:#20A69D;
+}
+.alert-content{
+  float:left;
+  width:504rpx;
+  margin:20rpx 64rpx;
+  height:790rpx;
+  font-size:28rpx;
+  line-height: 60rpx;
+}
+.top-select{
+  float:left;
+  height:110rpx;
+  width:100%;
+  border-bottom:2rpx solid #F1F1F1;
+}
+.top-select-left{
+  float:left;
+  height:80rpx;
+  width:160rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  text-align: center;
+  font-weight: 550;
+  margin:18rpx 0 0 20rpx;
+}
+.top-select-left-image{
+  height:40rpx;
+  width:40rpx;
+  float:right;
+  margin-top:20rpx;
+}
+
+.top-select-right{
+  float:right;
+  height:80rpx;
+  width:230rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  text-align: center;
+  margin:18rpx 25rpx 0 0rpx;
+  font-weight: 550;
+}
+.top-select-right-image{
+  height:40rpx;
+  width:40rpx;
+  float:right;
+  margin-top:20rpx;
+}
+
+.top-select-shadow{
+  position: fixed;
+  top:114rpx;
+  left:0rpx;
+  width:100%;
+  height:1100rpx;
+  z-index: 2018;
+  display: none;
+}
+
+.top-select-left-list{
+  position:fixed;
+  top:114rpx;
+  left:0rpx;
+  width:100%;
+  max-height:500rpx;
+  padding-top:20rpx;
+  padding-bottom:40rpx;
+  border-bottom:2rpx solid #F3F3F3;
+  background-color: #FFF;
+  display: none;
+  z-index:2019;
+}
+.top-select-left-list-row{
+  float:left;
+  height:70rpx;
+  width:600rpx;
+  margin:0 75rpx 10rpx 75rpx;
+  border-bottom:2rpx solid #B0B0B0;
+}
+.top-select-left-list-row1{
+  float:left;
+  height:70rpx;
+  width:200rpx;
+  line-height: 70rpx;
+  font-size:32rpx;
+}
+.top-select-left-list-row2{
+  float:left;
+  height:70rpx;
+  width:400rpx;
+  line-height: 70rpx;
+  font-size:32rpx;
+}
+
+.top-select-right-list{
+  position:fixed;
+  top:114rpx;
+  left:0rpx;
+  width:100%;
+  max-height:500rpx;
+  padding-top:20rpx;
+  padding-bottom:40rpx;
+  border-bottom:2rpx solid #F3F3F3;
+  background-color: #FFF;
+  display: none;
+  z-index:2019;
+}
+.top-select-right-list-row{
+  float:left;
+  height:70rpx;
+  width:600rpx;
+  margin:0 75rpx 10rpx 75rpx;
+  border-bottom:2rpx solid #B0B0B0;
+}
+.top-select-right-list-row1{
+  float:left;
+  height:70rpx;
+  width:200rpx;
+  line-height: 70rpx;
+  font-size:32rpx;
+}
+.top-select-right-list-row2{
+  float:left;
+  height:70rpx;
+  width:400rpx;
+  line-height: 70rpx;
+  font-size:32rpx;
+}
+.xialaleftshow{
+  display: block;
+}
+.xialarightshow{
+  display: block;
+}
+.swiper-tab-list-content{
+  display: none;
+  width:100%;
+  height:1056rpx;
+}
+.swiper-tab-list-content-show{
+  display: block;  
+}
+.tianchong{
+  width:100%;
+  height:30rpx;
+}
+.unit{
+  margin-left:10rpx;
+  color:#666666;
+  font-weight: 500
+}
+.promt-img-view{
+  float:left;
+  margin-top:364rpx;
+  width:100%;
+  height:212rpx;
+  text-align: center;
+}
+.promt-img{
+  width:212rpx;
+  height:212rpx;
+
+}
+.promt-text{
+  float:left;
+  margin-top:40rpx;
+  height:52rpx;
+  width:100%;
+  font-size: 30rpx;
+  line-height: 52rpx;
+  color:#9D9D9D;
+  text-align: center;
+  letter-spacing: 6rpx;
+}

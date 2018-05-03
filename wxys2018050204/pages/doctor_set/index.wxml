@@ -1,0 +1,106 @@
+<!--pages/doctor_set/index.wxml-->
+<view style="display:{{PageShow?'':'none'}}">
+
+  <scroll-view style="height:{{PageScrollHeight}}px;" scroll-y="true">
+
+  <!--顶部医生资料-->
+    <view class="smile-card-groups">
+      <image src="{{DoctorData.doctor_picture}}" class="doctor-user-cover"></image>
+      <view class="smile-card-doctor-data">
+        <view class="smile-card-doctor-data-position">
+          <text class="doctor-user-name">{{DoctorData.doctor_name}}</text>
+          <text class="doctor-user-position">{{DoctorData.doctor_profession}}</text>
+        </view>
+        <view class="smile-card-doctor-data-hospital" >
+          <text class="doctor-user-hospital">{{DoctorData.doctor_hospital}}</text>
+          <text class="doctor-user-departments">{{DoctorData.doctor_class}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view style="padding-top:100px;">
+      <!--我的二维码微笑名片-->
+      <navigator class="row-title" url="../doctor_smile_card/index" hover-class="none">
+        <image src="../../icon/icon-ewm2.svg" class="li-left-ico"></image>
+        <view class="row-title-content">
+          我的二维码微笑名片
+        </view>
+        <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+      </navigator>
+      <!--我的个人主页-->
+      <navigator class="row-title" url="../doctor_card/index?doctor_cover={{DoctorData.doctor_picture}}&doctor_name={{DoctorData.doctor_name}}&doctor_position={{DoctorData.doctor_profession}}&doctor_departments={{DoctorData.doctor_class}}&doctor_hospital={{DoctorData.doctor_hospital}}&doctor_subscribe_number=0&doctor_id={{DoctorData.doctor_id}}&hospitalId={{DoctorData.doctor_hospital_id}}&departmentId={{DoctorData.doctor_class_id}}" hover-class="none">
+        <image src="../../icon/icon-my-home.svg" class="li-left-ico"></image>
+        <view class="row-title-content">
+          我的个人主页
+        </view>
+        <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+      </navigator>
+
+       <!--实名认证-->
+      <navigator class="row-title" url="../doctor_attestation/index" hover-class="none">
+        <image src="../../icon/iconreal-name-authentication.svg" class="li-left-ico"></image>
+        <view class="row-title-content">
+          实名认证
+        </view>
+        <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+      </navigator>
+
+      <!--多点执业-->
+      <navigator class="row-title" url="../doctor_multi_sited_license/index" hover-class="none">
+        <image src="../../icon/icon-multi-spot.svg" class="li-left-ico"></image>
+        <view class="row-title-content">
+          多点执业
+        </view>
+        <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+      </navigator>
+
+      <!--我的资料-->
+      <navigator class="row-title" url="../personal_data/index" hover-class="none">
+        <image src="../../icon/icon-personal-data.svg" class="li-left-ico"></image>
+        <view class="row-title-content">
+          我的资料
+        </view>
+        <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+      </navigator>
+
+      <!--我的订单-->
+      <view class="row-title" url="" hover-class="none">
+        <image src="../../icon/icon-my-order.svg" class="li-left-ico"></image>
+        <view class="row-title-content">
+          我的订单
+        </view>
+        <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+      </view>
+
+      <!--收入结算-->
+      <view class="row-title" url="" hover-class="none">
+        <image src="../../icon/icon-revenue-outturn.svg" class="li-left-ico"></image>
+        <view class="row-title-content">
+          收入结算
+        </view>
+        <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+      </view>
+   
+
+       <navigator class="tc" url="/pages/login/index" hover-class="navigator-hover">
+        <button  class="share-btn3">退出医生登录状态</button>
+       </navigator>
+   
+
+    </view>
+  </scroll-view>
+</view>
+<view class="tab-list">
+  <view class="tab-list-li " data-url="../patient_management/index" catchtap="SkipPage">
+    <image src="../../icon/icon-my.png" mode="widthFix"></image>
+    <text>图文咨询</text>
+  </view>
+  <view class="tab-list-li active" data-url="../doctor_set/index" catchtap="SkipPage">
+    <image src="../../icon/icon-personal-selected.png" mode="widthFix"></image>
+    <text>设置</text>
+  </view>
+
+
+
+
+</view>

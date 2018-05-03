@@ -1,0 +1,73 @@
+/* pages/doctor_smile_card/index.wxss */
+.doctor-user-cover{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+}
+.smile-card-groups{
+  background:#59bdca;
+  padding:15px;
+  display:flex;
+  align-items:center;
+}
+.smile-card-doctor-data{
+  margin-left: 15px;
+  color:#fff;
+}
+.smile-card-doctor-data-position,.smile-card-doctor-data-hospital{
+  display: flex;
+  align-items: center;
+}
+.smile-card-doctor-data-hospital{
+  display:flex;
+  margin-top:5px;
+}
+.doctor-user-name{
+  font-size:17px;
+  font-weight: 600;
+}
+
+.doctor-user-position{
+  font-size:14px;
+  margin-left:5px;
+}
+.doctor-user-hospital{
+  font-size:14px;
+  border-right:3px solid #fff;
+  padding-right:5px;
+  line-height:14px;
+}
+.doctor-user-departments{
+  padding-left:5px;
+  font-size:14px;
+  line-height:14px;
+}
+
+.quick-mark-groups{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  padding:10px;
+  flex-direction: column;
+}
+.scan-ico{
+  width:100px;
+  height:100px;
+}
+.quick-mark-img{
+  width:550rpx;
+  padding-top:20px;
+}
+.scan-btn{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction: column;
+  color:#000;
+  padding:10px;
+  font-weight: 600;
+}
+.scan-btn text{
+  line-height: 1.5;
+  font-size:15px;
+}

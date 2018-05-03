@@ -1,0 +1,74 @@
+<!--pages/subscribe_success/index.wxml-->
+<scroll-view style="height:{{ScrollHeight}}px" scroll-y="true">
+  <!--预约成功提示-->
+<view class="subscribe-success-groups">
+
+  <text class="subscribe-success">恭喜您预约成功！</text>
+  <text>预约成功短信已发送至手机：{{SeekingPerson.phone}}</text>
+  <text>【注意事项】</text>
+</view>
+<!--就诊医生资料-->
+<view class="subscribe-doctor-data-groups">
+  <image src="{{subscribe_list.doctor_data.doctor_cover}}" class="doctor-cover"></image>
+  <view class="doctor-data ">
+    <text class="subscribe-docto-name">{{subscribe_list.doctor_data.doctor_name}}</text>
+    <text class="subscribe-docto-position">{{subscribe_list.doctor_data.doctor_position}}</text>
+  </view>
+</view>
+
+<!--就诊信息-->
+<view class="subscribe-data-list">
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">就诊医院</text>
+    <text class="subscribe-data-content">{{subscribe_list.doctor_data.doctor_hospital}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">就诊科室</text>
+    <text class="subscribe-data-content">{{subscribe_list.doctor_data.doctor_departments}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">预约时段</text>
+    <text class="subscribe-data-content orange">{{subscribe_list.subscribe_time}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">门诊类型</text>
+    <text class="subscribe-data-content">{{subscribe_list.scheduling_type}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">诊查费</text>
+    <text class="subscribe-data-content">{{subscribe_list.inspecting_fee}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">支付方式</text>
+    <text class="subscribe-data-content">{{pay_type}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">就诊人</text>
+    <text class="subscribe-data-content">{{SeekingPerson.seeking_person}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">医保卡号</text>
+    <text class="subscribe-data-content">{{SeekingPerson.yb_cardid}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">就诊卡号</text>
+    <text class="subscribe-data-content">{{SeekingPerson.jz_cardid}}</text>
+  </view>
+
+  <!--证件类型-->
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">{{SeekingPerson.certificate_type}}</text>
+    <text class="subscribe-data-content">{{SeekingPerson.certificate_number}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">手机</text>
+    <text class="subscribe-data-content">{{SeekingPerson.phone}}</text>
+  </view>
+  <view class="subscribe-data-list-li">
+    <text class="subscribe-data-text">性别</text>
+    <text class="subscribe-data-content">{{SeekingPerson.sex}}</text>
+  </view>
+</view>
+</scroll-view>
+
+<button class="go-index-btn" bindtap="GoMySubscribe">查看我的预约</button>

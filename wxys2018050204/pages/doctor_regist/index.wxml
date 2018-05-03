@@ -1,0 +1,48 @@
+<!--pages/doctor_regist/index.wxml-->
+
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+
+<view class="logo-groups">
+  <image src="../../icon/icon-is-doctor.svg" class="logo-ico"></image>
+</view>
+
+<view class="remind-text">
+  <text>微笑儿科 医生用户注册</text>
+</view>
+
+<!--输入框部分-->
+<view class="section ipt-group-top">
+  <image src="../../icon/icon-phone.svg" class="ipt-phone-ico" mode="widthFix"></image>
+  <input type="number" id="phone" placeholder="手机号" maxlength="11" class="ipt-group-import" bindinput="PhoneInputChacnge" focus="true" placeholder-style="color:#ddd;" value="{{UserData.phone}}"/>
+
+</view>
+
+
+<view class="section ipt-group">
+  <image src="../../icon/icon-password.svg" class="ipt-password-ico" mode="widthFix"></image>
+  <input type="password" placeholder="设置密码" class="ipt-group-import" focus="{{set_password_focus}}" bindinput="PasswordInputChacnge" placeholder-style="color:#ddd;"/>
+</view>
+
+<view class="section ipt-group">
+  <image src="../../icon/icon-password.svg" class="ipt-password-ico" mode="widthFix"></image>
+  <input type="password" placeholder="确认密码" class="ipt-group-import" focus="" bindinput="SurePasswordInputChacnge" placeholder-style="color:#ddd;"/>
+</view>
+
+<!--图形验证码-->
+<view wx:if="{{!SendCode}}" class="section ipt-group">
+  <input type="text" placeholder="输入验证码" class="ipt-group-import code-ipt" focus="" bindinput="CodeInputChacnge1" maxlength="4" placeholder-style="color:#ddd;"/>
+  <image src="{{CodeData.code_src}}" class="code-img" mode="widthFix" bindtap="GetImgCode"></image>
+</view>
+
+<!--短信验证码-->
+<view wx:else class="section ipt-group">
+    <image src="../../icon/icon-verification-code.svg" class="ipt-code-ico" mode="widthFix"></image>
+    <input type="number" placeholder="验证码" maxlength="6" class="ipt-group-import code-ipt" focus="{{code_focus}}" bindinput="CodeInputChacnge2" placeholder-style="color:#ddd;"/>
+    <button class="send-btn {{isSending?'disabled':''}}" bindtap="SendCode" disabled="{{SendCodeDisabled}}">{{send_msg}}</button>
+</view>
+
+
+
+<button url="../doctor_regist_complete/index" class="regist-btn" bindtap="Regist" disabled="{{BtnDisabled}}">注册</button>
+
+

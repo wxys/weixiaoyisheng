@@ -1,0 +1,55 @@
+<!--pages/personal_data/index.wxml-->
+<view class="user-data">
+
+  <view class="data-li first">
+    <view class="data-li-title">头像</view>
+    <block wx:if="{{UserData.WeChart_Img_Url}}">
+      <image src="{{UserData.WeChart_Img_Url}}" class="user-avatar" mode="widthFix"></image>
+    </block>
+    <block wx:else>
+      <image src="../../icon/icon-toursit.svg" class="user-avatar"></image>
+    </block>
+
+    
+  </view>
+
+  <view class="data-li">
+    <view class="data-li-title">名字</view>
+    <view class="data-li-text">
+    <block wx:if="{{UserData.User_Name}}">
+      {{UserData.User_Name}}
+    </block>
+    <block wx:else>
+      {{UserData.User_name}}
+    </block>
+
+    
+    
+    </view>
+  </view>
+
+</view>
+
+<view class="user-data">
+
+  <view class="data-li">
+    <view class="data-li-title">性别</view>
+    <view class="data-li-text">
+      <!--<block wx:if="{{UserData.userInfo.gender==1}}">男</block>
+      <block wx:elif="{{UserData.userInfo.gender==2}}">女</block>-->
+      <block wx:if="{{UserData.User_Sex=='1'}}">男</block>
+      <block wx:elif="{{UserData.User_Sex=='2'}}">女</block>
+    </view>
+  </view>
+
+  <view class="data-li">
+    <view class="data-li-title">地区</view>
+    <view class="data-li-text"> {{UserData.Province}} {{UserData.City}}</view>
+  </view>
+
+  <view class="data-li">
+    <view class="data-li-title">手机号</view>
+    <view class="data-li-text">{{UserData.User_Phone
+}}</view>
+  </view>
+</view>

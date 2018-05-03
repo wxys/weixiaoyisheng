@@ -1,0 +1,248 @@
+<!--pages/personal/index.wxml-->  
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<block wx:if="{{PageShow}}">
+
+  <!--顶部用户资料-->
+  <view class="user-data-group">
+    <block wx:if="{{userInfo.Wechart_Img_Url}}">
+      <image src="{{userInfo.Wechart_Img_Url}}" class="user-avatar" mode="widthFix"></image>
+    </block>
+    <block wx:else>
+      <image src="../../icon/icon-toursit.svg" class="user-avatar"></image>
+    </block>
+    <view class="right-user-data">
+      <view class="user-nickname">
+        <block wx:if="{{UserData.userinfo.nickName}}">
+          <text class="user-nickname-text">{{UserData.userInfo.nickName}}</text>
+        </block>
+        <block wx:else>
+          <text class="user-nickname-text">{{UserData.User_name}}</text>
+        </block>
+        <!--会员身份显示-->
+        <block wx:if="{{UserData.MemberInformation=='会员订户'}}">
+            <text class="special-member expire">{{UserData.memberinformation}}</text>
+          <!--年费会员身份显示-->
+          <block wx:if="{{UserMember.DurationDay>365}}">
+            <image src="../../icon/icon-years-member.svg" class="icon-years-vip"></image>
+          </block>
+        </block>
+
+        <block wx:elif="{{UserData.MemberInformation=='中国移动健康中心会员'}}">
+          <text class="special-member">中国移动健康中心会员</text>
+         
+        </block>
+        <block wx:elif="{{UserData.MemberInformation=='中国移动健康中心会员到期'}}">
+          <text class="special-member expire">会员到期</text>
+            
+       
+        </block>
+        <block wx:else>
+            <text class="special-member expire">普通用户</text>   
+        
+             <block wx:if="{{userInfo.User_Phone}}">
+             
+        </block>
+        </block>
+  
+      </view>
+     <!-- <view class="user-phone"><image  class="icon_user_phone" src="../../icon/icon-phone.png"></image><text class="user_phone_num">{{UserData.phone}}</text>-->
+      <block wx:if="{{userInfo.User_Phone}}">
+
+      <view class="user-phone">手机号：{{userInfo.User_Phone}}</view>
+         <block wx:if="{{UserData.MemberInformation!='中国移动健康中心会员' && UserData.MemberInformation!='会员订户' }}">
+
+              <view  class="not-mt-phone change_phone_btn" data-index="更换手机号" catchtap="ChangePhone" bindtap='ChangePhone'>
+          <text class='changePhone'>更换手机号</text>
+        </view>
+      <view class='clear'></view>
+</block>
+
+
+      </block>
+      <!--  -->
+      <block wx:else>
+       <button  class="not-mt-phone changePhone" open-type="getPhoneNumber"   bindgetphonenumber="getPhoneNumber" data-index="激活会员" >
+        激活会员
+        </button>
+       
+      </block>
+    </view>
+  
+  </view>
+
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{show_jihuo}}"></view>  
+  <view class="jihuo_view drawer_box" wx:if="{{show_jihuo}}">
+<view>
+<image src="../../icon/icon-clar-search.png" class="close_view" bindtap='close_view'></image>
+
+<view style="float:left;line-height:60rpx;margin-top:80rpx;margin-left:0"  class="title">
+<view>您可以在这里</view><view>查看所有的健康短信了</view></view>
+<view class="clear"></view>
+</view>
+<view class="font_28" style="font-size:30rpx;margin-left:10rpx;font-weight:600">中国移动健康俱乐部会员专属：</view>
+<view  class="font_28" style="font-size:30rpx;width:500rpx ! important;margin-left:10rpx;">
+激活会员权利后，可使用微笑医生小程序，同步接收您的健康短信。再不怕误删想要收藏的健康短信，转发分享更方便。
+</view>
+
+<view class="padding_40 padding_no_left"><button open-type="getPhoneNumber"  class="jihuo_getPhone_btn" bindgetphonenumber="getPhoneNumber">激活会员权益</button>
+</view>
+</view>
+
+<!-- 验证失败的显示-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{show_jihuo_fail}}"></view>  
+<view class="jihuo_view drawer_box" wx:if="{{show_jihuo_fail}}">
+<view>
+<image src="../../icon/icon-clar-search.png"  bindtap="close_view" class="close_view"></image>
+
+<view style="float:left" class="title tilte_1">
+<view  class="font_weight_600">非常抱歉 </view></view>
+<view class="clear"></view>
+</view>
+<view  class="font_26 error_tips">
+<text class="font-tips">{{show_phone}}</text>不是中国移动健康俱乐部会员。您可继续使用微笑医生的其他免费功能
+</view>
+
+<view class="changePhone" bindtap='ChangePhone'>更换手机号</view>
+<view class="clear"></view>
+</view>
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{show_jihuo_success}}"></view>  
+<view  class="jihuo_view drawer_box" wx:if="{{show_jihuo_success}}">
+<view>
+<image src="../../icon/icon-clar-search.png" bindtap="close_view"  class="close_view"></image>
+
+<view style="float:left" class="title title_1" >
+<view  class="font_weight_600">恭喜你 </view></view>
+<view class="clear"></view>
+</view>
+<view  class="font_26 text_align_left">您已成功激活<text class="color_f" style="color:#ad8f75">{{show_phone}}</text>的会员权益。</view>
+<view  class="font_26 text_align_left">·您的健康短信将会同步到健康头条</view>
+<view  class="font_26 text_align_left">·您可免费使用预约挂号服务</view>
+</view>
+
+
+
+  <!--会员看到的菜单-->
+
+  <navigator class="row-title" url="../buy_member/index?phone={{UserData.phone}}"  hover-class="none">
+      <image src="../../icon/icon-household-contacts.png" class="li-left-ico"></image>
+      <view class="row-title-content">
+        会员管理
+      </view>
+      <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+    </navigator>
+
+   
+    <navigator class="row-title" url="../personal_data/index" hover-class="none">
+      <image src="../../icon/icon-personal-data.png" class="li-left-ico"></image>
+      <view class="row-title-content">
+        个人资料
+      </view>
+      <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+    </navigator>
+
+    <!--通知-->
+    <navigator class="row-title" url="../inform/index" hover-class="none">
+      <image src="../../icon/icon-inform.png" class="li-left-ico"></image>
+      <view class="row-title-content">
+        通知
+        <text wx:if="{{informcount>0}}" class="corner-mark">{{informcount}}</text>
+      </view>
+      <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+    </navigator>
+  <navigator class="row-title" url="../household_contacts/index" hover-class="none">
+      <image src="../../icon/icon-personal-data-f.png" class="li-left-ico"></image>
+      <view class="row-title-content">
+      常用就诊人
+      </view>
+      <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+    </navigator>
+  <!--<navigator class="row-title" url="../my_subscribe/index" hover-class="none">
+      <image src="../../icon/icon-household-contacts.png" class="li-left-ico"></image>
+      <view class="row-title-content">
+      预约记录
+      </view>
+      <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+    </navigator>-->
+<navigator class="row-title" url="../Follow_report/index" hover-class="none">
+      <image src="../../icon/icon-follew-contacts.png" class="li-left-ico"></image>
+      <view class="row-title-content">
+     家庭医生随访报告
+      </view>
+      <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+    </navigator>
+
+    <navigator class="row-title" url="../medical_examination_report/index" hover-class="none">
+      <image src="../../icon/icon-tijian-report.png" class="li-left-ico"></image>
+      <view class="row-title-content">
+     体检报告
+      </view>
+      <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+    </navigator>
+    <block wx:if="{{identity=='管理员'}}">
+    <navigator class="row-title" url="../patient_management/index" hover-class="none">
+      <image src="../../icon/icon-personal-data.svg" class="li-left-ico"></image>
+      <view class="row-title-content">
+      我是医生
+      </view>
+      <image src="../../icon/icon-advance.svg" class="li-right-ico"></image>
+
+      
+    </navigator>
+
+</block>
+
+  <!--会员服务-->
+  
+
+
+</block>
+
+<view class="alert-bottom {{alertnum>0?'alerttype':''}}" bindtap='hide_alert'>
+</view>
+
+<view class="alert-change-phone {{alertnum==1?'alerttype':''}}">
+  <image class="alert-notpass-close" src="../../icon/icon-clar-search.png" bindtap='hideAlert'></image>
+  <view class="alert-change-phone-title">
+   
+    {{change_tips}}
+  </view>
+  <view class="alert-change-phone-input">
+    <input class="alert-change-phone-input-phone" type="number" maxlength='11'  placeholder="手机号：" bindinput="PhoneInputChange" value="" placeholder-style="color:#bbbbbb;" />
+  </view>
+  <view class="alert-change-phone-input">
+    <input class="alert-change-phone-input-smscode" type="number" maxlength='6' placeholder="验证码：" bindinput="CodeInputChange"  value="" placeholder-style="color:#bbbbbb;" />
+    <text  class="alert-change-phone-input-sendsms" bindtap='sendsmscheckcode'>{{send_msg}}</text>
+  </view>
+  <view class="alert-change-phone-button" bindtap='changePhoneSbumit'>
+    确认
+  </view>
+</view>
+
+<view class="alert-pass {{alertnum==2?'alerttype':''}}">
+  <image class="alert-pass-close" src="../../icon/icon-clar-search.png" bindtap='hideAlert'></image>
+  <view class="alert-pass-title">
+    恭喜你
+  </view>
+  <view class="alert-pass-content">
+    您已成功激活<text class="alert-pass-content-phone"> {{changephone}} </text>的会员权益。
+  </view>
+  <view class="alert-pass-content">
+    <text>· 您的健康短信将会同步到康健头条</text>
+  </view>
+  <view class="alert-pass-content">
+    <text>· 您可免费使用预约挂号服务</text>
+  </view>
+</view>
+
+<view class="alert-notpass {{alertnum==3?'alerttype':''}}">
+  <image class="alert-notpass-close" src="../../icon/icon-clar-search.png" bindtap='hideAlert'></image>
+  <view class="alert-notpass-title">
+    非常抱歉
+  </view>
+  <view class="alert-notpass-content">
+    <text class="alert-notpass-content-phone">{{changephone}} </text>不是中国移动健康俱乐部会员。您可继续免费使用微笑医生的其他免费功能。
+  </view>
+  <view class="alert-notpass-changephone" bindtap='ChangePhone'>
+    更换手机号
+  </view>
+</view>

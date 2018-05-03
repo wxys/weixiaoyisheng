@@ -1,0 +1,237 @@
+<!--pages/patient_data/index.wxml-->
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+<view>
+<view class="leftbar" style='height:{{height}}rpx;'>
+  <view class="{{_num ==1?'followpro1':'followpro'}}"bindtap="changepro"data-panduan="1" data-id="1"><view class="{{imagenone==1?'keshiimage':''}}"></view>随访提醒</view>
+  <view class="{{_num ==2?'followpro1':'followpro'}}"bindtap="changepro"data-panduan="2" data-id="2"><view class="{{imagenone==2?'keshiimage':''}}"></view>基本信息</view>
+  <view class="{{_num ==3?'followpro1':'followpro'}}"bindtap="changepro"data-panduan="3" data-id="3"><view class="{{imagenone==3?'keshiimage':''}}"></view>既往史</view>
+
+<view class="{{_num ==4?'followpro1':'followpro'}}"bindtap="changepro"data-panduan="4" data-id="4"><view class="{{imagenone==4?'keshiimage':''}}"></view>疾病史</view>
+
+<view class="{{_num ==5?'followpro1':'followpro'}}"bindtap="changepro"data-panduan="5" data-id="5"><view class="{{imagenone==5?'keshiimage':''}}"></view>辅助检查</view>
+
+<view class="{{_num ==6?'followpro1':'followpro'}}"bindtap="changepro"data-panduan="6" data-id="6"><view class="{{imagenone==6?'keshiimage':''}}"></view>用药状况</view>
+
+<view class="{{_num ==7?'followpro1':'followpro'}}"bindtap="changepro"data-panduan="7" data-id="7"><view class="{{imagenone==7?'keshiimage':''}}"></view>医嘱管理</view>
+
+<view class="{{_num ==8?'followpro1':'followpro'}}"bindtap="changepro"data-panduan="8" data-id="8"><view class="{{imagenone==8?'keshiimage':''}}"></view>体检报告</view>
+</view>
+
+
+<view class="rightbar" style='height:{{height}}rpx;'>
+
+<view class="{{isshow==1?'show':'noshow'}} followlists">
+   
+      <text class="basename">{{sickerInfo.name}}</text><view class="basebianhao">{{sickerInfo.num}}</view>
+     <view class="info">
+    <block wx:if="follow_list.length>0">
+      <block wx:for="{{follow_list}}" wx:key='' >
+      
+      <view class="follow_list">
+      <image class="{{imageshanchu==1?'shanchuimage':'shanchuimage1'}}" data-deleteid="{{item.diseaseid}}" bindtap='dodelete' src="{{imageshanchu==1?'../../icon/104491565027621527.png':''}}"></image>
+      <navigator url="../follow_result/index?disease={{item.diseasename}}&time={{item.time}}&id={{item.diseaseid}}"hover-class="none">
+      {{item.diseasename}}
+      </navigator>
+      </view>
+      
+
+      </block>
+    </block>
+    </view>
+<view class="btnbar">
+  <view class="shanchu" bindtap='shanchujulu'>{{deletejilu}}</view>
+  <navigator url="../add_follow/index" class="add_follow_btn">添加疾病随访</navigator>
+  </view>
+</view>
+<view class="{{isshowjiben==2?'show':'noshow'}}">
+     <text class="basename">{{sickerInfo.name}}</text><view class="basebianhao">{{sickerInfo.num}}</view>
+      <view class="info">
+    
+        <view class="basemes"><text class="baseleft">姓名</text><text class="baseright">{{sickerInfo.name}}</text></view>
+        <view class="basemes"><text class="baseleft">年龄</text><text class="baseright">{{sickerInfo.age}}</text></view>
+        <view class="basemes"><text class="baseleft">性别</text><text class="baseright">{{sickerInfo.sex}}</text></view>
+        <view class="basemes"><text class="baseleft">民族</text><text class="baseright">{{sickerInfo.mingzu}}</text></view>
+        <view class="basemes"><text class="baseleft">婚姻状况</text><text class="baseright">{{sickerInfo.hun}}</text></view>
+        <view class="basemes"><text class="baseleft">职业</text></view>
+      </view>
+</view>
+<view class="{{jiwangshi==3?'show':'noshow'}}" >
+       <text class="basename">{{sickerInfo.name}}</text><view class="basebianhao">{{sickerInfo.num}}</view>
+       <view class="info">
+    
+        <view class="basemes"><text class="baseleft">一般健康状况</text><image class="imageright" src="../../icon/785168990843933329.png"></image></view>
+        <view class="basemes"><text class="baseleft">传染病史</text><image class="imageright" src="../../icon/785168990843933329.png"></image></view>
+        <view class="basemes"><text class="baseleft">预防接种史</text><image class="imageright" src="../../icon/785168990843933329.png"></image></view>
+        <view class="basemes"><text class="baseleft">手术外伤史</text><image class="imageright" src="../../icon/785168990843933329.png"></image></view>
+        <view class="basemes"><text class="baseleft">输血史</text><image class="imageright" src="../../icon/785168990843933329.png"></image></view>
+        <view class="basemes"><text class="baseleft">食物过敏史</text><image class="imageright" src="../../icon/785168990843933329.png"></image></view>
+        <view class="basemes"><text class="baseleft">药物过敏史</text><image class="imageright" src="../../icon/785168990843933329.png"></image></view>
+        <view class="basemes"><text class="baseleft">家族史</text><image class="imageright" src="../../icon/785168990843933329.png"></image></view>
+      </view>
+</view>
+<view class="{{binglishi==4?'show':'noshow'}}" >
+  <text class="basename">{{sickerInfo.name}}</text><view class="basebianhao">{{sickerInfo.num}}</view>
+       <view class="info">       
+              <block wx:if="{{sickerInfo.mHis[0]['list'].length>0}}">
+                 <view wx:for="{{sickerInfo.mHis[0]['list']}}" wx:key=''  wx:for-item="val">
+                  <view class="keshibar">{{val[0]}}</view>
+                  
+                  <view class="jibingbar">
+                    <block wx:for="{{val[1]}}" wx:for-item="item">
+                      <view class="jibin">{{item}}</view>  
+                    </block> 
+                    <view class="clearboth"></view>
+                  </view>
+                </view>
+               </block>
+              <block wx:else>暂无</block>         
+        </view>
+</view>
+<view class="{{fuzhujiancha==5?'show':'noshow'}}" >
+ 
+       <view class="info">
+          <view class="his_info"><view class="point"></view>{{sickerInfo.mHis[1]['name']}}</view>
+          
+              <block wx:if="{{sickerInfo.mHis[1]['list'].length>0}}">
+                <view wx:for="{{sickerInfo.mHis[1]['list']}}" wx:key=''  wx:for-item="val">
+                {{val}}
+                </view>
+              </block> 
+              <block wx:else>暂无</block>          
+        </view>
+</view>
+<view class="{{yongyao==6?'show':'noshow'}}" >
+   <text class="basename">{{sickerInfo.name}}</text><view class="basebianhao">{{sickerInfo.num}}</view>
+       <view class="info">
+          
+          
+              <block wx:if="{{sickerInfo.mHis[2]['list'].length>0}}">
+                <view wx:for="{{sickerInfo.mHis[2]['list']}}" wx:for-index="index"  wx:for-item="val">
+                  <navigator url="../med_message/index?id={{index}}&name={{val[1]}}" hover-class='none' url= ><view class="yonyaop"><view class="yongyaonum">{{val[0]}}</view><view class="yongyaoming">{{val[1]}}<view class="xiahuaxian"></view></view><image class="yongyaoimage" src="../../icon/307931907598568110.png"></image></view></navigator>
+                  <view class="yonyaoplbar">
+                    <view class="yonyaopl">{{val[2]}}</view>
+                    <view class="yonyaopl">{{val[3]}}</view>
+                  </view>
+                </view>
+              </block>  
+              <block wx:else>暂无</block>         
+        </view>
+</view>
+<view class="{{yizhu==7?'show':'noshow'}}" >
+ 
+       <view class="info">
+          <view class="his_info"><view class="point"></view>{{sickerInfo.mHis[3]['name']}}</view>
+          
+              <block wx:if="{{sickerInfo.mHis[3]['list'].length>0}}">
+                <view wx:for="{{sickerInfo.mHis[3]['list']}}" wx:key=''  wx:for-item="val">
+                {{val}}
+                </view>
+              </block>   
+              <block wx:else>暂无</block>        
+        </view>
+</view>
+<view class="{{tijian==8?'show':'noshow'}}" >
+
+   <block wx:if="{{ksjc}}">
+    <view class="content-list-ksjc">
+      <view wx:for="{{ksjc}}" wx:key="" class="xiangmu">
+        <view class="xiangmuming">
+          {{item.projectname}}
+        </view>
+        <view wx:if="{{item.ProjectContent[0].txtType!=1}}">
+            <view class="zhibaio" >
+              <text class="jieguo">结果</text>
+              <text class="cankaofanwei">参考范围</text>
+            </view>
+        </view>
+        <view wx:for="{{item.ProjectContent}}" wx:key="">
+          <view wx:if="{{item.txtType==1}}">
+            <view class="zhibiaolist">
+              <view class="zhibiaolistcontent zhibiaolistcontent5">
+                {{item.Section_Office}}
+              </view>
+              <text class="zhibiaolistcontenttext">
+               {{item.Result}}
+              </text>
+            </view>
+          </view>
+          <view wx:else>
+            <view class="zhibiaolist">
+              <block wx:if="{{item.Have_Child==1}}">
+                <view class="zhibiaolistcontent zhibiaolistcontent1 zhibiaolistcontent6">
+                  {{item.Section_Office}}
+                </view>
+
+                <view wx:for="{{item.Child_Content}}" wx:key="">
+                  <view wx:if="{{item.txtType==1}}">
+                    <view class="zhibiaolist">
+                      <view class="zhibiaolistcontent zhibiaolistcontent5">
+                        {{item.Section_Office}}
+                        
+                      </view>
+                      <view class="test">
+                      {{item.Result}}
+                       </view>
+                    </view>
+                  </view>
+                  <view wx:else>
+                    <view class="zhibiaolist">
+                      <view class="zhibiaolistcontent zhibiaolistcontent1">
+                        {{item.Section_Office}}
+                      </view>
+                      <view class="zhibiaolistcontent zhibiaolistcontent2">
+                        {{item.Result}}
+                      </view>
+                        <view class="zhibiaolistcontent zhibiaolistcontent3">
+                          {{item.ReturnState}}
+                        </view>
+                        <view class="zhibiaolistcontent zhibiaolistcontent4">
+                          <text>{{item.ReturnArea}}</text>
+                        </view>  
+                    </view>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="zhibiaolistcontent zhibiaolistcontent1">
+                  {{item.Section_Office}}
+                </view>
+                <view class="zhibiaolistcontent zhibiaolistcontent2">
+                  {{item.Result}}
+                </view>
+                <view class="zhibiaolistcontent zhibiaolistcontent3">
+                  {{item.ReturnState}}
+                </view>
+                <view class="zhibiaolistcontent zhibiaolistcontent4">
+                  <text>{{item.ReturnArea}}</text>
+                </view>              
+              </block>
+            </view>
+          </view>
+        </view>
+        
+        <view class="jishi">
+          技师/医师：{{item.projectdoctor}}
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <text class="content-list-ksjc">    
+      无
+    </text>
+  </block>
+</view>
+
+</view>
+
+
+<!-- 患者的随访记录列表-->
+
+</view>
+</block>

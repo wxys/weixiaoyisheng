@@ -1,0 +1,143 @@
+<!--pages/my_member/index.wxml-->
+<block wx:if="{{PageShow}}">
+  <!--最顶部用户资料-->
+  <view class="user-group">
+    <block wx:if="{{UserData.userInfo.nickName}}">
+      <image src="{{UserData.userInfo.avatarUrl}}" class="user-avatar"></image>
+    </block>
+    <block wx:else>
+      <image src="../../icon/icon-toursit.svg" class="user-avatar"></image>
+    </block>
+    <view class="user-data">
+      <view class="user-nickName">
+        <block wx:if="{{UserData.userInfo.nickName}}"> {{UserData.userInfo.nickName}}</block>
+        <block wx:else>
+          <text class="user-nickname-text">游客</text>
+        </block>
+
+        <block wx:if="{{UserData.MemberInformation=='会员订户'}}">
+          <image src="../../icon/icon-vip.svg" class="icon-vip"></image>
+          <!--年费会员身份显示-->
+          <block wx:if="{{ UserData.member_end_day>365}}">
+            <image src="../../icon/icon-years-member.svg" class="icon-years-vip"></image>
+          </block>
+        </block>
+        <block wx:elif="{{UserData.MemberInformation=='中国移动健康中心会员'}}">
+          <text class="special-member">移动健康中心会员</text>
+          <image src="../../icon/icon-years-member.svg" class="icon-years-vip"></image>
+        </block>
+
+      </view>
+
+      <!--会员剩余日期-->
+
+      <text wx:if="{{UserData.MemberInformation=='会员订户'}}" class="user-vip-deadline">会员还有{{UserMember.duration_day}}天到期</text>
+      <text wx:else class="user-vip-deadline">您是连续包月用户</text>
+
+
+    </view>
+
+    <!--续费按钮-->
+    <block wx:if="{{UserData.MemberInformation=='会员订户'}}">
+      <block wx:if="{{!ShowPayMember}}">
+        <button class="renew-btn" bindtap="RenewMember">续费</button>
+      </block>
+      <block wx:else>
+        <button class="renew-btn" bindtap="CancelRenewMember">放弃续费</button>
+      </block>
+    </block>
+  </view>
+
+  <!--会员到期时间-->
+  <view class="member-end" wx:if="{{UserData.MemberInformation=='会员订户'}}">
+    会员有效期至：{{UserMember.expiration_time}}
+  </view>
+
+  <!--购买/续费会员-->
+  <block wx:if="{{ShowPayMember}}">
+
+    <!--优惠推荐-->
+    <view class="row-title">
+      <view class="row-title-content">
+        优惠推荐
+      </view>
+      <!--
+      服务协议
+      <image src="../../icon/icon-right-2.png" class="title-right-ico"></image>
+      -->
+    </view>
+    <view class="dredge-list">
+      <!--年度黄金会员-->
+      <view class="charge-list-row">
+        <view class="charge-list-row-left">
+
+          <image src="../../icon/icon-recommend.svg" class="recommend-text"></image>
+          <view class="charge-vip-introduce" style="padding-left:40px;">
+            年度黄金会员
+            <text class="charge-vip-cost">￥60元</text>
+          </view>
+          <view class="charge-vip-cost-introduce">12个月，每月5元</view>
+        </view>
+        <button class="dredge-btn" bindtap="DredgeMember" disabled="{{PayDisabled}}" data-cost="60" data-type="年度黄金会员">开通</button>
+      </view>
+
+      <!--月度黄金会员-->
+      <view class="charge-list-row">
+        <view class="charge-list-row-left">
+          <view class="charge-vip-introduce">
+            季度黄金会员
+            <text class="charge-vip-cost">￥15元</text>
+          </view>
+          <view class="charge-vip-cost-introduce">3个月，每月5元</view>
+        </view>
+        <button class="dredge-btn" bindtap="DredgeMember" disabled="{{PayDisabled}}" data-cost="15" data-type="月度黄金会员">开通</button>
+      </view>
+
+      <view class="charge-list-row" style="border:0;">
+        <view class="charge-list-row-left">
+          <view class="charge-vip-introduce">
+            体验会员
+            <text class="charge-vip-cost">￥8元</text>
+          </view>
+          <view class="charge-vip-cost-introduce">1个月，每月8元</view>
+        </view>
+        <button class="dredge-btn" bindtap="DredgeMember" disabled="{{PayDisabled}}" data-cost="8" data-type="体验会员">开通</button>
+      </view>
+
+    </view>
+
+  </block>
+
+
+  <!--会员服务-->
+  
+<view class="service-column">
+  <text>会员服务</text>
+</view>
+<view class="member-service">
+  
+  
+
+  <view class="member-service-li">
+    <image src="../../icon/icon-registration.svg" class="member-service-ico"></image>
+    <text class="member-service-text">预约挂号</text>
+  </view>
+  <view class="member-service-li">
+    <image src="../../icon/icon-consult.svg" class="member-service-ico"></image>
+    <text class="member-service-text">专家咨询</text>
+    <view class="member-not-available">待开通</view>
+  </view>
+  <view class="member-service-li">
+    <image src="../../icon/icon-index-interpretation.svg" class="member-service-ico"></image>
+    <text class="member-service-text">指标解读</text>
+    <view class="member-not-available">待开通</view>
+  </view>
+
+  <view class="member-service-li">
+    <image src="../../icon/icon-medication-remind.svg" class="member-service-ico"></image>
+    <text class="member-service-text">用药提醒</text>
+    <view class="member-not-available">待开通</view>
+  </view>
+</view>
+
+</block>

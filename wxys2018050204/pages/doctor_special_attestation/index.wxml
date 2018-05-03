@@ -1,0 +1,13 @@
+<!--pages/doctor_special_attestation/index.wxml-->
+<view class="remind-text no-bck">
+  <text>如果你因为特殊情况不便上传资格证及执业证，我们为您准备了特殊认证方式</text>
+</view>
+<view class="es-list-li " data-url="./attention1/index" catchtap="SkipPage">
+  <text class="list-text">军医认证</text>
+  <image src="../../icon/icon-advance.svg" class="list-ico"></image>
+</view>
+
+<view class="es-list-li " data-url="./attention2/index" catchtap="SkipPage">
+  <text class="list-text">认证不在身边认证</text>
+  <image src="../../icon/icon-advance.svg" class="list-ico"></image>
+</view>

@@ -1,0 +1,40 @@
+<!--pages/tuwen_online_consulting_window/index.wxml-->
+<view class="top">
+  <view class="top-1">
+    患者资料
+  </view>
+  <view class="top-2">
+    图文咨询
+  </view>
+  <view class="top-3">
+    结束
+  </view>
+</view>
+
+<view class="huixian">
+</view>
+
+<scroll-view style="float:left;height:{{PageScrollHeight}}px;width:100%;margin-top:4px;" scroll-y="true">
+
+</scroll-view>
+
+<view class="bottom-input">
+  <textarea  class="text-input" bindblur="bindTextAreaBlur" placeholder="请输入回复内容" />
+  <view class="bottom-send">
+   发送
+  </view>
+</view>
+
+<!--
+<view class="bottom-list">
+  <view class="bottom-list-1">
+    <image  class="bottom-image" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/icon-paediatrics.png" ></image>
+  </view>
+  <view class="bottom-list-1">
+    <image  class="bottom-image" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/icon-paediatrics.png" ></image>
+  </view>
+  <view class="bottom-list-1">
+    <image class="bottom-image" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/icon-paediatrics.png" ></image>
+  </view>
+</view>
+-->

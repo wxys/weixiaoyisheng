@@ -1,0 +1,134 @@
+<!--pages/patient_management/index.wxml-->
+<view style="display:{{PageShow?'':'none'}}">
+  <scroll-view style="height:{{PageScrollHeight}}px;" scroll-y="true">
+ 
+    <!--顶部患者搜索-->
+    <view class="section search-ipt-groups">
+
+      <image src="../../icon/icon-ipt-search.svg" class="search-ipt-ico"></image>
+      <input placeholder="搜索患者" class="search-ipt" bindinput="SearchInput" bindblur="SureSearchInput" focus="{{focus}}" value="{{search_content}}" bindfocus="ShowRecentSearch" />
+
+      <block wx:if="{{search_content}}">
+        <image src="../../icon/icon-clar-search.png" class="clear-search-ico" catchtap="ClearSearch"></image>
+      </block>
+      <navigator class="btn-groups_add" url="../patient_grouping_management/index" hover-class="none" style="padding:0px 10px;height:35px;">
+       
+        <text>添加患者</text>
+      </navigator>
+      <navigator class="btn-groups" url="../patient_grouping_management/index" hover-class="none" style="padding:0px 10px;height:35px;">
+        <image src="../../icon/icon-set.png" class="btn-groups-ico"></image>
+        <text>分组设置</text>
+      </navigator>
+
+      
+    </view>
+
+    <!--患者列表-->
+    <scroll-view scroll-y="true" style="height:{{ScrollHeight}}px;padding-top:45px;">
+    
+    <!--患者数据-->
+      <view style="display:{{IndexShow}}">
+        <block wx:if="{{patient_data}}" wx:for="{{patient_data}}" wx:key="" wx:for-index="idx">
+          <!--分组名-->
+          <view class="es-list-li between no-border top-border" catchtap="ViewPatient" data-idx="{{idx}}">
+            <view class="patient-group-name">
+              <text>{{item.patient_groups_name}}</text>
+              <text>（{{item.patient_num}}）</text>
+            </view>
+            <image src="{{default_show==idx?'../../icon/icon-down.svg':'../../icon/icon-advance.svg'}}" class="fold-ico"></image>
+          </view>
+
+          <!--每个分组对应的患者数据-->
+          <view data-url="../patient_data/index?patient_name={{item.patient_name}}&patient_avatar={{item.patient_avatar}}&patient_sex={{item.patient_sex}}&patient_age={{item.patient_age}}&patient_id={{item.patient_id}}&patient_groups_id={{patient_data[idx].patient_groups_id}}"
+              class="es-list-li flex-start center no-border" wx:for="{{item.patient_list}}" wx:key="" catchtap="SkipPage" style="display:{{default_show==idx?'':'none'}}">
+            <image src="{{item.patient_avatar}}" class="patient-avatar" mode="widthFix"></image>
+
+            <view class="patient-data">
+              <view class="patient-data-li">
+                <text class="patient-name">{{item.patient_name}}</text>
+
+                <view class=patient-remark-text " wx:if="{{item.patient_remark!='' }} ">备注：{{item.patient_remark}}</view>
+
+              </view>
+              <view class="patient-data-li ">
+                <view class="patient-age ">
+                  <image src="{{item.patient_sex=='男' ? '../../icon/icon-sex-man.svg': '../../icon/icon-sex-woman.svg'}} " class="patient-sex "></image>
+                  <text>{{item.patient_age}}</text>
+                </view>
+                <text class="remark-time ">添加于：{{item.add_time}}</text>
+              </view>
+            </view>
+          </view>
+
+        </block>
+
+          
+                  
+
+        <!--如果没有患者数据-->
+        <view wx:if="{{!patient_data}}" class="load-remind-groups ">
+          <image src="../../icon/icon-empty-content.png" class="load-remind-ico "></image>
+          <text>您没有患者</text>
+        </view>
+      </view>
+      <!--最近搜索-->
+      <view style="display:{{RecentSearchShow}} ">
+
+        <view class="li-title ">
+          <view class="li-title-text ">最近搜索</view>
+          <image src="../../icon/icon-remove.svg " class="clear-search-reacord " catchtap="ClearSearchReacord "></image>
+        </view>
+        <block wx:if="{{patient_search.length>0}}">
+                  <view class="user-search-record-list">
+                    <text class="serach-record" wx:for="{{patient_search}}" wx:key="" bindtap="SetSearch" data-value="{{item.search_content}}">{{item.search_content}}</text>
+                  </view>
+        </block>
+        <block wx:else>
+
+          <view class="empty-search-reacord">暂无搜索历史</view>
+        </block>
+      </view>
+
+
+      <!--搜索结果-->
+      <view class="search-result-list" style="display:{{SearchResultShow}}">
+         <!--搜索结果-->
+        <block wx:if="{{search_result.length>0}}">
+          <view data-url="../patient_data/index?patient_name={{item.patient_name}}&patient_avatar={{item.patient_avatar}}&patient_sex={{item.patient_sex}}&patient_age={{item.patient_age}}" class="es-list-li flex-start center no-border" wx:for="{{search_result}}"
+              wx:key="" catchtap="SkipPage">
+            <image src="{{item.patient_avatar}}" class="patient-avatar" mode="widthFix"></image>
+
+            <view class="patient-data">
+              <view class="patient-data-li">
+                <text class="patient-name">{{item.patient_name}}</text>
+
+                <text class=patient-remark-text " wx:if="{{item.patient_remark!='' }} ">备注：{{item.patient_remark}}</text>
+
+              </view>
+              <view class="patient-data-li ">
+                <view class="patient-age ">
+                  <image src="{{item.patient_sex=='男' ? '../../icon/icon-sex-man.svg': '../../icon/icon-sex-woman.svg'}} " class="patient-sex "></image>
+                  <text>{{item.patient_age}}</text>
+                </view>
+                <text class="remark-time ">添加于：{{item.add_time}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:else>
+          <view class="load-remind-groups ">
+            <image src="../../icon/icon-no-search-result.png " class="load-remind-ico "></image>
+            <text>暂无搜索结果相匹配</text>
+          </view>
+
+        </block>
+      </view>
+
+    </scroll-view>
+
+  </scroll-view>
+
+
+
+</view>

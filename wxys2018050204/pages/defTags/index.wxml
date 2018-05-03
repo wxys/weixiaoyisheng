@@ -1,0 +1,34 @@
+<!--pages/defTags/index.wxml-->
+
+
+
+
+
+<!--pages/favorite/label_edit/index.wxml-->
+<!--提示样式-->
+
+<!--标签编辑区域-->
+<block wx:if="{{PageShow}}">
+
+  <view class="label-list" style="background:#fff;" catchtap="CancelDeleteIndex">
+    <view wx:for="{{tag}}" wx:key="" wx:for-index="idx" data-index="{{idx}}" class="label-groups">
+      <block wx:if="{{DeleteNoteLabelIndex==idx}}">
+        <text class="triangle-down"></text>
+        <text class="label-delete" data-idx="{{item.autoid}}" catchtap="DeleteNoteLabel">删除</text>
+      </block>
+      <text class="label-list-li {{DeleteNoteLabelIndex==idx?'active':''}}" catchtap="DeleteNoteLabelIndex" data-idx="{{idx}}">{{item.topic_name}}</text>
+    </view>
+    <input type="text" value="{{laebl_name}}" class="label-edit {{InputHasBorder?'border':''}}" maxlength="15" placeholder="添加标签" placeholder-style="color:#d1d1d1;" focus="true" bindinput="EditLabelInput"  style="width:{{LabelEditWidth}}px" confirm-type="next" bindconfirm="AddLabelFinish" />
+  </view>
+  <view class="li-title" catchtap="CancelDeleteIndex">
+    <view class="li-title-text">我的标签</view>
+  </view>
+
+  <view class="label-list" catchtap="CancelDeleteIndex">
+     <view wx:for="{{user_tag}}" wx:key="" wx:for-index="idx" data-index="{{idx}}" class="label-groups">
+      
+      <text class="label-list-li {{item.has?'':'not-have'}}" catchtap="OperateAllLabel" data-idx="{{item.autoid}}" data-id="{{item.label_id}}">{{item.topic_name}}</text>
+    </view>
+  </view>
+  
+</block>

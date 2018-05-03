@@ -1,0 +1,210 @@
+/* pages/my_subscribe/index.wxss */
+.my-subscribe-li {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx ;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.my-subscribe-groups {
+  background: #fff;
+  padding: 10px  45rpx;
+  border-radius: 10px;
+  border: 1px solid #efefef;
+}
+
+.subscribe-date {
+  color: #333;
+  font-weight: 600;
+  font-size:30rpx;
+}
+
+.my-subscribe-data-ico {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.my-subscribe-data {
+  color:#666;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.my-subscribe-data.last {
+
+  padding-bottom: 8px;
+}
+
+.my-subscribe-data .hospital, .my-subscribe-data .doctor {
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+.subscribe-state {
+  display: flex;
+  padding: 8px 5px 0px 5px;
+  justify-content: space-between;
+}
+
+.subscribe-state .state-ico {
+  width: 55px;
+  padding: 7px 5px;
+ 
+  font-size: 14px;
+  border-radius: 6px;
+  text-align: center;
+  line-height:1.2;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  color:red;
+}
+
+
+ .not-started
+ {
+    color:#8cc341;
+ }
+
+.subscribe-state .stopping-admission {
+ /* background: #d81e06;*/
+}
+
+.subscribe-state .overdue {
+ /* background: #bfbfbf;*/
+ color:#666;
+}
+
+.operate-groups {
+  display: flex;
+}
+
+.subscribe-state .subscribe-btn {
+  padding: 5px 12px;
+  background: #59bdca !important;
+  color: #fff !important;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-left: 10px;
+  line-height:19px !important;
+}
+
+.subscribe-state .remind-btn {
+  padding: 5px 12px;
+  background: #28b7a3 !important;
+  color: #fff !important;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-left: 10px;
+  line-height:19px !important;
+
+}
+
+.subscribe-time {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.swiper-tab{  
+    width: 100%;  
+    border-top: 2rpx solid #EEEEEE;  
+    line-height: 78rpx;
+    margin-top:4rpx;
+}  
+.swiper-tab-list{  
+  font-size: 30rpx;  
+  display: inline-block;  
+  width: 25%;  
+  margin:0 4%;
+  text-align: center;  
+  color: #606060;  
+  font-weight: 700;
+}  
+.on{ 
+  color: #54B2B2;  
+  border-top: 6rpx solid #54B2B2;
+}  
+.swiper-box{ 
+  display: block; 
+  height: 100%; 
+  width: 100%; 
+  overflow: hidden; 
+} 
+.swiper-tab-list-content{
+  display: none;
+  width:100%;
+  height:1056rpx;
+}
+.swiper-tab-list-content-show{
+  display: block;  
+}
+.top{
+  float:left;
+  width:100%;
+  height:40px;
+  padding:0px 0;
+}
+.top-1{
+  float:left;
+  height:30px;
+  width:33.3%;
+  margin:0%;
+  line-height:30px;
+  text-align:center;
+  font-size:14px;
+
+}
+.yuyuexinxi{
+  float:left;
+  width:96%;
+  height:150px;
+  margin:10px 0 0 2%;
+  border:1px solid black;
+  padding:4px 10px 10px 10px;
+}
+.yuyuexinxi-1{
+  float:left;
+  width:100%;
+  height:30px;
+  line-height:30px;
+  font-size:0.9rem;
+  font-weight: bold;
+}
+.yuyuexinxi-2{
+  float:left;
+  width:100%;
+  height:24px;
+  line-height:24px;
+  font-size:14px;
+}
+.yuyuexinxi-3{
+  float:left;
+  width:100%;
+  height:26px;
+  margin:9px 0 0 0;
+}
+.yuyuexinxi-3-1{
+  float:left;
+  width:66px;
+  height:22px;
+  font-size:14px;
+  line-height:22px;
+  text-align:center;
+  border:1px solid black;
+  border-radius: 3px;
+}
+.yuyuexinxi-3-2{
+  float:right;
+  width:66px;
+  height:22px;
+  font-size:14px;
+  line-height:22px;
+  text-align:center;
+  border-radius: 3px;
+  background: #169bd5;
+  color:white;
+}

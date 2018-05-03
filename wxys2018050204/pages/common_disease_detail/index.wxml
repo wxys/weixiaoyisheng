@@ -1,0 +1,122 @@
+<!--pages/common_disease_detail/index.wxml-->
+<block wx:if="{{page_data.clinic_guide}}">
+  <!-- 诊疗指南 -->
+  <view class="column-title" style="margin-top:0px;">
+    <view class="column-text">诊疗指南</view>
+
+  </view>
+
+  <view class="clinic-guide">
+     <navigator class="clinic-guide-li" url="../clinic_guide/index?clinic_guide_id={{item.clinic_guide_id}}&clinic_guide_title={{item.clinic_guide_title}}" wx:for="{{page_data.clinic_guide}}" wx:key="" hover-class="none">
+    
+      <view class="clinic-guide-title-groups">
+        <block wx:if="{{item.is_essence}}">
+          <image src="../../icon/icon-add-essence.png" class="add-essence"></image>
+        </block>
+        <text class="clinic-guide-title">{{item.clinic_guide_title}}</text>
+      </view>
+      <view class="clinic-guide-introduce">
+        {{item.clinic_guide_introduce}}
+      </view>
+
+    </navigator>
+
+  </view>
+</block>
+
+
+<block wx:if="{{page_data.our_expert}}">
+  <view class="column-title" style="{{!page_data.clinic_guide?'margin-top:0px':''}}">
+    <view class="column-text">推荐专家</view>
+    <navigator url="../doctor_list/index?common_departments_id={{common_departments_id}}&common_diseases_name={{common_diseases_name}}" class="column-right-text" hover-class="none">
+      更多
+      <image src="../../icon/icon-right4.png" class="column-ico"></image>
+    </navigator>
+  </view>
+
+  <view class="es-list" wx:for="{{page_data.our_expert}}" wx:key="">
+
+
+    <navigator class="es-list-li center" url="../doctor_card/index?doctor_cover={{item.doctor_cover}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{item.doctor_departments}}&doctor_hospital={{item.doctor_hospital}}&doctor_subscribe_number=0&doctor_id={{item.doctor_id}}&hospitalId={{item.hospitalId}}&departmentId={{item.departmentId}}"
+      hover-class="none" style="paddng:5px 10px;">
+
+      <image src="{{item.doctor_cover}}" class="doctor-cover" />
+
+      <view class="doctor-data">
+        <view>
+          <text class="doctor-name">{{item.doctor_name}}</text>
+          <text class="doctor-level">{{item.doctor_position}}</text>
+        </view>
+        <!--
+              <view class="doctor-subscribe-data">
+                <image src="../../icon/icon-start.png" class="start-ico"></image>
+
+                <text class="doctor-start">{{item.doctor_start}}</text>
+                <text class="doctor-subscribe-num">接诊量 {{item.doctor_subscribe_number}}</text>
+              </view>
+              -->
+        <view class="doctor-hospital"> {{item.doctor_hospital}}</view>
+        <text class="doctor-good-at">{{item.doctor_good_at}}</text>
+
+
+      </view>
+
+      <view class="subscribe-btn-sm" data-url="../doctor_subscribe/index?doctor_cover={{item.doctor_cover}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{item.doctor_departments}}&doctor_hospital={{item.doctor_hospital}}&doctor_subscribe_number={{item.doctor_subscribe_number}}&doctor_id={{item.doctor_id}}&hospitalId={{item.hospitalId}}&departmentId={{item.departmentId}}"
+        catchtap="SkipPage">预约</view>
+    </navigator>
+
+  </view>
+</block>
+
+<block wx:if="{{page_data.recommend_hospital}}">
+  <view class="column-title" style="{{!page_data.clinic_guide && !page_data.our_expert?'margin-top:0px':''}}">
+    <view class="column-text">推荐医院</view>
+    <!--
+    <navigator url="../hospital_list/index" class="column-right-text" hover-class="none">
+      更多
+      <image src="../../icon/icon-right4.png" class="column-ico"></image>
+    </navigator>
+    -->
+  </view>
+
+  <view class="es-list">
+    <view class="es-list-li center" wx:for="{{page_data.recommend_hospital}}" wx:key="" data-url="../departments_subscribe/index?hospital={{item.recommend_hospital_name}}&hospitalId={{item.recommend_hospital_id}}&departments={{item.Department_Name}}&departmentId={{item.Department_Id}}"
+      catchtap="SkipPage">
+      <image alt="" src="{{item.recommend_hospital_cover}}" class="hospital-image" mode="widthFix" />
+      <view class="hospital-data">
+
+        <view class="hospital-name">{{item.recommend_hospital_name}}</view>
+        <view class="hospital-level">{{item.recommend_hospital_level}}</view>
+        <view class="hospital-departments-recomend">
+          <block wx:for="{{item.Departments}}" wx:key="">
+            <span class="hospital-departments">{{item.DepartmentsName}}</span>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+
+
+<block wx:if="{{page_data.common_check}}">
+  <view class="column-title">
+    <view class="column-text">{{common_diseases_name}} 常见检查</view>
+    <!--
+    <navigator url=" " hover-class="none" class="column-right-text">
+      更多
+      <image src="../../icon/icon-right4.png" class="column-ico"></image>
+    </navigator>
+    -->
+  </view>
+  <view class="common-diseases">
+    <view data-url="../common_check/index?common_check_id={{item.common_check_id}}&common_check_text={{item.common_check_text}}" class="common-diseases-li" wx:for="{{page_data.common_check}}" wx:key="" catchtap="SkipPage">{{item.common_check_text}}</view>
+  </view>
+ 
+</block>
+
+
+
+<view wx:if="{{page_data.clinic_guide.length==0 && page_data.common_check.length==0 &&page_data.our_expert.length==0 && page_data.recommend_hospital.length==0}}" class="remind-groups">
+  <image src="../../icon/icon-remind.png" class="remind-groups-ico"></image>
+  <text>暂无相关数据</text>
+</view>

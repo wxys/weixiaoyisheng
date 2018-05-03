@@ -1,0 +1,154 @@
+/* pages/doctor_card/index.wxss */
+
+page {
+  background: #f5f5f5;
+}
+
+text {
+  line-height: 1.5;
+}
+
+.doctor-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 175px;
+  background: #59bdca;
+  border-bottom: 1px solid #efefef;
+  color:#fff !important;
+  padding-bottom:15px;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:999;
+
+}
+
+
+
+.doctor-data {
+  display: flex;
+  padding-left: 0px;
+  flex-direction:row;
+}
+
+.doctor-card .doctor-cover {
+  width: 80px;
+  height: 80px;
+  padding-bottom: 6px;
+}
+
+.doctor-card .doctor-name {
+  font-size: 20px;
+  color:#fff;
+}
+
+.doctor-card .doctor-position {
+  font-size: 15px;
+  padding-right: 5px;
+  font-weight: 600;
+}
+
+.doctor-card .doctor-departments {
+  font-size: 14px;
+  color:#fff;
+}
+
+.doctor-card .doctor-hospital {
+  font-size: 13px;
+  color:#fff;
+}
+
+.collect-groups {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.collect-groups2 {
+  position: absolute;
+  top: 8px;
+  left: 40px;
+}
+.collected {
+  background: #28b7a3 !important;
+  color: #fff !important;
+  font-size: 13px;
+  padding: 5px 0px;
+  width: 60px;
+  text-align: center;
+  border-radius: 5px;
+  line-height:1.5;
+
+}
+.un-collected{
+  background:#fff!important;
+  color:#28b7a3 !important;
+  font-size:13px;
+  padding:4px 0px;
+  width:60px;
+  text-align:center;
+  border-radius:5px;
+  line-height:1.5;
+  border:1px solid #28b7a3;
+}
+
+
+.saying-list-li {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+}
+
+.saying-content {
+  font-size: 14px;
+}
+
+.saying-time {
+  font-size: 13px;
+  color: #666;
+}
+
+.guide-list-li {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+}
+
+.guide-digest {
+  font-size: 13px;
+  color: #666;
+}
+
+.guide-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.go-subscribe-btn {
+  height: 40px;
+  line-height: 40px;
+  background: #59bdca;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+}
+.doctor-introduce{
+  padding: 10px;
+  text-indent: 15px;
+  font-size: 14px;
+  background: #fff;
+  position: relative;
+}
+.text-operate{
+  width:20px;
+  margin-left:5px;
+  position: absolute;
+}

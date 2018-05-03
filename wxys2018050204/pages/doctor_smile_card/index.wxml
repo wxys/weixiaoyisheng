@@ -1,0 +1,26 @@
+<!--pages/doctor_smile_card/index.wxml-->
+<!--顶部医生资料-->
+<view class="smile-card-groups">
+  <image src="{{DoctorData.doctor_picture}}" class="doctor-user-cover"></image>
+  <view class="smile-card-doctor-data">
+    <view class="smile-card-doctor-data-position">
+      <view class="doctor-user-name">{{DoctorData.doctor_name}}</view>
+      <view class="doctor-user-position">{{DoctorData.doctor_profession}}</view>
+    </view>
+    <view class="smile-card-doctor-data-hospital" >
+      <view class="doctor-user-hospital">{{DoctorData.doctor_hospital}}</view>
+      <view class="doctor-user-departments">{{DoctorData.doctor_class}}</view>
+    </view>
+  </view>
+</view>
+
+<!--医生二维码图片-->
+<view class="quick-mark-groups">
+  <image src="../../icon/create2_doctorcl.jpg" class="quick-mark-img" mode="widthFix"></image>
+  <image src="../../icon/icon-success.png" class="scan-ico"></image>
+  <view class="scan-btn">
+    <text>让患者用微信扫一扫</text>
+    <text>此二维无个人微信资料</text>
+  </view>
+
+</view>

@@ -1,0 +1,16 @@
+/* pages/subscribe/index.wxss */
+page{
+    background: #f2f4f6;
+}
+.subscribe-btn{
+    background: #59bdca !important;
+    color: #fff !important;
+    border-radius: 0;
+    font-size:16px;
+    /*
+    position:fixed;
+    width:100%;
+    bottom:0px;
+    */
+}
+

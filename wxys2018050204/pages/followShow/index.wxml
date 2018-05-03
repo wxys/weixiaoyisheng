@@ -1,0 +1,154 @@
+<!--pages/followShow/index.wxml-->
+<!--pages/follow/index.wxml-->
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+  <view class='disease_title'>{{followI.name}}随访记录</view>
+  <view class="content_f">
+  
+
+
+
+
+
+
+
+<view class="swiper-tab">
+  <block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+ 
+      <block wx:if="{{item.type=='symptom'}}">
+      <view  class="s_title swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav" >临床症状</view>
+      </block>
+
+      <block wx:elif="{{item.type=='check'}}">
+      <view  class="s_title swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav"  >辅助检查</view>
+      </block>
+
+   
+
+      <block wx:elif="{{item.type=='drug'}}">
+      <view  class="s_title swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav" >用药状况</view>
+      </block>
+   
+</block>
+  <view class="s_title swiper-tab-list {{currentTab==5 ? 'on' : ''}}" data-current="5" bindtap="swichNav">医嘱填写</view>
+
+</view>
+<scroll-view scroll-y class="swiper-tab-list-content {{currentTab==0 ? 'swiper-tab-list-content-show' : ''}}">   
+<block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+<block wx:if="{{item.type=='symptom'}}">
+   <view wx:for="{{item.list}}"  class="hang" wx:key="key"  wx:for-item="val" >
+    
+      <view class='p_3'>{{index+1}}、{{val.name}}</view>
+      <view  class='p_4'>
+        <block wx:if="{{val.answer != '' && val.answer != null && val.answer!=undefined}}">
+            {{val.answer}}
+          </block>
+              <block wx:else>
+    无记录 
+          </block>
+  
+   
+      </view>
+      <view class="clear"></view>
+    
+     </view>
+       <view class="clear clear_b"></view>
+
+     
+      </block>
+
+
+
+
+</block>
+
+ </scroll-view>
+<scroll-view scroll-y  class="swiper-tab-list-content {{currentTab==1 ? 'swiper-tab-list-content-show' : ''}}">   
+<block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+<block wx:if="{{item.type=='check'}}">
+   <view wx:for="{{item.list}}"  class="hang" wx:key="key"  wx:for-item="val" >
+    
+      <view class='p_3'>{{index+1}}、{{val.name}}</view>
+      <view  class='p_4'>
+       <block wx:if="{{val.answer != '' && val.answer != null && val.answer!=undefined}}">
+        {{val.answer}}
+       </block>
+           <block wx:else>
+无记录 
+       </block>
+      </view>
+      <view class="clear"></view>
+    
+     </view>
+       <view class="clear clear_b"></view>
+     
+     
+      </block>
+
+
+
+
+</block>
+
+
+ </scroll-view>
+
+
+
+
+
+
+
+
+<scroll-view scroll-y   class="swiper-tab-list-content {{currentTab==4 ? 'swiper-tab-list-content-show' : ''}}">   
+<block wx:for="{{project}}"  wx:key=""  wx:for-item="item"  >
+<block wx:if="{{item.type=='drug'}}">
+   <view wx:for="{{item.list}}"  class="hang" wx:key="key"  wx:for-item="val" >
+
+      <view class='p_3'>{{index+1}}、{{val.name}}</view>
+      <view  class='p_4'>
+  <block wx:if="{{val.answer != '' && val.answer != null && val.answer!=undefined}}">
+        {{val.answer}}
+       </block>
+           <block wx:else>
+无记录 
+       </block>
+      
+      </view>
+      <view class="clear"></view>
+    
+     </view>
+     
+           <view class="clear clear_b"></view>
+      </block>
+
+
+
+
+</block>
+</scroll-view>
+<scroll-view scroll-y    class="swiper-tab-list-content {{currentTab==5 ? 'swiper-tab-list-content-show' : ''}}">   
+
+<view class="yizhu">{{yizhu.value}}</view>
+
+</scroll-view>
+
+
+
+</view>
+
+
+
+
+
+
+
+
+</block>
+
+   <!--  
+ --> 

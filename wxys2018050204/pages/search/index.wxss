@@ -1,0 +1,162 @@
+/* pages/search/index.wxss */
+page{
+  
+}
+.search-ipt-groups{
+    background: #FFFFFF;
+    padding: 5px;
+    /*border-bottom: 1px solid #ebebeb;*/
+}
+.search-ipt{
+    height: 35px;
+    border: 0px;
+    background: #f5f5f5;
+    display: block;
+    padding:0px 27px 0px 35px;
+    font-size: 15px;
+    line-height: 35px;
+    color: #555;
+    border-radius: 15px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    margin: 0 auto;
+}
+.search-ipt-ico{
+    position:absolute;
+    z-index:999;
+    width:28px;
+    height:28px;
+    top:8px;
+    left:10px;
+}
+.clear-search-ico{
+    position:absolute;
+    z-index:999;
+    width:20px;
+    height:20px;
+    top:12px;
+    right:10px;
+}
+.li-title{
+    padding:10px 10px 0px 10px;
+    font-size:14px;
+    color:#c1c1c1;
+    display:flex;
+}
+.li-title-text{
+    height:20px;
+    line-height:20px;
+    flex-grow:1;
+    font-size:13px;
+}
+.clear-search-reacord{
+    width:20px;
+    height:20px;
+}
+.user-search-record-list{
+    padding:5px 10px 0px 10px;
+    display:table;
+}
+.serach-record{
+    background:#f4f4f4;
+    padding:8px;
+    border-radius:15px;
+    font-size:12px;
+    color:#000;
+    margin:5px;
+    float:left;
+}
+.empty-search-reacord{
+    color:#c1c1c1;
+    text-align:center;
+    font-size:15px;
+    width:710rpx;
+    padding:10px 0px;
+}
+
+.search-li{
+    display:flex;
+}
+.search-li-text{
+    color:#58595a;
+    display:block;
+    height:40px;
+    border-bottom:1px dashed #ebebeb;
+    font-size:14px;
+    width:710rpx;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -ms-text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -moz-binding:url("ellipsis.xml#ellipsis");
+    line-height:40px;
+    padding:0px 10px;
+}
+.search-li-icon{
+    width:25px;
+    height:25px;
+    margin-top:7.5px;
+    margin-right:5px;
+}
+.empty-remind{
+    padding:10px;
+    font-size:15px;
+    text-align:center;
+}
+
+.hot-search-groups{
+    display:table;
+}
+.hot-search-li{
+    width:325rpx;
+    padding:25rpx;
+    font-size:14px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -ms-text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -moz-binding:url("ellipsis.xml#ellipsis");
+    float:left;
+    color:#58595a;
+    border-bottom:1px dashed #efefef;
+}
+.hot-search-no{
+    margin-right:6px;
+}
+
+.scroll-video{
+    height:100px;
+    white-space:nowrap;
+}
+.scroll-video-groups{
+    margin:5px;
+    display:inline-block;
+    position:relative;
+}
+.scroll-video-li{
+    width:135px;
+    height:80px;
+    border-radius:5px;
+}
+.video_duration{
+    position:absolute;
+    bottom: 0px;
+    right:0px;
+    padding:2px 5px;
+    font-size:12px;
+    color:#fff;
+    background-color:rgba(0,0,0,.6);
+    border-radius:4px 0 4px 0;
+
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+

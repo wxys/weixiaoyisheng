@@ -1,0 +1,73 @@
+/* pages/inform/index.wxss */
+page{
+    background: #f5f5f5;
+}
+.inform-li{
+    display:flex;
+    flex-direction: column;
+    padding:10px;
+    font-size:16px;
+    color:#666666;
+}
+.inform-title-groups{
+    display: flex;
+    align-items: center;
+    color:#333333;
+    font-weight: 600;
+    font-size:15px;
+    margin-bottom:8px;
+}
+.inform-groups{
+    background:#fff;
+    padding:10px;
+    border-radius: 10px;
+    border:1px solid #efefef;
+}
+.inform-title-groups image{
+    width:35px;
+    margin-right:5px;
+}
+.inform-title{
+    flex:1;
+    /*
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    */
+}
+.inform-content{
+    color:#8a8a8a;
+    font-size:14px;
+    text-indent: 25px;
+    word-break:break-all;
+}
+.inform-time{
+    font-size:13px;
+    margin-top:8px;
+    display: flex;
+    align-items: center;
+    color:#333333;
+    justify-content: flex-end;
+    /*
+    padding-bottom:8px;
+    border-bottom:1px solid #f5f5f5;
+    */
+}
+.inform-time image{
+    width:17px;
+    height:17px;
+    margin-right: 3px;
+}
+
+.inform-view{
+    font-size:13px;
+    margin-top:8px;
+    display: flex;
+    align-items: center;
+    color:#333333;
+    justify-content: space-between;
+}
+.inform-view image{
+    width:15px;
+    height:15px;
+}

@@ -1,0 +1,63 @@
+<!--pages/search/index.wxml-->
+<!--顶部搜索框-->
+<view class="section search-ipt-groups">
+  <image src="../../icon/icon-ipt-search.png" class="search-ipt-ico"></image>
+  <input placeholder="搜索..." auto-focus class="search-ipt" bindinput="SearchInput" bindblur="SureSearchInput" focus="{{focus}}" value="{{search_content}}" />
+  <image src="../../icon/icon-clar-search.png" class="clear-search-ico" bindtap="ClearSearch"></image>
+</view>
+<view class="index" style="display:{{ShowIndex}}">
+
+  <!--最近搜索-->
+  <view class="li-title">
+    <view class="li-title-text">最近搜索</view>
+    <image src="../../icon/icon-close3.png" class="clear-search-reacord" bindtap="ClearSearchReacord"></image>
+  </view>
+  <block wx:if="{{search_list.length>0}}">
+    <view class="user-search-record-list">
+      <text class="serach-record" wx:for="{{search_list}}" wx:key="id" bindtap="SetSearch" data-value="{{item.search_content}}">{{item.search_content}}</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="empty-search-reacord">暂无搜索历史</view>
+  </block>
+
+  <!--热门搜索-->
+  <view class="li-title">
+    <view class="li-title-text">所有标签</view>
+  </view>
+
+  <!--搜索列表-->
+  <block wx:if="{{AllSection.length>0}}">
+    <view class="hot-search-groups">
+        <view class="hot-search-li" wx:for="{{AllSection}}" wx:key="" bindtap="SetSearch" data-value="{{item.topic_name}}">
+        <text style="color:#e{{item.no-1}}1802" class="hot-search-no">{{item.no}}</text>
+        <text class="hot-search-content">{{item.topic_name}}</text>
+        </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="empty-search-reacord">暂无搜索</view>
+  </block>
+
+
+
+</view>
+
+<!--搜索结果-->
+<view class="search-result-list" style="display:{{ShowResult}}">
+  <!--搜索结果--> 
+  <block wx:if="{{search_result.length>0}}" >
+    <block wx:for="{{search_result}}"  wx:key="">
+     
+        <navigator url="../article/index?autoid={{item.autoid}}&isMsg={{item.isMsg}}&isXcxZT={{item.isXcxZT}}" class="search-li" >
+          <view class="search-li-text">{{item.title}}</view>
+          <image src="../../icon/icon-subject3.png" class="search-li-icon"></image>
+        </navigator>
+      </block>
+
+  </block>
+
+  <block wx:else>
+    <view class="empty-remind"> 暂无搜索结果相匹配</view>
+  </block>
+</view>

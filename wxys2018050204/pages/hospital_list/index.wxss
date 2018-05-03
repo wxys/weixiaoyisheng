@@ -1,0 +1,12 @@
+/* pages/hospital_list/index.wxss */
+page{
+    background:#f8f8f8;
+}
+.search-ipt{
+  border-radius:5px;
+  padding:0px 25px 0px 35px;
+}
+
+.search-ipt-ico {
+  left:84px;
+}

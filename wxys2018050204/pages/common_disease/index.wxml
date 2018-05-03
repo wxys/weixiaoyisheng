@@ -1,0 +1,20 @@
+<!--pages/common_disease/index.wxml-->
+<view class="hierarchy-list">
+  <!--科室选择-->
+  <scroll-view class="first-order-list es-selector" style="height:{{ScrollHeight}}px;" scroll-y="true">
+    <block wx:for="{{common_disease}}" wx:key="" wx:for-index="idx" data-idx="{{idx}}">
+      <view class="first-order-li {{first_hierarchy_id==item.dempart_id ? 'active' : ''}}" bindtap="ShowSecondHierarchy" data-id="{{idx}}" data-dempart_id="{{item.dempart_id}}"  data-province="{{item.fullname}}" >
+        <block wx:if="{{first_hierarchy_id==item.dempart_id}}">
+          <image src="../../icon/icon-right-3.png"></image>
+        </block>
+        {{item.dempartname}}
+      </view>
+
+    </block>
+  </scroll-view>
+
+  <!--疾病选择-->
+  <scroll-view class="second-order-list" style="height:{{ScrollHeight}}px" scroll-y="true">
+    <navigator url="../common_disease_detail/index?common_diseases_name={{item.diseasename}}&common_departments_id={{common_disease[first_hierarchy_id].dempart_id}}&common_diseases_id={{item.autoid}}" class="second-order-li" wx:for="{{disease}}" wx:key="" hover-class="none">{{item.diseasename}}</navigator>
+  </scroll-view>
+</view>

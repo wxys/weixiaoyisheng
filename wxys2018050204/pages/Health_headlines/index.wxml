@@ -1,0 +1,178 @@
+<!--pages/Health_headlines/index.wxml-->
+<!--   模态框的背景  -->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{show_jihuo}}"></view>  
+
+
+<view class="jihuo_view drawer_box" wx:if="{{show_jihuo}}">
+<view>
+<image src="../../icon/icon-clar-search.png" class="close_view" bindtap='close_view'></image>
+
+<view style="float:left;line-height:60rpx;margin-top:80rpx;margin-left:0"  class="title">
+<view>您可以在这里</view><view>查看所有的健康短信了</view></view>
+<view class="clear"></view>
+</view>
+<view class="font_28" style="font-size:30rpx;margin-left:10rpx;font-weight:600">中国移动健康俱乐部会员专属：</view>
+<view  class="font_28" style="font-size:30rpx;width:500rpx ! important;margin-left:10rpx;">
+激活会员权利后，可使用微笑医生小程序，同步接收您的健康短信。再不怕误删想要收藏的健康短信，转发分享更方便。
+</view>
+
+<view class="padding_40 padding_no_left"><button open-type="getPhoneNumber"  class="jihuo_getPhone_btn" bindgetphonenumber="getPhoneNumber">激活会员权益</button>
+</view>
+</view>
+
+<!-- 验证失败的显示-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{show_jihuo_fail}}"></view>  
+<view class="jihuo_view drawer_box" wx:if="{{show_jihuo_fail}}">
+<view>
+<image src="../../icon/icon-clar-search.png"  bindtap="close_view" class="close_view"></image>
+
+<view style="float:left" class="title tilte_1">
+<view  class="font_weight_600">非常抱歉 </view></view>
+<view class="clear"></view>
+</view>
+<view  class="font_26 error_tips">
+<text class="font-tips">{{show_phone}}</text>不是中国移动健康俱乐部会员。您可继续使用微笑医生的其他免费功能
+</view>
+
+<navigator class="changePhone" url="../buy_member/index">更换手机号</navigator>
+<view class="clear"></view>
+</view>
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{show_jihuo_success}}"></view>  
+<view  class="jihuo_view drawer_box" wx:if="{{show_jihuo_success}}">
+<view>
+<image src="../../icon/icon-clar-search.png" bindtap="close_view"  class="close_view"></image>
+
+<view style="float:left" class="title title_1" >
+<view  class="font_weight_600">恭喜你 </view></view>
+<view class="clear"></view>
+</view>
+<view  class="font_26 text_align_left">您已成功激活<text class="color_f" style="color:#ad8f75">{{show_phone}}</text>的会员权益。</view>
+<view  class="font_26 text_align_left">·您的健康短信将会同步到健康头条</view>
+<view  class="font_26 text_align_left">·您可免费使用预约挂号服务</view>
+</view>
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+<navigator class="itemView input" url="../search/index">搜索</navigator>
+
+<view class="border_2_gray">
+ <scroll-view class="recommend_scroll_x_box" scroll-x="true"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}">
+
+ <block wx:for="{{section}}" wx:key=''>
+
+  <block wx:if="{{item.autoid==now_section}}">
+      <view class="section_item click_section  {{item.class}}" bindtap='changeSection' data-index="{{item.autoid}}">{{item.topic_name}}</view>
+       
+    </block>
+      <block  wx:else>
+      <view class="section_item  {{item.class}}" data-index="{{item.autoid}}" bindtap='changeSection'>{{item.topic_name}}</view>
+    </block>
+  </block>
+
+</scroll-view>
+<navigator  url="../changeUserSection/index" class='nav_add'>
+<image src="../../icon/icon-add-i.png" class="icon_add"></image>
+<view class="clear"></view>
+</navigator>
+<view class="clear"></view>
+</view>
+<block wx:if="{{articles}}">
+<view class="">
+<view wx:for="{{articles}}"  wx:key='' class="margin_bottom_20">
+<block wx:if="{{item.isMsg=='1'}}">
+<navigator url="../article/index?autoid={{item.autoid}}&isMsg=1" class="nav_a">
+    <image src="{{item.img}}" class="article_img"></image>
+    <view class="base_info">
+      <view class="info_1">{{item.title}}</view>
+      <view  class="info_2">
+        <text>全球通健康俱乐部</text> <view class="tongbu_icon">同步短信</view>
+        <text style="float:right;margin-right:10rpx;color:#999;font-size:22rpx;">{{item.s_time}}</text>
+      </view>
+    </view>
+    <view class="clear"></view>
+</navigator>
+  <view class="over_hidden">
+    <navigator class="tags d_tags" url='../defTags/index?autoid={{item.autoid}}&isMsg=1'>
+    <image src="../../icon/biaoqian-icon.png" class="tags_image"></image>
+    </navigator>
+    <view class="tags item_tag">{{item.defaultSection}}</view>
+    <block wx:for="{{item.tags}}" wx:key=""  wx:for-item="val">
+    <view class="tags item_tag">{{val.topic_name}}</view>
+    </block>
+  </view>
+  </block>
+
+
+
+<block wx:else>
+
+<block wx:if="{{item.isXcxZT=='1'}}">
+<block wx:if="{{item.isshowbanner=='1' && item.isttop=='1'}}">
+<navigator url="../article/index?autoid={{item.autoid}}&isXcxZT={{item.isXcxZT}}" class="nav_a">
+    <image src="{{item.img}}" class="themeCover"></image>
+ </navigator>
+</block>
+<block wx:else>
+<navigator url="../article/index?autoid={{item.autoid}}&isXcxZT={{item.isXcxZT}}" class="nav_a">
+    <image src="{{item.img}}" class="theme_img"></image>
+    <view class="base_info_theme">
+      <view class="info_1">{{item.title}}</view>
+      <view  class="info_2">
+        <text>{{item.publisher}}</text><view class="tongbu_icon">专题</view>
+        <text style="float:right;margin-right:10rpx;color:#999;font-size:22rpx;">{{item.s_time}}</text>
+      </view>
+    </view>
+    <view class="clear"></view>
+</navigator>
+  <navigator url='../defTags/index?autoid={{item.autoid}}' class="over_hidden">
+    <view class="tags d_tags">
+    <image src="../../icon/biaoqian-icon.png" class="tags_image"></image>
+    </view>
+    <block wx:for="{{item.tags}}" wx:key=""  wx:for-item="val">
+    <view class="tags item_tag">{{val.topic_name}}</view>
+    </block>
+
+</navigator>
+</block>
+</block>
+<block wx:else>
+<navigator url="../article/index?autoid={{item.autoid}}" class="nav_a">
+    <image src="{{item.img}}" class="article_img"></image>
+    <view class="base_info">
+      <view class="info_1">{{item.title}}</view>
+      <view  class="info_2">
+        <text>{{item.publisher}}</text>
+        <text style="float:right;margin-right:10rpx;color:#999;font-size:22rpx;">{{item.s_time}}</text>
+      </view>
+    </view>
+    <view class="clear"></view>
+</navigator>
+  <navigator url='../defTags/index?autoid={{item.autoid}}' class="over_hidden">
+    <view class="tags d_tags">
+    <image src="../../icon/biaoqian-icon.png" class="tags_image"></image>
+    </view>
+    <block wx:for="{{item.tags}}" wx:key=""  wx:for-item="val">
+    <view class="tags item_tag">{{val.topic_name}}</view>
+    </block>
+
+</navigator>
+
+ </block>
+  </block>
+  </view>
+</view>
+</block>
+</block>
+</block>
+
+

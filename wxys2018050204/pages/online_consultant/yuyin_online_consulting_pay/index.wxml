@@ -1,0 +1,94 @@
+<!--pages/online_consultant/yuyin_online_consulting/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<view class="doctor-info">
+  <view class="doctor-photo">  
+      <image class="doctor-cover" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/doctor.png"></image>
+  </view>
+  <view class="doctor-intorduce">
+    <view class="doctor-name">
+      郑靖
+    </view>
+    <view class="doctor-zc">
+      主治医师
+    </view>
+    <view class="doctor-ks">
+      西岸中医门诊部    中医康复科
+    </view>
+  </view>
+</view>
+
+
+<view class="yyxx">
+  <view class="yyxx-1">
+    <view class="yyxx-1-left">
+      预约时段
+    </view>
+    <view class="yyxx-1-right">
+      {{PBRQ_y}} {{WEEKDAY}} {{TIME}}
+    </view>
+  </view>
+  <view class="yyxx-1">
+    <view class="yyxx-1-left">
+      预约类型
+    </view>
+    <view class="yyxx-1-right">
+      语音咨询
+    </view>
+  </view>
+  <view class="yyxx-1">
+    <view class="yyxx-1-left">
+      服务费用
+    </view>
+    <view class="yyxx-1-right">
+      6元/分钟
+    </view>
+  </view>
+</view>
+
+<view class="huixian">
+</view>
+
+ <!--就诊人信息-->
+<view class="xzjzr" style="margin:-10px 0 0 0">
+  <view class="subscribe-person-data-list">
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">就诊人</text>
+
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{FamilyMember}}" range-key="{{'User_Name'}}" mode="selector" class="subscribe-person-data-content">
+        <view class="picker">
+          {{SeekingPerson.seeking_person}}
+        </view>
+      </picker>
+
+    </view>
+
+
+    <!--证件类型-->
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">{{SeekingPerson.certificate_type}}</text>
+      <text class="subscribe-person-data-content">{{SeekingPerson.certificate_number}}</text>
+    </view>
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">手机</text>
+      <text class="subscribe-person-data-content">{{SeekingPerson.phone}}</text>
+    </view>
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">性别</text>
+      <text class="subscribe-person-data-content">{{SeekingPerson.sex}}</text>
+    </view>
+  </view>
+</view>
+
+
+<view class="bottom1">
+</view>
+
+<view class="bottom-2" bindtap='querenyuyue'>
+  <view class="bottom-2-left">
+    预支付  90元
+  </view>
+  <view class="bottom-2-right">
+    （6元×15分钟）
+  </view>
+</view>
+

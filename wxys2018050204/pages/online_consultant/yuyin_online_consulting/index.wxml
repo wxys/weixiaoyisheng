@@ -1,0 +1,196 @@
+<!--pages/online_consultant/yuyin_online_consulting/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<view class="doctor-info">
+  <view class="doctor-photo">  
+      <image class="doctor-cover" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/doctor.png"></image>
+  </view>
+  <view class="doctor-intorduce">
+    <view class="doctor-name">
+      郑靖
+    </view>
+    <view class="doctor-zc">
+      主治医师
+    </view>
+    <view class="doctor-ks">
+      西岸中医门诊部    中医康复科
+    </view>
+  </view>
+</view>
+
+
+<view class="zxlx">
+  <navigator class="zxlx-1" url="../tuwen_online_consulting/index" open-type="redirect">
+    <view class="zxlx-1-1">
+    
+    </view>
+    <view class="zxlx-1-2">
+      图文咨询
+    </view>
+    <view class="zxlx-1-3">
+      50元/次
+    </view>
+  </navigator>
+  <view class="zxlx-1" style="height:42px;background:#ff8100;color:white">
+    <view class="zxlx-1-1">
+    
+    </view>
+    <view class="zxlx-1-2">
+      语音咨询
+    </view>
+    <view class="zxlx-1-3">
+      6元/分钟
+    </view>
+  </view>
+  <navigator class="zxlx-1" url="../shipin_online_consulting/index" open-type="redirect">
+    <view class="zxlx-1-1">
+    
+    </view>
+    <view class="zxlx-1-2">
+      视频咨询
+    </view>
+    <view class="zxlx-1-3">
+      50元/分钟
+    </view>  
+  </navigator>
+  <view class="zxlx-1" style="border-color:#c9c9c9">
+    <view class="zxlx-1-1">
+    
+    </view>
+    <view class="zxlx-1-2" style="color:#c9c9c9">
+      预约挂号
+    </view>
+    <view class="zxlx-1-3" style="color:#c9c9c9">
+      未开通
+    </view>
+  </view>
+</view>
+
+<view class="zxjs">
+  <view class="zxjs-1">
+    图文咨询：
+  </view>
+  <view class="zxjs-2">
+    通过文字、图片、语音进行咨询。
+  </view>
+</view>
+
+<view class="huixian">
+</view>
+
+<view class="rdzx">
+
+  <view class="rdzx-1">
+    <view class="rdzx-1-1">
+      热度咨询
+    </view>
+    <view class="rdzx-1-2">
+      >
+    </view>
+  </view>
+
+  <view class="rdzx-2">
+    <view class="rdzx-2-1">
+      腹泻(902)
+    </view>
+    <view class="rdzx-2-1">
+      发育(748)
+    </view>
+    <view class="rdzx-2-1">
+      母乳性黄疸(194)
+    </view>
+    <view class="rdzx-2-1">
+      幼儿急诊(185)
+    </view>
+    <view class="rdzx-2-1">
+      血液病(91)
+    </view>
+    <view class="rdzx-2-1">
+      早产儿(90)
+    </view>
+  </view>
+
+  <view class="rdzx-3">
+    <view class="rdzx-3-1">
+      <view class="rdzx-3-1-1">
+        139*******1
+      </view>
+      <view class="rdzx-3-1-2">
+        满意
+      </view>
+      <view class="rdzx-3-1-3">
+        9月18日
+      </view>
+    </view>
+    <view class="rdzx-3-2">
+      看照片是以为很年轻的医生，但是很有经验，最主要...
+    </view>
+    <view class="rdzx-3-3">
+      问题描述：亲，在吗？刚检查完，我们这里没有艾畅，给开的易坦静，这个没有副作用吧？...
+    </view>
+  </view>
+
+  <view class="rdzx-3">
+    <view class="rdzx-3-1">
+      <view class="rdzx-3-1-1">
+        187*******9
+      </view>
+      <view class="rdzx-3-1-2">
+        满意
+      </view>
+      <view class="rdzx-3-1-3">
+        9月17日
+      </view>
+    </view>
+    <view class="rdzx-3-2">
+      白衣天使，感谢医生的耐心回答
+    </view>
+    <view class="rdzx-3-3">
+      问题描述：亲，在吗？刚检查完，我们这里没有艾畅，给开的易坦静，这个没有副作用吧？...
+    </view>
+  </view>
+</view>
+
+<view class="bottom1">
+</view>
+
+<view class="bottom-2">
+  <!--<view class="bottom-2-left">
+  </view>-->
+  <view class="bottom-2-right" bindtap="ShowViewPBRQ">
+    语音咨询（6元/分钟）
+  </view>
+</view>
+
+<view class="bottom-3" style="display:{{ViewPBRQ}}">
+  <view class="bottom-3-1">
+    预约在线语音咨询开始时间
+  </view>
+  <scroll-view scroll-y="true" class="bottom-3-2">
+    <view class="bottom-3-2-1" wx:for="{{yishengpaiban}}" wx:key="PBMXXH" bindtap='ShowViewPBHX' data-PBMXXH="{{item.PBMXXH}}" data-PBRQ="{{item.PBRQ}}" data-PBRQ_y="{{item.PBRQ_y}}" data-WEEKDAY="{{item.WEEKDAY}}" data-PBKSSJ="{{item.PBKSSJ}}" data-PBJSSJ="{{item.PBJSSJ}}">
+      {{item.PBRQ}}  {{item.WEEKDAY}}  {{item.PBKSSJ}}-{{item.PBJSSJ}}
+    </view>
+  </scroll-view>
+  <view class="bottom-3-3" bindtap='HideViewPBRQ'>
+    取消
+  </view>
+</view>
+
+
+<view class="bottom-4" style="display:{{ViewPBHX}}">
+  <view class="bottom-4-1">
+    {{PBRQ}}  {{WEEKDAY}}  {{PBKSSJ}}-{{PBJSSJ}}
+  </view>
+  <scroll-view scroll-y="true" class="bottom-4-scroll">
+    <view class="bottom-4-2">      
+      <navigator  class="bottom-4-2-1" wx:for="{{yishengpaibanhaoxu}}" wx:key="autoid" url="../yuyin_online_consulting_pay/index?PBMXXH={{PBMXXH}}&PBRQ={{PBRQ}}&PBRQ_y={{PBRQ_y}}&WEEKDAY={{WEEKDAY}}&TIME={{item.TIME}}&HX={{item.HX}}">
+        {{item.TIME}}
+      </navigator>
+    </view>
+  </scroll-view>
+  <view class="bottom-4-3" bindtap='HideViewPBHX'>
+    取消
+  </view>
+</view>
+
+<view class="cover" style="display:{{Viewcover}}">
+</view>

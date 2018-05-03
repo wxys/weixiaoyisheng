@@ -1,0 +1,20 @@
+<!--pages/select_region/index.wxml-->
+<view class="hierarchy-list" wx:if="{{PageShow}}">
+    <!--省份选择-->
+    <scroll-view class="first-order-list es-selector" style="height:{{ScrollHeight}}px;" scroll-y="true">
+        <block wx:for="{{province}}" wx:key="id"  wx:for-index="idx" data-idx="{{idx}}">
+            <view class="first-order-li {{first_hierarchy_id==item.id ? 'active' : ''}}" bindtap="ShowSecondHierarchy" data-id="{{item.id}}"  data-province="{{item.fullname}}" >
+                <block wx:if="{{first_hierarchy_id==item.id}}">
+                    <image src="../../icon/icon-right-3.png"></image>
+                </block>
+                {{item.name}}
+            </view>
+                
+        </block>
+    </scroll-view>
+
+    <!--城市选择-->
+    <scroll-view class="second-order-list" style="height:{{ScrollHeight}}px" scroll-y="true">
+    <view class="second-order-li" wx:for="{{city}}" wx:key="id" bindtap="SelectedCity" data-city="{{item.fullname}}">{{item.name}}</view>
+    </scroll-view>
+</view>

@@ -1,0 +1,96 @@
+<!--pages/reservation_record/index.wxml-->
+<view class="top">
+  <view class="top-1" style="{{top_1}}" bindtap='showweikaishi'>
+    未开始
+  </view>
+  <view class="top-2" style="{{top_2}}" bindtap='showyijieshu'>
+    已结束
+  </view>
+</view>
+<view>
+<scroll-view style="float:left;display:{{show_weikaishi}};height:{{PageScrollHeight}}px;width:100%;margin-top:10px;" scroll-y="true">
+  <view wx:for="{{weikaishi}}" wx:key="" >
+    <view class="content_date">
+      {{item.data[0].pbrq}}
+    </view>
+    <view wx:for="{{item.data}}" wx:key="" class="content-list">
+      <view class="content-list-1">
+        <image class="doctor-cover" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/doctor.png"></image>
+      </view>
+      <view class="content-list-2">
+        <view class="content-list-2-name">
+          {{item.user_name}}
+        </view>
+        <view class="content-list-2-type">          
+          {{item.consultation_type}}
+        </view>
+        <view class="content-list-2-sex">
+          {{item.user_sex}}
+        </view>
+        <view class="content-list-2-age">
+          {{item.user_age}}
+        </view>
+      </view>
+      <view class="content-list-3">
+        {{item.kssj}}
+      </view>
+    </view>
+  </view>
+</scroll-view>
+</view>
+
+<scroll-view style="float:left;display:{{show_yijieshu}};height:{{PageScrollHeight}}px;width:100%;margin-top:10px;" scroll-y="true">
+  <view wx:for="{{yijieshu}}" wx:key="" >
+    <view class="content_date">
+      {{item.data[0].pbrq}}
+    </view>
+    <view wx:for="{{item.data}}" wx:key="" class="content-list">
+      <view class="content-list-1">
+      </view>
+      <view class="content-list-2">
+        <view class="content-list-2-name">
+          {{item.user_name}}
+        </view>
+        <view class="content-list-2-type">          
+          {{item.consultation_type}}
+        </view>
+        <view class="content-list-2-sex">
+          {{item.user_sex}}
+        </view>
+        <view class="content-list-2-age">
+          {{item.user_age}}
+        </view>
+      </view>
+      <view class="content-list-3-2">
+        >
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+
+<view style="display:{{PageShow?'':'none'}}">
+<view class="tab-list ">
+<view class="tab-list-li ">
+<image src="../../icon/icon-subscribe-selected.png " mode="widthFix"></image>
+<text >图文咨询</text>
+</view>
+<view class="tab-list-li ">
+<image src="../../icon/icon-my.png " mode="widthFix" catchtap="SkipPage"></image>
+<text >预约记录</text>
+</view>
+<view class="tab-list-li ">
+<image src="../../icon/icon-my.png " mode="widthFix" catchtap="gofuwu" ></image>
+<text >服务</text>
+</view>
+<view class="tab-list-li ">
+<image src="../../icon/icon-subscribe.png " mode="widthFix" catchtap="SkipPage"></image>
+<text >患者</text>
+</view>
+<view class="tab-list-li " data-url="../doctor_set/index" catchtap="SkipPage">
+<image src="../../icon/icon-personal.png " mode="widthFix">></image>
+<text >设置</text>
+</view>
+</view>
+
+</view>

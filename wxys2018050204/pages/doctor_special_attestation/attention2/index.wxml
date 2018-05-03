@@ -1,0 +1,27 @@
+<!--pages/doctor_special_attestation/attention2/index.wxml-->
+<!--文章标题-->
+<view class="article-top-tab no-source">
+  <text class="article-title">证书不在身边，怎样通过权威认证？</text>
+</view>
+<!--文章内容-->
+<view class="article-content">
+  <text class="p">医生大大好，欢迎加入微笑医生平台!</text>
+  <text class="p">如果您的资格证和执业证都不在身边，又希望尽快通过权威认证。我们为你准备了特殊认证通道，只需3步，即可完成。</text>
+  <text class="p title">1、准备<text class="important-remind">身份证正面</text>照片</text>
+  <text class="p">请确保身份证正面信息清晰可见。</text>
+  <text class="p">如下图：</text>
+  <view class="article-img-list">
+    <image src="{{ContentImgList.breviary[0]}}" mode="widthFix" catchtap="ViewImage" data-url="{{ContentImgList.artwork[0]}}" mode="widthFix" class="img-2"></image>
+  </view>
+  <text class="p title">2、准备<text class="important-remind">卫计委网站执业信息截图</text></text>
+  <text class="p">打开卫计委（中华人民共和国国家卫生和计划生育委员会）网站：<text selectable="true" class="href">http://zgcx.nhfpc.gov.cn/doctorsearch.aspx</text><text class="normal-remind">（长按复制该地址，在浏览器中打开访问）</text></text>
+  <text class="p">选择所在省份、填写姓名、医院等信息,点击查询，将查询结果截图。</text>
+  <text class="p">苹果手机：同时按home键和锁屏键截图。</text>
+  <text class="p">安卓手机：大部分同时按home键和音量键截图。</text>
+  <text class="p normal-remind">（安卓手机机型较多,截图操作主要由同时按住home键、锁屏键、音量键这3个键中的2个键完成,大大们可多试试不同的组合）</text>
+  <text class="p">如下图：</text>
+  <view class="article-img-list">
+    <image src="{{ContentImgList.breviary[1]}}" mode="widthFix" catchtap="ViewImage" data-url="{{ContentImgList.artwork[1]}}" mode="widthFix" class="img-2"></image>
+  </view>
+  <text class="p title">3、在权威认证页面上传以上2张照片，点击”确认上传“即可。</text>
+</view>

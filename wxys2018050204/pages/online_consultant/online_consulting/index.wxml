@@ -1,0 +1,100 @@
+<!--pages/online_consultant/online_consulting/index.wxml-->
+<view class="top">
+  <navigator class="top-item" url="../online_consulting_choose/index">
+    <view class="top-item-top">
+      <image src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/icon-paediatrics.png" class="departments-ico"></image>
+    </view>
+    <view class="top-item-bottom">
+      儿科
+    </view>
+  </navigator>
+  <navigator class="top-item" url="../online_consulting_choose/index">
+    <view class="top-item-top">
+      <image src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/icon-gynaecology-obstetrics.png" class="departments-ico"></image>
+    </view>
+    <view class="top-item-bottom">
+      全科医生
+    </view>
+  </navigator>
+  <navigator class="top-item" url="../online_consulting_choose/index">
+    <view class="top-item-top">
+      <image src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/icon-cardiovascular-medicine.png" class="departments-ico"></image>
+    </view>
+    <view class="top-item-bottom">
+      老年慢病随访
+    </view>
+  </navigator>
+  <navigator class="top-item" url="../online_consulting_choose/index">
+    <view class="top-item-top">
+        <image src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/icon-general-surgery.png" class="departments-ico"></image>
+
+    </view>
+    <view class="top-item-bottom">
+      急诊咨询
+    </view>
+  </navigator>
+</view>
+<view class="zjzx">
+  <view class="zjzx-left">
+  </view>
+  <view class="zjzx-right">
+    专家在线
+  </view>
+</view>
+<view class="content">
+  <view class="content-top">
+    <view class="content-top-left">
+      <image class="doctor-cover" src="http://smsy.12581258.com/SlowDiseaseTreasure/icon/doctor.png"></image>
+
+    </view>
+    <view class="content-top-right">
+      <view class="content-jj">
+        <view class="content-xm">
+          郑靖
+        </view>
+        <view class="content-zcks">
+          <view class="content-zk">
+            主治医师
+          </view>
+          <view class="content-zk">
+            西岸中医门诊部    中医康复科
+          </view>
+        </view>
+      </view>
+      <view class="content-sc">
+        擅长：肌肉、骨骼损伤、神经系统疾病的诊断与中西医综合康复治疗。
+      </view>
+    </view>
+  </view>
+  <view class="content-xian">
+  </view>
+  <view class="content-bottom">
+    <view class="content-bottom-left">
+        预约挂号
+    </view>
+    <navigator class="content-bottom-right" url="../tuwen_online_consulting/index">
+      <view class="content-bottom-right-zx">
+        图文咨询
+      </view>
+      <view class="content-bottom-right-q">
+        50元/次
+      </view>
+    </navigator>
+    <navigator class="content-bottom-right" url="../yuyin_online_consulting/index">
+      <view class="content-bottom-right-zx">
+        语音咨询
+      </view>
+      <view class="content-bottom-right-q">
+        6元/分钟
+      </view>
+    </navigator>
+    <navigator class="content-bottom-right" url="../shipin_online_consulting/index">
+      <view class="content-bottom-right-zx">
+        视频咨询
+      </view>
+      <view class="content-bottom-right-q">
+        50元/分钟
+      </view>
+    </navigator>
+  </view>
+</view>

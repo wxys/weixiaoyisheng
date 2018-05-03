@@ -1,0 +1,47 @@
+<!--pages/changeUserSection/index.wxml-->
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+<view class="padding_20">
+<view class="margin-bottom-40 margin-top-40">
+  <view class="margin-bottom-0 ">
+  <text class='lanmu'>我的科室</text> <text  class="lanmu_tips">点击将科室从首页导航条中删除</text>
+  </view>
+
+  <view class="margin-bottom-40 margin-top-20">
+
+  <block wx:if="{{user_section.length==0}}">
+
+<image src="../../icon/icon-empty-content.png"  mode="aspectFit"  class="load-remind-ico icon_empty"></image>
+</block>
+<block wx:esle>
+  <block wx:for="{{user_section}}" wx:key=''>
+  <view  class="section_item {{item.class}}" data-index='{{item.autoid}}' bindtap='removeSection'>{{item.topic_name}}</view>
+    </block>
+  </block>
+  </view>
+   <view class=" h_40">
+</view>
+    <view class="margin_bottom_more  margin-bottom-40">
+  <text class='lanmu'>更多科室</text> <text class="lanmu_tips">点击为首页添加科室</text>
+  </view>
+  <view class="margin-bottom-40">
+
+  <block wx:if="{{chice_section.length==0}}">
+
+<image src="../../icon/icon-empty-content.png"  mode="aspectFit"  class="load-remind-ico"></image>
+</block>
+<block wx:esle>
+  <block wx:for="{{chice_section}}" wx:key=''>
+  <view class="section_item {{item.class}}" data-index='{{item.autoid}}' bindtap='removeSection'>{{item.topic_name}}</view>
+  
+  </block>
+    </block>
+  </view>
+</view>
+
+</view>
+</block>

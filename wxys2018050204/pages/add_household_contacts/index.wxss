@@ -1,0 +1,50 @@
+/* pages/add_household_contacts/index.wxss */
+
+page {
+  background: #f2f4f6;
+}
+
+.write-remind {
+  color: #e99743;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px;
+}
+
+.subscribe-person-data-list {
+  margin-top: 0px;
+}
+
+.subscribe-person-data-text {
+  font-weight: 600;
+  flex-grow: 0;
+  width: 90px;
+}
+
+.subscribe-person-data-content {
+  flex-grow: 1.0;
+  text-align: right;
+  font-size: 14px;
+}
+
+.add-btn {
+  background: #59bdca !important;
+  color: #fff !important;
+  border-radius: 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+}
+
+input {
+  text-align: right;
+  width: 100%;
+  font-size: 15px;
+}
+
+.auto-region {
+  color: #b1b1b1;
+}

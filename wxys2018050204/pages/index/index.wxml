@@ -1,0 +1,128 @@
+  <!--加载效果-->
+<view class="loading-groups" style="display:{{PageShow?'none':''}}">
+   <image src="../../icon/icon-loading.png" class="loading-ico"></image>
+  <text class="loading-text">努力加载中...</text>
+</view>
+  
+  
+  <view  style="display:{{PageShow?'':'none'}}">
+ 
+ <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">   
+    <block wx:for="{{movies}}" wx:for-index="index">   
+        <swiper-item>       
+         <image src="{{item.url}}"  class="banner_img" mode='scaleToFill' bindtap='{{item.thing}}' />                      
+           </swiper-item>    
+    </block>  
+</swiper> 
+
+<!--提示样式-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+
+<view style="display:{{PageShow?'':'none'}}">
+  <!--会员看到的模块start-->
+  <block wx:if="{{1==1}}">
+
+
+    <!-- 顶部菜单 -->
+<!-- 
+    <view class="departments-list">
+     
+      <block wx:for="{{Departments}}" wx:key="DepartmentsId" wx:for-index="idx">
+       
+        <navigator class="departments-groups" url="../common_department/index?hospital_id={{item.hospitalId}}&common_departments_id={{item.DepartmentsId}}&common_departments_name={{item.DepartmentsName}}" hover-class="none">
+       
+          <block wx:if="{{DepartmentsList[idx].loaded}}">
+            <image src="{{DepartmentsList[idx].url}}" class="departments-ico" />
+          </block>
+          <block wx:else>
+            <view class="departments-ico preload">
+              <text>微笑医生</text>
+            </view>
+          </block>
+          
+          <view class="departments-text">{{item.DepartmentsName}}</view>
+        </navigator>
+      </block>
+      <block wx:if="{{Departments.length>=7}}">
+        <navigator class="departments-groups" url="../departments_list/index" hover-class="none">
+          <image src="../../icon/icon-more.svg" class="departments-ico" />
+          <view class="departments-text">更多</view>
+        </navigator>
+      </block>
+
+
+    </view>
+   -->   
+
+    <!-- 热门医院 -->
+    <view class="column-title" data-url="../hospital_list/index" bindtap="SkipPage">
+      <view class="column-text">
+        热门医院
+        <view class="user-location" data-url="../select_region/index" catchtap="SkipPage">
+          <image src="../../icon/icon-location.svg" class="user-location-ico"></image>
+          <block wx:if="{{UserData.Userlocation.location_city}}">
+            {{UserData.Userlocation.location_city}}
+          </block>
+          <block wx:else>
+            全国
+          </block>
+
+        </view>
+
+      </view>
+      更多
+      <image src="../../icon/icon-advance.svg" class="column-ico"></image>
+    </view>
+
+    <!-- 医院列表 -->
+    <view class="es-list">
+      <block wx:if="{{Hospital.length>0}}" wx:for="{{Hospital}}" wx:key="" wx:for-index="idx">
+        <navigator class="es-list-li " url="../hospital/index?hospital={{item.HospitalName}}&hospitalId={{item.HospitalId}}" hover-class="none">
+
+          <!--医院介绍图片预加载-->
+          <block wx:if="{{HospitalList[idx].loaded}}">
+            <image alt="" src="{{HospitalList[idx].url}}" mode="widthFix" class="hospital-image" />
+          </block>
+          <block wx:else>
+            <view class="hospital-image preload">
+              <text>微笑医生</text>
+            </view>
+          </block>
+          <!--//医院介绍图片预加载-->
+          <view class="hospital-data">
+            <view class="hospital-name">{{item.HospitalName}}</view>
+            <view class="hospital-level">{{item.HospitalLevel}}</view>
+            <view class="hospital-departments-recomend" >
+              <block wx:for="{{item.Departments}}" wx:key="DepartmentsId">
+                <span class="hospital-departments">{{item.DepartmentsName}}</span>
+              </block>
+            </view>
+          </view>
+        </navigator>
+      </block>
+      <!--如果没有医院数据-->
+      <view wx:if="{{Hospital.length==0}}" class="load-remind-groups">
+        <image src="../../icon/icon-empty-content.png" class="load-remind-ico"></image>
+        <text>该地区暂无可预约医院</text>
+      </view>
+    </view>
+  </block>
+
+
+
+  <!--登录后看到的页面 end-->
+  <!--如果没有登录，提示登录-->
+  <block wx:else>
+    <view class="load-remind-groups">
+      <image src="../../icon/icon-hello.png" class="load-remind-ico"></image>
+      <text>请先登录</text>
+    </view>
+    <navigator class="turn-login-btn" hover-class="none" url="../login/index?type=login">点此登录</navigator>
+  </block>
+</view>
+
+
+<!-- 引入图片预加载组件 -->
+<import src="../../img-loader/img-loader.wxml" />
+<template is="img-loader" data="{{ imgLoadList }}"></template>
+</view>

@@ -1,0 +1,59 @@
+<!--pages/favorite/note_search/index.wxml-->
+<view class=" wx-search-ipt-groups">
+  <image src="../../../icon/icon-ipt-search.svg" class="search-ipt-ico"></image>
+  <input placeholder="搜索" class="search-ipt" value="{{SearchText}}" bindconfirm="SearchNoteCollect" bindinput="SearchInput" confirm-type="search"/>
+  <text class="cancel-search" catchtap="CancelSearch">取消</text>
+</view>
+
+<view style="display:{{SearchResultShow?'none':''}}">
+  <view class="li-title">
+    <view class="li-title-text">所有科室</view>
+  </view>
+
+  <view class="common-diseases">
+    <text class="common-diseases-li" wx:for="{{NoteCollectData.department_classify}}" wx:key="" wx:for-index="idx" data-index="{{idx}}" catchtap="ViewCollectByDepartment">{{item.subject_name}}</text>
+  </view>
+
+  <view class="li-title">
+    <view class="li-title-text">所有标签</view>
+  </view>
+
+  <view class="common-diseases">
+    <text class="common-label-li" wx:for="{{NoteCollectData.label_classify}}" wx:key="" wx:for-index="idx" data-index="{{idx}}" catchtap="ViewCollectByLabel">{{item.subject_name}}</text>
+  </view>
+</view>
+
+<view style="display:{{SearchResultShow?'':'none'}}">
+  <block wx:if="{{NoteList}}">
+    <view wx:for="{{NoteList}}" wx:key="" wx:for-index="idx">
+      <view class="es-list-li no-border" data-url="../note_detail/index?note_title={{item.note_title}}&note_id={{item.note_id}}&note_time={{item.note_time}}" catchtap="SkipPage">
+        <!--短信封面图片-->
+        <image alt="" src="{{item.ImgUrl}}" mode="widthFix" class="hospital-image" />
+        <view class="note-data">
+          <view class="note-title">{{item.note_title}}</view>
+          <view class="note-introduce">
+            <text>《中国移动健康中心会员专享》</text>
+            <text>{{item.note_time}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="note-subject">
+        <view class="note-subject-groups">
+          <image src="../../../icon/icon-label.svg" class="note-subject-label"></image>
+          <text wx:for="{{item.note_subject}}" wx:key="" class="note-subject-name">{{item.note_subject_name}}</text>
+        </view>
+
+        <image src="../../../icon/icon-remove.svg" class="remove-collect-note"></image>
+
+      </view>
+    </view>
+  </block>
+  <!--如果没有数据-->
+  <view wx:if="{{NoteList.length<=0}}" class="load-remind-groups">
+    <image src="../../../icon/icon-empty-content.png" class="load-remind-ico"></image>
+    <text>无结果</text>
+  </view>
+
+
+
+</view>

@@ -1,0 +1,20 @@
+<!--pages/departments/index.wxml-->
+<!--常见科室-->
+<view class="column-title no-margin">
+  <view class="column-text">常见科室</view>
+</view>
+<view class="departments-list" >
+
+  <navigator class="departments-groups" url="../common_department/index?common_departments_id={{item.DepartmentsId}}&common_departments_name={{item.DepartmentsName}}" hover-class="none" wx:for="{{Departments}}" wx:key="">
+    <block wx:if="{{item.DepartmentsIco}}">
+      <image src="{{item.DepartmentsIco}}" class="departments-ico" />
+    </block>
+    <block wx:else>
+      <view class="departments-ico preload">
+        <text>慢病宝</text>
+      </view>
+    </block>
+    <view class="departments-text">{{item.DepartmentsName}}</view>
+  </navigator>
+
+</view>

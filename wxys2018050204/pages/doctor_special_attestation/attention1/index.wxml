@@ -1,0 +1,24 @@
+<!--pages/doctor_special_attestation/attention1/index.wxml-->
+<!--文章标题-->
+<view class="article-top-tab no-source">
+  <text class="article-title">我是军医，怎样通过权威认证？</text>
+</view>
+<!--文章内容-->
+<view class="article-content">
+  <text class="p">军医大大好，欢迎加入微笑医生平台!</text>
+  <text class="p">根据军队保密规定，请<text class="important-remind">不要上传您的资格证及执业证。</text></text>
+  <text class="p">我们为你准备了军医认证通道，只需3步，即可完成。</text>
+  <text class="p title">1、准备<text class="important-remind">身份证正面</text>照片</text>
+  <text class="p">请确保身份证正面信息清晰可见。</text>
+  <text class="p">如下图：</text>
+  <view class="article-img-list">
+    <image src="{{ContentImgList.breviary[0]}}" mode="widthFix" catchtap="ViewImage" data-url="{{ContentImgList.artwork[0]}}" mode="widthFix" class="img-2"></image>
+  </view>
+  <text class="p title">2、准备<text class="important-remind">加盖处方章的处方单</text>照片</text>
+  <text class="p">将处方章盖在空白处方上，拍照时请确保处方单上医院信息及处方章姓名清晰可见。</text>
+  <text class="p">如下图：</text>
+  <view class="article-img-list">
+    <image src="{{ContentImgList.breviary[1]}}" mode="widthFix" catchtap="ViewImage" data-url="{{ContentImgList.artwork[1]}}" mode="widthFix" class="img-2"></image>
+  </view>
+  <text class="p title">3、在权威认证页面上传以上2张照片，点击”确认上传“即可。</text>
+</view>

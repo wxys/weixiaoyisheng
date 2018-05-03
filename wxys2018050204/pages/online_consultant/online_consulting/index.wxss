@@ -1,0 +1,146 @@
+.top{
+  width:100%;
+  height:90px;
+  float:left;
+  margin:5px 0 0 0;
+}
+.top-item{
+  width:21.9%;
+  height:100%;
+  float:left;
+  margin:0 0 0 2%;
+  border:1px solid black;
+}
+.top-item-top{
+  width:100%;
+  height:65px;
+  padding-top:5px;
+  text-align:center;
+  float:left;
+}
+.top-item-bottom{
+  width:100%;
+  height:20px;
+  font-size:0.6rem;
+  line-height:20px;
+  text-align:center;
+  float:left;
+}
+.zjzx{
+  float:left;
+  margin:20px 0 0 0;
+  width:100%;
+  height:30px;
+}
+.zjzx-left{
+  float:left;
+  width:9px;
+  height:30px;
+  margin:0 0 0 10px;
+  background: #199ed8;
+}
+.zjzx-right{
+  float:left;
+  height:30px;
+  line-height: 30px;
+  text-align: center;
+  margin: 0 0 0 5px;
+}
+.content{
+  float:left;
+  height:160px;
+  width:96%;
+  margin:10px 0 0 2%;
+  border:1px solid black;
+}
+.content-top{
+  float:left;
+  height:90px;
+  width:96%;
+  margin:10px 0 0 2%;  
+}
+.content-top-left{
+  float:left;
+  width:20%;
+  height:100%;
+}
+.content-top-right{
+  float:left;
+  width:80%;
+  height:100%;
+}
+.content-jj{
+  float:left;
+  width:100%;
+  height:40px;
+}
+.content-xm{
+  float:left;
+  width:28%;
+  height:100%;
+  line-height:40px;
+}
+.content-zcks{
+  float:left;
+  width:72%;
+  height:100%;
+}
+.content-zk{
+  float:left;
+  width:100%;
+  height:20px;  
+  font-size:0.8rem;
+  line-height:20px;
+}
+.content-sc{
+  float:left;
+  width:100%;
+  height:45px;
+  margin:5px 0 0 0;
+  font-size:0.9rem;
+}
+.content-xian{
+  float:left;
+  width:96%;
+  height:0.5px;
+  margin:0 0 0 2%;
+  background: #eae8e8;
+}
+.content-bottom{
+  float:left;
+  height:44px;
+  width:100%;
+  margin:5px 0 0 0;  
+}
+.content-bottom-left{
+  float:left;
+  width:12%;
+  height:44px;
+  margin: 0 0 0 2%;
+  font-size:16px;
+  line-height:20px;
+  text-align:center;
+  border:1px solid black;
+  border-radius:4px;
+}
+.content-bottom-right{
+  float:left;
+  width:25%;
+  height:44px;
+  margin: 0 0 0 2%;
+  border:1px solid black;
+  border-radius:4px;
+}
+.content-bottom-right-zx{
+  width:100%;
+  height:26px;
+  font-size:16px;
+  line-height:26px;
+  text-align: center;
+}
+.content-bottom-right-q{
+  width:100%;
+  height:18px;
+  font-size:12px;
+  text-align: center;
+}

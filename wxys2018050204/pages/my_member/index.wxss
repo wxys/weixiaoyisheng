@@ -1,0 +1,167 @@
+/* pages/my_member/index.wxss */
+
+page {
+  background: #f5f5f5;
+}
+
+.user-group {
+  background: #fff;
+  padding: 10px 10px 10px 10px;
+  display: flex;
+}
+
+.user-data {
+  flex: 1.0;
+  padding: 5px 10px;
+}
+
+.user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.user-nickName {
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  display:flex;
+}
+
+.icon-vip {
+  width:19px;
+  height:19px;
+  margin-left:5px;
+}
+
+.icon-years-vip {
+  width: 18px;
+  height: 18px;
+  margin-left: 3px;
+}
+
+.user-vip-deadline {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #666;
+}
+
+.row-title {
+  display: flex;
+  padding: 8px 10px;
+  margin-top: 8px;
+  font-weight: 600;
+  color: #4e4e4e;
+  font-size: 30rpx;
+  line-height: 16px;
+  align-items: center;
+  background: #fff;
+}
+
+.row-title-content {
+  flex-grow: 1.0;
+  /*border-left: 3px solid #b89a58;*/
+  padding-left: 10px;
+}
+
+.title-right-ico {
+  width: 15px;
+  height: 15px;
+  margin-top: 1px;
+}
+
+.renew-btn {
+  height: 25px;
+  line-height: 25px;
+  background: #ff8100;
+  color: #fff;
+  font-size: 13px;
+  width: 60px;
+  border-radius: 10px;
+  margin-top: 17.5px;
+}
+
+.member-end {
+  padding: 10px;
+  background: #fff;
+  color: #000;
+  font-size: 13px;
+}
+
+/*
+    优惠套餐
+*/
+
+.charge-list-row {
+  background: #fff;
+  padding: 10px 0px;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+}
+
+.charge-list-row.active {
+  background: #f9f7f2;
+}
+
+.charge-list-row-left {
+  flex-grow: 1.0;
+  color: #000;
+  font-size: 14px;
+}
+
+.recommend-text {
+  width: 32px;
+  height: 21px;
+  position: absolute;
+  padding-top:1px;
+
+}
+
+.charge-vip-introduce {
+  color:#666;
+  font-size:16px;
+  line-height:23px;
+  font-weight:500;
+}
+
+.charge-vip-cost-introduce {
+  color: #ff8100;
+  font-size: 12px;
+}
+
+.charge-vip-cost {
+  color:#ff8100;
+  padding-left:10px;
+}
+
+.pay-submit-group {
+  text-align: center;
+  padding: 15px;
+  background: #fff;
+}
+
+.pay-state {
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.dredge-btn {
+  border-radius:5px;
+  height:26px;
+  line-height:26px;
+  border:1px solid #ff8100;
+  color:#ff8100 !important;
+  background:#fff !important;
+  text-align:center;
+  text-decoration:none;
+  font-size:12px;
+  padding:0px 12px;
+
+}
+.dredge-list{
+  padding:0px 10px;
+  background:#fff;
+  border-top:1px solid #efefef;
+  border-bottom:1px solid #efefef;
+}

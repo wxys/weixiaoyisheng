@@ -1,0 +1,82 @@
+/* pages/tuwen_online_consulting_window/index.wxss */
+.top{
+  float:left;
+  width:100%;
+  height:40px;
+  padding:5px 2%;
+}
+.top-1{
+  float:left;
+  height:30px;
+  width:40%;
+  line-height:30px;
+  text-align: center;
+  font-size: 16px;
+  border:1px solid black;
+}
+.top-2{
+  float:left;
+  height:30px;
+  width:40%;
+  margin:0 0 0 3%;
+  line-height:30px;
+  text-align: center;
+  font-size: 16px;
+  background:#199ed8;
+  color:white;
+}
+.top-3{
+  float:left;
+  height:30px;
+  width:14%;
+  margin:0 0 0 3%;
+  line-height:30px;
+  text-align: center;
+  font-size: 16px;
+  border:1px solid black;
+  border-radius: 4px;
+}
+.huixian{
+  float:left;
+  width:100%;
+  height:10px;
+  margin:4px 0 0 0;
+  background: #e3e2e2;
+}
+.bottom-input{
+  float:left;
+  width:96%;
+  height:33px;
+  margin:5px 2%;
+}
+.text-input{
+  float: left;
+  width:82%;
+  height:25px;
+  border:1px solid #b8b8b8;
+  padding:3px 1%;
+}
+.bottom-send{
+  float:left;
+  width:15%;
+  height:33px;
+  line-height:33px;
+  text-align: center;
+  color:#76e576;
+}
+.bottom-list{
+  float:left;
+  height:40px;
+  width:96%;
+  margin:6px;
+}
+.bottom-list-1{
+  float:left;
+  width:40px;
+  height:40px;
+  margin:0 2%;
+}
+.bottom-image{
+  height:40px;
+  width:40px;
+}

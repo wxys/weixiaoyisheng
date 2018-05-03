@@ -1,0 +1,4 @@
+/* pages/departments/index.wxss */
+page{
+  background: #fff;
+}

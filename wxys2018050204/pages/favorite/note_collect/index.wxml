@@ -1,0 +1,85 @@
+<!--pages/note_collect/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<view style="display:{{PageShow?'':'none'}}">
+
+  <!--顶部面板切换（我的收藏夹，家人共享的收藏夹） 家人共享的收藏夹暂不上线-->
+  <!--
+  <view class="btn-groups">
+    <block wx:for="{{navbar}}" wx:key="" wx:for-index="idx" data-idx="{{idx}}">
+      <view class="btn-li {{tab_id==idx?'active':''}}" data-id="{{item.tab_id}}" bindtap="SwitchTab">{{item.tab_text}}</view>
+    </block>
+    <image src="../../../icon/icon-search.svg" class="search-ico" catchtap="SkipPage" data-url="../note_search/index"></image>
+  </view>
+  -->
+
+  <!--我的收藏夹-->
+  <view style="display:{{tab_id==0?'':'none'}}">
+    
+    <view class="es-list" wx:if="{{NoteList.length>0}}">
+      <!--分类列表-->
+      <scroll-view scroll-x="true" style="width:750rpx;">
+        <view class="common-diseases">
+          <text class="common-diseases-li {{subject_index==idx?'active':''}}" wx:for="{{NoteList}}" wx:key="" wx:for-index="idx" data-index="{{idx}}" catchtap="SwitchNote">{{item.subject_name}}</text>
+        </view>
+      </scroll-view>
+      
+
+      <!-- 短信列表 -->
+      <scroll-view scroll-y="true" style="height:{{ScrollHeight}}px;">
+        <view wx:for="{{NoteList}}" wx:key="" wx:for-index="idx" style="display:{{subject_index==idx?'':'none'}}">
+
+          <block wx:for="{{item.data}}" wx:key="">
+            <navigator class="es-list-li no-border start" url="../note_detail/index?note_title={{item.note_title}}&note_id={{item.note_id}}&note_time={{item.note_time}}" hover-class="none">
+              <!--短信封面图片-->
+              <image alt="" src="{{item.ImgUrl}}" mode="widthFix" class="hospital-image" />
+              <view class="note-data">
+                <view class="note-title">{{item.note_title}}</view>
+                <view class="note-introduce">
+                  <text>中国移动健康中心会员专享</text>
+                  <text>{{item.note_time}}</text>
+                </view>
+              </view>
+            </navigator>
+            <view class="note-subject">
+              <view class="note-subject-groups" catchtap="SkipPage" data-url="../label_edit/index?msg_id={{item.note_id}}">
+                <image src="../../../icon/icon-label.svg" class="note-subject-label"></image>
+                <!--短信文章标签-->
+                <view class="note-label"><text wx:for="{{item.note_subject}}" wx:key="" wx:for-index="idx" class="note-subject-name"><text wx:if="{{idx!=0}}">,</text>{{item.note_subject_name}}</text></view>
+              </view>
+              <!--删除收藏的短信文章-->
+              <image src="../../../icon/icon-remove.svg" class="remove-collect-note" catchtap="CancelCollectNote" data-note_id="{{item.note_id}}"></image>
+
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+
+    
+    <!--如果没有短信数据-->
+    <view wx:else class="load-remind-groups">
+      <image src="../../../icon/icon-empty-content.png" class="load-remind-ico"></image>
+      <text>暂无收藏</text>
+    </view>
+
+  </view>
+
+  <!--家人共享的收藏夹-->
+  <view style="display:{{tab_id==1?'':'none'}}" wx:for="{{family_share_collect}}" wx:for-index="idx" wx:key="" class="es-list-li flex-start ">
+    <text class="share-collect-data"><text style="color:#000;">{{item.sharer_phone}}</text>的收藏夹</text>
+    <image src="../../../icon/icon-copy2.svg" mode="widthFix" class="operate-ico"></image>
+    <image src="../../../icon/icon-remove.svg" mode="widthFix" class="operate-ico"></image>
+  </view>
+
+
+  <!--底部右侧共享收藏夹 暂不上线-->
+  <!--
+  <view class="operate-menu">
+    <navigator class="operate-menu-li" url="../favorite_share/index" hover-class="none">
+      <image src="../../../icon/icon-share.svg" class="operate-menu-ico"></image>
+      <text class="operate-menu-text">共享</text>
+    </navigator>
+  </view>
+  -->
+
+</view>

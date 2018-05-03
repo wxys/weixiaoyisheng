@@ -1,0 +1,77 @@
+<!--pages/doctor_index/index.wxml-->
+<block wx:if="{{PageShow}}">
+  <view class="doctor-user-groups ">
+    <view class="doctor-user-groups-background">
+    </view>
+    <image src="{{UserData.userInfo.nickName?UserData.userInfo.avatarUrl:'../../icon/icon-toursit.svg'}}" class="doctor-user-cover"></image>
+    <!--医生资料-->
+    <view class="doctor-user-data">
+      <text class="doctor-user-name">{{UserData.doctor_name}}</text>
+      <text class="doctor-user-authentication">[{{attestation_status}}]</text>
+    </view>
+    
+  </view>
+
+
+  <view class="btn-groups">
+    <view wx:if="{{attestation_status!='认证通过'}}" class="authentication-btn" catchtap="SkipPage" data-url="../doctor_attestation/index?attestation_status={{attestation_status}}">
+      <image src="../../icon/icon-authentication.png" class="btn-ico"></image>
+      <text>马上认证</text>
+    </view>
+
+    <view class="authentication-btn" data-url="../doctor_multi_sited_license/index" catchtap="SkipPage">
+      <image src="../../icon/icon-multipoint.svg" class="btn-ico"></image>
+      <text>多点执业</text>
+    </view>
+
+    <view class="exit-btn" data-url="../login/index" catchtap="SkipPage">
+      <image src="../../icon/icon-exit.png" class="btn-ico"></image>
+      <text>退出</text>
+    </view>
+
+  </view>
+
+  <view class="service-column">
+    <text>医生服务</text>
+  </view>
+
+  <view class="doctor-menu-list">
+
+    <view class="doctor-menu-li" data-url="../doctor_smile_card/index" catchtap="SkipPage">
+      <image src="../../icon/icon-card.svg" class="doctor-menu-ico"></image>
+      <text>微笑名片</text>
+    </view>
+
+    <view class="doctor-menu-li" data-url="../patient_management/index"  catchtap="SkipPage">
+      <image src="../../icon/icon-patient-management.svg" class="doctor-menu-ico"></image>
+      <text>患者管理</text>
+    </view>
+
+    <view class="doctor-menu-li">
+      <image src="../../icon/icon-medicine-computer.svg" class="doctor-menu-ico"></image>
+      <text>医学计算机</text>
+    </view>
+
+    <view class="doctor-menu-li" data-url="../clinic_guide/guide_list/index" catchtap="SkipPage">
+      <image src="../../icon/icon-practice-guidelines.svg" class="doctor-menu-ico"></image>
+      <text>临床指南</text>
+    </view>
+
+    <!--
+    <view class="doctor-menu-li">
+      <image src="../../icon/icon-medical-assistant.png" class="doctor-menu-ico"></image>
+      <text>用药助手</text>
+    </view>
+    -->
+  <view class="doctor-menu-li" data-url="../online_consultant/doctor_online_consultant/index" catchtap="SkipPage">
+      <image src="../../icon/icon-consult.svg" class="doctor-menu-ico"></image>
+      <text>在线咨询</text>
+    </view>
+
+    <view class="doctor-menu-li">
+      <image src="../../icon/icon- psychiatriy-news.svg" class="doctor-menu-ico"></image>
+      <text>医学新知</text>
+    </view>
+
+  </view>
+</block>

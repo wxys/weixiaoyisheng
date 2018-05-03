@@ -1,0 +1,292 @@
+/* pages/reservation_record/index.wxss */
+
+page {
+  background: #f5f5f5;
+}
+
+text {
+  line-height: 1.5;
+}
+
+.doctor-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 105px;
+  background: #59bdca;
+  border-bottom: 1px solid #efefef;
+  color:#fff !important;
+  padding-bottom:15px;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:999;
+
+}
+
+
+
+.doctor-data1 {
+  display: flex;
+  padding-left: 0px;
+  flex-direction:row;
+}
+
+.doctor-card .doctor-cover {
+  width: 80px;
+  height: 80px;
+  padding-bottom: 6px;
+}
+
+.doctor-card .doctor-name {
+  font-size: 20px;
+  color:#fff;
+}
+
+.doctor-card .doctor-position {
+  font-size: 15px;
+  padding-right: 5px;
+  font-weight: 600;
+}
+
+.doctor-card .doctor-departments {
+  font-size: 14px;
+  color:#fff;
+}
+
+.doctor-card .doctor-hospital {
+  font-size: 13px;
+  color:#fff;
+}
+
+.collect-groups {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.collect-groups2 {
+  position: absolute;
+  top: 8px;
+  left: 40px;
+}
+.collected {
+  background: #28b7a3 !important;
+  color: #fff !important;
+  font-size: 13px;
+  padding: 5px 0px;
+  width: 60px;
+  text-align: center;
+  border-radius: 5px;
+  line-height:1.5;
+
+}
+.un-collected{
+  background:#fff!important;
+  color:#28b7a3 !important;
+  font-size:13px;
+  padding:4px 0px;
+  width:60px;
+  text-align:center;
+  border-radius:5px;
+  line-height:1.5;
+  border:1px solid #28b7a3;
+}
+
+
+.saying-list-li {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+}
+
+.saying-content {
+  font-size: 14px;
+}
+
+.saying-time {
+  font-size: 13px;
+  color: #666;
+}
+
+.guide-list-li {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+}
+
+.guide-digest {
+  font-size: 13px;
+  color: #666;
+}
+
+.guide-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.go-subscribe-btn {
+  height: 40px;
+  line-height: 40px;
+  background: #59bdca;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+}
+.doctor-introduce{
+  padding: 10px;
+  text-indent: 15px;
+  font-size: 14px;
+  background: #fff;
+  position: relative;
+}
+.text-operate{
+  width:20px;
+  margin-left:5px;
+  position: absolute;
+}
+.btn-groups {
+  background:#59bdca;
+  color:#fff;
+  font-size:13px;
+  padding:9px;
+  border-radius:0px 8px 8px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-groups-ico{
+  width:15px;
+  height:15px;
+  margin:0px 3px;
+}
+.clear-search-ico{
+  right:105px;
+}
+.search-ipt-ico {
+  width:16px;
+  height:16px;
+  top:15px;
+  left:13px;
+}
+.search-ipt{
+  padding:0px 25px 0px 30px;
+  border-radius:8px 0px 0px 8px;
+}
+.search-ipt-groups {
+  position: fixed;
+  width: 100%;
+}
+.top{
+  float:left;
+  height:40px;
+  width:100%;
+  padding:4px 2%;
+}
+.top-1{
+  float:left;
+  width:46%;
+  height:32px;
+  border-radius: 4px;
+  line-height:32px;
+  text-align:center;
+  font-size:16px;
+}
+.top-2{
+  float:right;
+  width:46%;
+  height:32px;
+  border-radius: 4px;
+  line-height:32px;
+  text-align:center;
+  font-size:16px;
+}
+.content_date{
+  float:left;
+  width:96%;
+  height:26px;
+  margin:5px 2%;
+  padding:0 2%;
+  font-size:16px;
+  line-height:26px;
+  background: #e2e2e2;
+  font-weight:600;
+}
+.content-list{
+  float:left;
+  width:96%;
+  height:70px;
+  margin:0 2%;
+  padding:8px 0;
+  border-bottom:1px solid #e2e2e2;
+}
+.content-list-1{
+  float:left;
+  height:54px;
+  width:54px;
+}
+.content-list-2{
+  float:left;
+  height:54px;
+  width:150px;
+}
+.content-list-2-name{
+  float:left;
+  height:27px;
+  width:70px;
+  padding:0 0 0 5px;
+  line-height:27px;
+  font-weight: bold;
+  font-size:18px;
+}
+.content-list-2-type{
+  float:left;
+  height:27px;
+  width:80px;
+  line-height:27px;
+  font-size:16px;
+  color:#40addb;
+}
+.content-list-2-sex{
+  float:left;
+  height:27px;
+  width:70px;
+  padding:0 0 0 5px;
+  line-height:27px;
+  font-size:16px;
+}
+.content-list-2-age{
+  float:left;
+  height:27px;
+  width:80px;
+  line-height:27px;
+  font-size:16px;
+}
+.content-list-3{
+  float:right;
+  height:54px;
+  width:100px;
+  line-height:54px;
+  font-size:26px;
+  font-weight: bold;
+}
+.content-list-3-2{
+  float:right;
+  height:20px;
+  width:30px;
+  margin:17px 0;
+  line-height:20px;
+  font-size:26px;
+  font-weight: bold;
+}
+.doctor-cover{
+  width:54px;
+  height:54px;
+}

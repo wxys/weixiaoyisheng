@@ -1,0 +1,300 @@
+<!--pages/buy_member/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<view class="remind2" style="display:{{RemindShow2}}">{{RemindText2}}</view>
+
+
+  <view class="user-data-group">
+    <block wx:if="{{UserData.userInfo.Wechart_Img_Url}}">
+      <image src="{{UserData.userInfo.Wechart_Img_Url}}" class="user-avatar" mode="widthFix"></image>
+    </block>
+    <block wx:else>
+      <image src="../../icon/icon-toursit.svg" class="user-avatar"></image>
+    </block>
+    <view class="right-user-data">
+      <view class="user-nickname">
+        <block wx:if="{{UserData.userinfo.nickName}}">
+          <text class="user-nickname-text">{{UserData.userInfo.nickName}}</text>
+        </block>
+        <block wx:else>
+          <text class="user-nickname-text">{{UserData.User_name}}</text>
+        </block>
+        <!--会员身份显示-->
+        <block wx:if="{{UserData.MemberInformation=='会员订户'}}">
+            <text class="special-member expire">{{UserData.memberinformation}}</text>
+          <!--年费会员身份显示-->
+          <block wx:if="{{UserMember.DurationDay>365}}">
+            <image src="../../icon/icon-years-member.svg" class="icon-years-vip"></image>
+          </block>
+        </block>
+
+        <block wx:elif="{{UserData.MemberInformation=='中国移动健康中心会员'}}">
+          <text class="special-member">中国移动健康中心会员</text>
+         
+        </block>
+        <block wx:elif="{{UserData.MemberInformation=='中国移动健康中心会员到期'}}">
+          <text class="special-member expire">会员到期</text>
+       
+        </block>
+        <block wx:else>
+          
+         <text class="special-member expire">普通用户</text>
+        </block>
+  
+      </view>
+     
+      <block wx:if="{{Userphone}}">
+        <view class="user-phone">手机号：{{Userphone}}</view>
+       
+<view  class="not-mt-phone change_phone_btn" data-index="更换手机号" catchtap="ChangePhone" bindtap='ChangePhone'>
+ <block wx:if="{{UserData.MemberInformation!='会员订户' && UserData.MemberInformation!='中国移动健康中心会员'}}">
+          <text class='changePhone'>更换手机号</text>
+          </block>
+        </view>
+    <!--<text class='changePhone'>更换手机号</text>-->
+
+      </block>
+      <block wx:else>
+             <button  class="not-mt-phone changePhone" open-type="getPhoneNumber"   bindgetphonenumber="getPhoneNumber" data-index="激活会员" >
+        激活会员
+        </button>
+     
+      </block>
+    </view>
+  
+  </view>
+
+    <view class="padding_40">
+
+<block wx:if="{{UserData.MemberInformation!='非会员'}}">
+    <view class="yewulist" style="display:block">
+      <view class="yewu">全球健康俱乐部</view>
+      <view class="tuiding_btn">退订</view>
+      <view class="money"> ￥5.00/月</view>
+    </view>
+</block>
+
+    <view class="yewulist {{yewulisttype}}">
+      <view class="yewu">健康头条</view>
+      <view class="tuiding_btn" bindtap='showtttd'>退订</view>
+      <view class="set_btn" bindtap='showtt'>设置</view>
+      <view class="money"> ￥1.00/月</view>
+    </view>
+
+  </view>
+    <view class="tuichang_big">
+      <view class="border_green border_green_left"></view>
+      <view class="tui_w"> 推广业务</view>
+      <view class="border_green border_green_right" ></view>
+    </view>
+    <image src="../../icon/banner_01.png" class="banner_img" bindtap='showspkt'></image>
+    <image src="../../icon/banner_03.png" class="banner_img {{bannerimgtype}}" bindtap='showttdz'></image>
+
+
+
+<view class="alert-bottom {{alertnum>0?'alerttype':''}}" bindtap='hide_alert'>
+</view>
+
+<view class="alert-change-phone {{alertnum==1?'alerttype':''}}">
+  <image class="alert-notpass-close" src="../../icon/icon-clar-search.png" bindtap='hideAlert'></image>
+  <view class="alert-change-phone-title">
+   
+    {{change_tips}}
+  </view>
+  <view class="alert-change-phone-input">
+    <input class="alert-change-phone-input-phone" type="number" maxlength='11'  placeholder="手机号：" bindinput="PhoneInputChange" value="" placeholder-style="color:#bbbbbb;" />
+  </view>
+  <view class="alert-change-phone-input">
+    <input class="alert-change-phone-input-smscode" type="number" maxlength='6' placeholder="验证码：" bindinput="CodeInputChange"  value="" placeholder-style="color:#bbbbbb;" />
+    <text  class="alert-change-phone-input-sendsms" bindtap='sendsmscheckcode'>{{send_msg}}</text>
+  </view>
+  <view class="alert-change-phone-button" bindtap='changePhoneSbumit'>
+    确认
+  </view>
+</view>
+
+<view class="alert-pass {{alertnum==2?'alerttype':''}}">
+  <image class="alert-pass-close" src="../../icon/icon-clar-search.png" bindtap='hideAlert'></image>
+  <view class="alert-pass-title">
+    恭喜你
+  </view>
+  <view class="alert-pass-content">
+    您已成功激活<text class="alert-pass-content-phone"> {{changephone}} </text>的会员权益。
+  </view>
+  <view class="alert-pass-content">
+    <text>· 您的健康短信将会同步到康健头条</text>
+  </view>
+  <view class="alert-pass-content">
+    <text>· 您可免费使用预约挂号服务</text>
+  </view>
+</view>
+
+<view class="alert-notpass {{alertnum==3?'alerttype':''}}">
+  <image class="alert-notpass-close" src="../../icon/icon-clar-search.png" bindtap='hideAlert'></image>
+  <view class="alert-notpass-title">
+    非常抱歉
+  </view>
+  <view class="alert-notpass-content">
+    <text class="alert-notpass-content-phone">{{changephone}} </text>不是中国移动健康俱乐部会员。您可继续免费使用微笑医生的其他免费功能。
+  </view>
+  <view class="alert-notpass-changephone" bindtap='ChangePhone'>
+    更换手机号
+  </view>
+</view>
+
+<!--优惠推荐-->
+<!--
+<view class="row-title">
+  优惠推荐
+</view>
+<view class="dredge-list">-->
+  <!--年度黄金会员-->
+  <!--
+  <view class="charge-list-row">
+    <view class="charge-list-row-left">
+
+      <image src="../../icon/icon-recommend.svg" class="recommend-text"></image>
+      <view class="charge-vip-introduce" style="padding-left:43px;">
+        年度黄金会员
+        <text class="charge-vip-cost">￥60</text>
+      </view>
+      <view class="charge-vip-cost-introduce recommend">12个月，每月5元</view>
+    </view>
+    <button class="dredge-btn" bindtap="DredgeMember" disabled="{{PayDisabled}}" data-cost="60" data-type="年度黄金会员" >开通</button>
+  </view>
+-->
+  <!--月度黄金会员-->
+    <!--
+  <view class="charge-list-row">
+    <view class="charge-list-row-left">
+      <view class="charge-vip-introduce">
+        季度黄金会员
+        <text class="charge-vip-cost">￥15</text>
+      </view>
+      <view class="charge-vip-cost-introduce">3个月，每月5元</view>
+    </view>
+    <button class="dredge-btn" bindtap="DredgeMember" disabled="{{PayDisabled}}" data-cost="15" data-type="月度黄金会员">开通</button>
+  </view>
+
+  <view class="charge-list-row" style="border:0;">
+    <view class="charge-list-row-left">
+      <view class="charge-vip-introduce">
+        体验会员
+        <text class="charge-vip-cost">￥8</text>
+      </view>
+      <view class="charge-vip-cost-introduce">1个月，每月8元</view>
+    </view>
+    <button class="dredge-btn" bindtap="DredgeMember" disabled="{{PayDisabled}}" data-cost="8" data-type="体验会员">开通</button>
+  </view>
+</view>
+-->
+<!--会员服务-->
+  <!--
+<view class="service-column">
+  <text>会员服务</text>
+</view>
+<view class="member-service">
+  <view class="member-service-li">
+    <image src="../../icon/icon-health-information.svg" class="member-service-ico"></image>
+    <text class="member-service-text">每日健康资讯</text>
+    <view class="member-not-available">待开通</view>
+  </view>
+
+  <view class="member-service-li">
+    <image src="../../icon/icon-collect.svg" class="member-service-ico"></image>
+    <text class="member-service-text">健康资讯收藏夹</text>
+  </view>
+
+  <view class="member-service-li">
+    <image src="../../icon/icon-registration.svg" class="member-service-ico"></image>
+    <text class="member-service-text">预约挂号</text>
+    <!--<view class="member-not-available">待开通</view>-->
+      <!--
+  </view>
+
+  <view class="member-service-li">
+    <image src="../../icon/icon-consult.svg" class="member-service-ico"></image>
+    <text class="member-service-text">专家咨询</text>
+    <view class="member-not-available">待开通</view>
+  </view>
+  <view class="member-service-li">
+    <image src="../../icon/icon-index-interpretation.svg" class="member-service-ico"></image>
+    <text class="member-service-text">指标解读</text>
+    <view class="member-not-available">待开通</view>
+  </view>
+
+  <view class="member-service-li">
+    <image src="../../icon/icon-medication-remind.svg" class="member-service-ico"></image>
+    <text class="member-service-text">用药提醒</text>
+    <view class="member-not-available">待开通</view>
+  </view>
+</view>
+-->
+
+<view class="alert-bottom {{alerttype}}" bindtap='hide_alert'>
+</view>
+<view class="alert-top-tt {{alertt}}">
+  <view class="alert-top-tt-title">
+    健康头条服务频次修改
+  </view>
+  <view class="alert-top-tt-list {{tt_list==0 ? 'alert-top-tt-list-select' : ''}}" data-ttListType='0' bindtap='click_tt_list'>
+    每日一条
+  </view>
+  <view class="alert-top-tt-list {{tt_list==1 ? 'alert-top-tt-list-select' : ''}}" data-ttListType='1' bindtap='click_tt_list'>
+    隔天一条
+  </view>
+  <view class="alert-top-tt-list {{tt_list==2 ? 'alert-top-tt-list-select' : ''}}" data-ttListType='2' bindtap='click_tt_list'>
+    每周一条
+  </view>
+  <view class="alert-top-tt-submit" bindtap='tt_submit'>
+    保存
+  </view>
+</view>
+
+<view class="alert-top-ttdz {{ttdztype}}">
+  <view class="alert-top-ttdz-title">
+    健康头条业务定制
+  </view>
+  <view class="alert-top-ttdz1">
+    三甲医院专家为您定制每日健康短信
+  </view>
+  <view class="alert-top-ttdz1">
+    粉碎健康谣言，提升健商段位
+  </view>
+  <view class="alert-top-ttdz2">
+    价格：一元/月
+  </view>
+  <view class="alert-top-ttdz3">
+    <image mode="aspectFit" class= "alert-top-ttdz3-image" src="../../icon/icon-phone.png"></image>
+    <input class="alert-top-ttdz3-input" type="number" id="phone" name="phone" maxlength="11" placeholder="请输入手机号码" placeholder-class="alert-top-ttdz3-input-placeholder" bindinput="PhoneInputChacnge1"></input>
+  </view>
+  <view class="alert-top-ttdz4">
+    <view class="alert-top-ttdz4-smscode">
+      <image mode="aspectFit" class= "alert-top-ttdz3-image" src="../../icon/icon-suo.png"></image>
+      <input class="alert-top-ttdz3-input" type="number" id="smscode" name="smscode" maxlength="6" placeholder="请输入验证码" placeholder-class="alert-top-ttdz3-input-placeholder"  bindinput="CodeInputChacnge1"></input>
+    </view>
+    <view class="alert-top-ttdz4-text" bindtap='sendsmscheckcode'>
+      {{send_msg}}
+    </view>
+  </view>
+  <view class="alert-top-ttdz-submit" bindtap='ttdz_submit'>
+    确定定制
+  </view>
+  <view class="alert-top-ttdz5">
+    健康头条将以短信方式每日为您服务
+  </view>
+</view>
+<view class="alert-top-tttd {{tttdtype}}">
+  <view class="alert-top-tttd-title">
+    是否退订健康头条
+  </view>
+  <view class="alert-top-tttd-intro">
+    健康头条退订后，您将不再接收康健头条短信产品服务。
+  </view>
+  <view class="alert-top-tttd-submit-true" bindtap='tttd_submit'>
+    是
+  </view>
+  <view class="alert-top-tttd-submit-false" bindtap='hide_alert'>
+    否
+  </view>
+</view>
+<image mode="aspectFill" class="banner-02 {{spkttype}}" src="../../icon/banner_h5.png" bindtap='hide_alert'></image>

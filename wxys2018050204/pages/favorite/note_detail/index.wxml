@@ -1,0 +1,53 @@
+<!--pages/note_detail/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<block wx:if="{{PageShow}}">
+  <view class="note-top-tab">
+    <view class="tab-note-title-groups">
+      <text class="tab-note-title">{{note_title}}</text>
+      <block wx:if="{{IsCollect}}">
+        <button class="note-class-btn active" catchtap="CancelCollectNote">已收藏</button>
+      </block>
+      <block wx:else>
+        <button class="note-class-btn" catchtap="CollectNote">收藏</button>
+      </block>
+    </view>
+    <view class="content-set">
+      <view class="note-source">
+        <text class="note-source-text">中国移动健康中心</text>
+        <text class="note-source-text">{{note_time}}</text>
+      </view>
+      <!--字体设置-->
+      <image src="../../../icon/icon-font-selected.png" class="font-ico" catchtap="ShowFontSizeSelect"></image>
+      <block wx:if="{{ShowFontSizeSelect}}">
+        <!--字体设置选择部分-->
+        <view class="arrow-up"></view>
+        <view class="arrow-up-shade"></view>
+        <view class="font-select">
+          <view class="section section_gap">
+            <view class="font-size-view">
+              <text style="text-indent:25rpx">小</text>
+              <text style="text-indent:90rpx">标准</text>
+              <text style="text-indent:180rpx">大</text>
+            </view>
+            
+            <view class="body-view">
+              <slider bindchange="SetFontSize" min="1" max="3" activeColor="#59bdca" value="{{DefaultFontSize}}"/>
+            </view>
+          </view>
+          <view class="pick-up-groups">
+            <image src="../../../icon/icon-pack-up.png" class="pick-up-ico" catchtap="HideFontSizeSelect"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+    
+  </view>
+  <!--文章内容-->
+  <view class="note-content">
+    <rich-text wx:if="{{CanUseRichText}}" style="font-size:{{nonte_content_font_size}}" nodes="{{Note.note_text}}" type="text"/>
+    <text wx:else class="remind-text">当前版本微信暂不支持查看富文本内容，请升级到最新微信版本后重试。</text>
+  </view>
+</block>
+
+
+

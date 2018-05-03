@@ -1,0 +1,45 @@
+<!--pages/hospital/index.wxml-->
+<!--提示样式-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+
+<view style="display:{{PageShow?'':'none'}}">
+  <!--顶部医院资料-->
+  <view class="hospital-data">
+    <button wx:if="{{!Collect}}" class="attention-btn collect-groups" bindtap="CollectHospital" disabled="{{lAttentionDisabled}}">收藏</button>
+    <button wx:else class="attention-btn active collect-groups" bindtap="CancelCollectHospital" disabled="{{CancelAttentionDisabled}}">已收藏
+    </button>
+    <image src="{{HospitalLogo}}"></image>
+    <text class="hospital-name">{{hospital}}</text>
+  </view>
+  <!--科室资料-->
+
+  <view class="hierarchy-list">
+    <!--一级科室分类选择-->
+    <scroll-view class="first-order-list es-selector" style="height:{{ScrollHeight}}px;" scroll-y="true">
+      <block wx:for="{{FirstHierarchy}}" wx:key="first_hierarchy_id" wx:for-index="idx" data-idx="{{idx}}">
+        <view class="first-order-li {{first_hierarchy_id==item.first_hierarchy_id ? 'active' : ''}}" bindtap="ShowSecondHierarchy" data-id="{{item.first_hierarchy_id}}">
+          <block wx:if="{{first_hierarchy_id==item.first_hierarchy_id}}">
+            <image src="../../icon/icon-right-3.png"></image>
+          </block>
+          {{item.first_hierarchy_name}}
+        </view>
+
+      </block>
+    </scroll-view>
+
+    <!--二级科室选择-->
+    <scroll-view class="second-order-list" style="height:{{ScrollHeight}}px" scroll-y="true">
+      <block wx:for="{{SecondHierarchy}}" wx:key="first_hierarchy_id">
+        <view style="display:{{first_hierarchy_id==item.first_hierarchy_id ? '' : 'none'}}">
+          <block wx:for="{{item.data}}" wx:key="second_hierarchy_id">
+          
+            <navigator class="second-order-li" url="../departments_subscribe/index?hospital={{hospital}}&hospitalId={{hospitalId}}&departments={{item.second_hierarchy_name}}&departmentId={{item.second_hierarchy_id}}" hover-class="none">{{item.second_hierarchy_name}}</navigator>
+          </block>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+
+
+</view>

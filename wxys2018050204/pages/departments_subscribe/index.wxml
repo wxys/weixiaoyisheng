@@ -1,0 +1,155 @@
+<!--pages/departments_subscribe/index.wxml-->
+<!--自定义提示栏-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<!--自定义loading-->
+<view class="loading-groups" style="display:{{PageShow?'none':''}}">
+  <image src="../../icon/icon-loading.png" class="loading-ico"></image>
+  <text class="loading-text">努力加载中...</text>
+</view>
+
+<view style="display:{{PageShow?'':'none'}}">
+  <!--顶部选择预约方式-->
+  <view class="btn-groups">
+    <block wx:for="{{navbar}}" wx:key="" wx:for-index="idx" data-idx="{{idx}}">
+      <view class="btn-li {{tab_id==idx?'active':''}}" data-id="{{item.tab_id}}" bindtap="SwitchTab">{{item.tab_text}}</view>
+    </block>
+    <button wx:if="{{!Collect}}" class="attention-btn" bindtap="AttentionDepartments" disabled="{{AttentionDisabled}}">收藏</button>
+    <button wx:else class="attention-btn active" bindtap="CancelAttentionDepartments" disabled="{{CancelAttentionDisabled}}">已收藏
+    </button>
+  </view>
+
+  <!--按照专家预约-->
+  <block wx:if="{{tab_id==0}}">
+
+    <scroll-view scroll-y="true" style="height:{{ScrollHeight1}}px" wx:if="{{DoctorBySpecialist.length>0}}" style="margin-top:50px;">
+      <view class="es-list">
+        <block wx:for="{{DoctorBySpecialist}}" wx:key="" wx:for-index="idx" data-idx="{{idx}}">
+          <view data-url="../doctor_card/index?doctor_cover={{item.doctor_cover}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{departments}}&doctor_hospital={{hospital}}&doctor_subscribe_number={{item.doctor_subscribe_num}}&doctor_id={{item.doctor_id}}&hospitalId={{hospitalId}}&departmentId={{departmentId}}"
+            class="es-list-li center" catchtap="SkipPage">
+
+            <image src="{{item.doctor_cover}}" class="doctor-cover" />
+            <view class="doctor-data">
+              <view>
+                <text class="doctor-name">{{item.doctor_name}}</text>
+                <text class="doctor-level">{{item.doctor_position}}</text>
+              </view>
+              <text class="doctor-good-at">{{item.doctor_good_at}}</text>
+            </view>
+            <view class="subscribe-btn-sm" data-url="../doctor_subscribe/index?doctor_cover={{item.doctor_cover}}&doctor_name={{item.doctor_name}}&doctor_position={{item.doctor_position}}&doctor_departments={{departments}}&doctor_hospital={{hospital}}&doctor_subscribe_number={{item.doctor_subscribe_number}}&doctor_id={{item.doctor_id}}&hospitalId={{hospitalId}}&departmentId={{departmentId}}"
+              catchtap="SkipPage">挂号</view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+
+
+    <view wx:else class="load-remind-groups">
+      <image src="../../icon/icon-empty-content.png"  mode="aspectFit" class="promt-img"  class="load-remind-ico"></image>
+      <text>该科室无可预约专家</text>
+    </view>
+
+  </block>
+
+  <!--按照日期预约-->
+  <block wx:else>
+    <block wx:if="{{DoctorByDate}}">
+      <!--顶部日期选择-->
+      <scroll-view class="crosswise-scroll" scroll-x="true" >
+        <view class="date-select">
+          <block wx:for="{{DoctorByDate}}" wx:key="" wx:for-index="idx" data-idx="{{idx}}">
+            <view class="date-select-li {{date_id==item.date_id ? 'active':''}}" data-id="{{item.date_id}}" bindtap="SwitchDate" data-week="{{item.week}}">
+              <view class="week">{{item.week}}</view>
+              <view class="date">{{item.date}}</view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+
+      <scroll-view scroll-y="true" style="height:{{ScrollHeight2}}px" style="margin-top:107px;">
+        <!--每个日期对应可选择的医生-->
+        <block wx:for="{{DoctorByDate}}" wx:key="" wx:for-index="idx" data-idx="{{idx}}">
+          <view class="es-list" style="display:{{date_id==item.date_id? '':'none'}}">
+            <block wx:for="{{item.doctor_list}}" wx:key="" wx:for-index="idx" data-idx="{{idx}}">
+              <view class="es-list-li ">
+                <image src="{{item.doctor_cover}}" class="doctor-cover" />
+                <view class="doctor-data">
+                  <!--专家信息-->
+                  <view>
+                    <text class="doctor-name">{{item.doctor_name}}</text>
+                    <text class="doctor-level">{{item.doctor_position}}</text>
+                  </view>
+                  <!--专家擅长-->
+                  <text class="doctor-good-at">{{item.doctor_good_at}}</text>
+                  <!--排班时间-->
+                  <view>
+                    <text class="subscribe-date">{{item.doctor_subscribe_date}}</text>
+                    <text class="subscribe-time">{{item.doctor_subscribe_time}}</text>
+                    <text class="subscribe-type">{{item.doctor_subscribe_type}}</text>
+                  </view>
+                </view>
+                <view class="subscribe-data">
+                  <text class="subscribe-price">{{item.inspecting_fee}}</text>
+
+                  <button class="subscribe-btn-sm" catchtap="ViewScheduling" data-doctor_cover="{{item.doctor_cover}}" data-doctor_name="{{item.doctor_name}}" data-doctor_position="{{item.doctor_position}}" data-id="{{item.scheduling_id}}" data-date="{{item.doctor_subscribe_date}}"
+                    data-noon="{{item.doctor_subscribe_time}}" data-type="{{item.doctor_subscribe_type}}" data-inspecting_fee="{{item.inspecting_fee}}">挂号</button>
+                  
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+    </block>
+    <view wx:else class="load-remind-groups">
+      <image src="../../icon/icon-empty-content.png"  mode="aspectFit" class="promt-img"  class="load-remind-ico"></image>
+      <text>该科室无可预约专家</text>
+    </view>
+
+  </block>
+</view>
+
+<!--排班排号情况-->
+<view class="pick-groups" style="display:{{PickShow}}">
+  <view class="pick-groups-area">
+    <view class="pick-header">
+      <view>
+        <text class="scheduling-date">{{scheduling_date}}</text>
+        <text class="scheduling-noon">{{scheduling_noon}}</text>
+      </view>
+      <view>
+        <text class="scheduling-doctor-name">{{doctor_data.doctor_name}}</text>
+
+        <text class="scheduling-type">{{scheduling_type}}</text>
+
+      </view>
+    </view>
+    <scroll-view scroll-y="true" class="pick-scroll" style="height:175px;">
+      <!--有排班数据-->
+      <block wx:if="{{SchedulingData.errorno==1}}">
+
+        <view class="scheduling-no-list">
+          <view class="scheduling-no-list-li " wx:for="{{SchedulingData.SchedulingNo}}" wx:key="" bindtap="SchedulingDoctor" data-id="{{item.scheduling_no_id}}" data-no="{{item.scheduling_no}}" data-no_time="{{item.scheduling_no_time}}">
+            <view class="scheduling-no-list-li-border {{scheduling_no_id==item.scheduling_no_id? 'active':''}}">
+              <text class="scheduling-no">{{item.scheduling_no}}</text>
+              <text class="scheduling-no-time">{{item.scheduling_no_time}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <!--其他情况-->
+      <block wx:else>
+
+        <view class="scheduling-remind">
+          <image src="../../icon/icon-remind.png" class="scheduling-ico"></image>
+          <text class="scheduling-remind-text">{{SchedulingData.result}}</text>
+        </view>
+      </block>
+
+
+
+
+    </scroll-view>
+    <view class="pick-footer" bindtap="HidePick">取消</view>
+  </view>
+</view>

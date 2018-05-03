@@ -1,0 +1,96 @@
+<!--pages/my_subscribe_shipin/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+<view class="top">
+  <navigator class="top-1" url="../my_subscribe/index" open-type="redirect">
+    挂号预约
+  </navigator>
+  <navigator class="top-1" url="../my_subscribe_yuyin/index" open-type="redirect">
+    语音咨询预约
+  </navigator>
+  <view class="top-1" style="background:#169bd5;color:white">
+    视频咨询预约
+  </view>
+</view>
+<view style="display:{{PageShow?'':'none'}}">
+  <!--会员看到的模块start-->
+  <block wx:if="{{UserData.MemberInformation=='中国移动健康中心会员' || UserData.MemberInformation=='会员订户'|| UserData.MemberInformation=='非会员'}}">
+    <block wx:if="{{user_subsvribe.length>0}}">
+      <view class="my-subscribe">
+        <!--预约数据-->
+        <view class="my-subscribe-li" wx:for="{{user_subsvribe}}" wx:key="">
+          <view class="my-subscribe-groups">
+            <text class="subscribe-date">{{item.user_subsvribe_date}}</text>
+            <view class="my-subscribe-data">
+              <image src="../../icon/icon-hospital.png" class="my-subscribe-data-ico"></image>
+              <text class="hospital">{{item.user_subsvribe_hospital}}</text>
+              <text>{{item.user_subsvribe_departments}}</text>
+            </view>
+            <view class="my-subscribe-data">
+              <image src="{{item.user_subsvribe_doctor_cover}}" class="my-subscribe-data-ico"></image>
+              <text class="doctor">{{item.user_subsvribe_doctor}}</text>
+              <text>{{item.user_subsvribe_doctor_position}}</text>
+            </view>
+            <view class="my-subscribe-data last">
+              <image src="../../icon/icon-seeking-person.png" class="my-subscribe-data-ico"></image>
+              <text>就诊人：{{item.user_subsvribe_name}}</text>
+            </view>
+
+            <!--预约状态-->
+            <view class="subscribe-state">
+
+              <block wx:if="{{item.subsvribe_status=='未开始'}}">
+                <text class="state-ico not-started">{{item.subsvribe_status}}</text>
+                <view class="operate-groups">
+                  <button class="subscribe-btn" catchtap="CancelSubscribe" data-YYXH="{{item.YYXH}}" disabled="{{CancelBtnDisabled}}">取消</button>
+                </view>
+              </block>
+
+              <block wx:elif="{{item.subsvribe_status=='停诊' || item.subsvribe_status=='已取消'}}">
+                <text class="state-ico stopping-admission" catchtap="ViewNotice" data-notice_text="{{item.notice_text}}">{{item.subsvribe_status}}</text>
+                <view class="operate-groups">
+                  <navigator url="../doctor_subscribe/index?doctor_cover={{item.user_subsvribe_doctor_cover}}&doctor_name={{item.user_subsvribe_doctor}}&doctor_position={{item.user_subsvribe_doctor_position}}&doctor_departments={{item.user_subsvribe_departments}}&doctor_hospital={{item.user_subsvribe_hospital}}&doctor_id={{item.Doctor_Id}}&hospitalId={{item.Hospital_Id}}&departmentId={{item.Class_Id}}"
+                    class="subscribe-btn" hover-class="none">再次预约</navigator>
+                </view>
+              </block>
+
+              <block wx:elif="{{item.subsvribe_status=='爽约'}}">
+                <text class="state-ico stopping-admission">{{item.subsvribe_status}}</text>
+
+              </block>
+
+
+              <block wx:else>
+                <text class="state-ico overdue">{{item.subsvribe_status}}</text>
+                <view class="operate-groups">
+                  <navigator class="remind-btn" url="../medical_orders_remind/index" hover-class="none">医嘱提醒</navigator>
+                  <navigator url="../doctor_subscribe/index?doctor_cover={{item.user_subsvribe_doctor_cover}}&doctor_name={{item.user_subsvribe_doctor}}&doctor_position={{item.user_subsvribe_doctor_position}}&doctor_departments={{item.user_subsvribe_departments}}&doctor_hospital={{item.user_subsvribe_hospital}}&doctor_id={{item.Doctor_Id}}&hospitalId={{item.Hospital_Id}}&departmentId={{item.Class_Id}}"
+                    class="subscribe-btn" hover-class="none">再次预约</navigator>
+                </view>
+              </block>
+
+            </view>
+          </view>
+          <text class="subscribe-time">{{item.CreateTime}}</text>
+
+        </view>
+      </view>
+    </block>
+
+    <view wx:else class="load-remind-groups">
+      <image src="../../icon/icon-empty-content.png" class="load-remind-ico"></image>
+      <text>您没有预约记录</text>
+    </view>
+
+  </block>
+  <!--如果没有登录，提示登录-->
+  <block wx:else>
+
+    <view class="load-remind-groups">
+      <image src="../../icon/icon-hello.png" class="load-remind-ico"></image>
+      <text>请先登录</text>
+    </view>
+    <navigator class="turn-login-btn" hover-class="none" url="../login/index?type=login">点此登录</navigator>
+
+  </block>
+
+</view>

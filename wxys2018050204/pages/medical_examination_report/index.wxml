@@ -1,0 +1,179 @@
+<!--pages/medical_examination_report/index.wxml--> 
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+<block wx:if='{{!isnull}}'>
+<view class="top-select" catchtouchmove='true'>
+  <view class="top-select-left" bindtap='clickTopSelectLeft'>
+    {{familyname1}}<image class="top-select-left-image" src="{{isxialaleft==0?'../../icon/icon-xiala.png':'../../icon/icon-shouqi.png'}}"></image>
+  </view>
+  <view class="top-select-right" bindtap='clickTopSelectRight'>
+    {{examineDate1}}<image class="top-select-right-image" src="{{isxialaright==0?'../../icon/icon-xiala.png':'../../icon/icon-shouqi.png'}}"></image>
+  </view>
+</view>
+
+<view class="top-select-shadow {{xialaleftshow==1?'xialaleftshow':''}} {{xialarightshow==1?'xialarightshow':''}}" bindtap='topSelectShouqi' catchtouchmove='true'>
+</view>
+<scroll-view scroll-y class="top-select-left-list {{xialaleftshow==1?'xialaleftshow':''}}">
+  <view wx:for="{{familyname}}" wx:key="" class="top-select-left-list-row" data-name="{{item.cumname}}"  data-sex="{{item.cumsex}}"  data-lsh="{{item.flowId}}" bindtap='selectName'>
+    <view class="top-select-left-list-row1">
+      {{item.cumname}}
+    </view>
+    <view class="top-select-left-list-row2">
+      最近一次随访：{{item.examineDate}}
+    </view>
+  </view>
+</scroll-view>
+<scroll-view scroll-y class="top-select-right-list {{xialarightshow==1?'xialarightshow':''}}">
+  <view wx:for="{{examineDate}}" wx:key="" class="top-select-right-list-row" data-sex="{{item.cumsex}}" data-lsh="{{item.flowId}}" data-examineDate='{{item.examineDate}}' bindtap='selectTime'>
+    <view class="top-select-right-list-row1">
+      {{item.examineDate}}
+    </view>
+    <view class="top-select-right-list-row2">
+      {{item.examineweek}}
+    </view>
+  </view>
+</scroll-view> 
+
+<view class="choose-button">
+  <view class="content-list-button {{contentList==1?'contentListBotton':''}}" data-buttonNum='1' bindtap='clickContentListButton'>
+    检查结果
+  </view>
+  <view class="content-list-button {{contentList==2?'contentListBotton':''}}" data-buttonNum='2'  bindtap='clickContentListButton'>
+    医师建议
+  </view>
+  <!--
+  <view class="content-list-button {{contentList==3?'contentListBotton':''}}" data-buttonNum='3' bindtap='clickContentListButton'>
+    建议
+  </view>
+  -->
+</view>
+
+<scroll-view scroll-y class="content {{contentList==1?'contentList':''}}">
+
+  <block wx:if="{{ksjc}}">
+    <view class="content-list-ksjc">
+      <view wx:for="{{ksjc}}" wx:key="" class="xiangmu">
+        <view class="xiangmuming">
+          {{item.projectname}}
+        </view>
+        <view wx:if="{{item.ProjectContent[0].txtType!=1}}">
+            <view class="zhibaio" >
+              <text class="jieguo">结果</text>
+              <text class="cankaofanwei">参考范围</text>
+            </view>
+        </view>
+        <view wx:for="{{item.ProjectContent}}" wx:key="">
+          <view wx:if="{{item.txtType==1}}">
+            <view class="zhibiaolist">
+              <view class="zhibiaolistcontent zhibiaolistcontent5">
+                {{item.Section_Office}}
+              </view>
+              <text class="zhibiaolistcontenttext">
+               {{item.Result}}
+              </text>
+            </view>
+          </view>
+          <view wx:else>
+            <view class="zhibiaolist">
+              <block wx:if="{{item.Have_Child==1}}">
+                <view class="zhibiaolistcontent zhibiaolistcontent1 zhibiaolistcontent6">
+                  {{item.Section_Office}}
+                </view>
+
+                <view wx:for="{{item.Child_Content}}" wx:key="">
+                  <view wx:if="{{item.txtType==1}}">
+                    <view class="zhibiaolist">
+                      <view class="zhibiaolistcontent zhibiaolistcontent5">
+                        {{item.Section_Office}}
+                        
+                      </view>
+                      <view class="test">
+                      {{item.Result}}
+                       </view>
+                    </view>
+                  </view>
+                  <view wx:else>
+                    <view class="zhibiaolist">
+                      <view class="zhibiaolistcontent zhibiaolistcontent1">
+                        {{item.Section_Office}}
+                      </view>
+                      <view class="zhibiaolistcontent zhibiaolistcontent2">
+                        {{item.Result}}
+                      </view>
+                        <view class="zhibiaolistcontent zhibiaolistcontent3">
+                          {{item.ReturnState}}
+                        </view>
+                        <view class="zhibiaolistcontent zhibiaolistcontent4">
+                          <text>{{item.ReturnArea}}</text>
+                        </view>  
+                    </view>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class="zhibiaolistcontent zhibiaolistcontent1">
+                  {{item.Section_Office}}
+                </view>
+                <view class="zhibiaolistcontent zhibiaolistcontent2">
+                  {{item.Result}}
+                </view>
+                <view class="zhibiaolistcontent zhibiaolistcontent3">
+                  {{item.ReturnState}}
+                </view>
+                <view class="zhibiaolistcontent zhibiaolistcontent4">
+                  <text>{{item.ReturnArea}}</text>
+                </view>              
+              </block>
+            </view>
+          </view>
+        </view>
+        
+        <view class="jishi">
+          技师/医师：{{item.projectdoctor}}
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <text class="content-list-ksjc">    
+      无
+    </text>
+  </block>
+
+</scroll-view>
+
+<scroll-view scroll-y class="content {{contentList==2?'contentList':''}}">
+  <block wx:if="{{zs}}">
+    <text class="content-list">    
+      {{zs}}
+    </text>
+  </block>
+  <block wx:else>
+    <text class="content-list">    
+      无
+    </text>
+  </block>
+</scroll-view>
+
+<!--
+<scroll-view scroll-y class="content {{contentList==3?'contentList':''}}">
+  <text class="content-list">
+    {{jy}}
+  </text>
+</scroll-view>
+-->
+</block>
+<block wx:else>
+  <view class="promt-img-view">
+    <image  class="promt-img" mode="aspectFit" src="../../icon/icon-empty-content.png"></image>
+  </view>
+  <view class="promt-text">
+    您暂无体检报告
+  </view>
+</block>
+</block>
+  

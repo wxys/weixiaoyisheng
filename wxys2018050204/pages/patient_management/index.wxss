@@ -1,0 +1,53 @@
+/* pages/patient_management/index.wxss */
+.btn-groups {
+  background:#59bdca;
+  color:#fff;
+  font-size:13px;
+  padding:9px;
+  /*border-radius:0px 8px 8px 0px;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-groups_add
+{
+   background:#59bdca;
+  color:#fff;
+  font-size:13px;
+  padding:9px;
+  /*border-radius:0px 8px 8px 0px;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right:10rpx;
+}
+.btn-groups-ico{
+  width:15px;
+  height:15px;
+  margin:0px 3px;
+}
+.clear-search-ico{
+  right:105px;
+}
+.add_btn_huanzhe
+{
+  font-size:26rpx;
+  height: 35rpx;
+  line-height: 70rpx;
+}
+.search-ipt-ico {
+  width:16px;
+  height:16px;
+  top:15px;
+  left:13px;
+}
+.search-ipt{
+  padding:0px 25px 0px 30px;
+  border-radius:8px 0px 0px 8px;
+}
+.search-ipt-groups {
+  position: fixed;
+  width: 100%;
+}
+
+

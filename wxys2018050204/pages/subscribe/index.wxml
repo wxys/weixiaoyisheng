@@ -1,0 +1,106 @@
+<!--提示样式-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+
+<!--pages/subscribe/index.wxml-->
+
+  <!--就诊医生资料-->
+  <view class="subscribe-doctor-data-groups">
+    <image src="{{subscribe_list.doctor_data.doctor_cover}}" class="doctor-cover"></image>
+    <view class="doctor-data ">
+      <text class="subscribe-docto-name">{{subscribe_list.doctor_data.doctor_name}}</text>
+      <text class="subscribe-docto-position">{{subscribe_list.doctor_data.doctor_position}}</text>
+    </view>
+  </view>
+
+  <!--就诊信息-->
+  <view class="subscribe-data-list">
+    <view class="subscribe-data-list-li">
+      <text class="subscribe-data-text">就诊医院</text>
+      <text class="subscribe-data-content">{{subscribe_list.doctor_data.doctor_hospital}}</text>
+    </view>
+    <view class="subscribe-data-list-li">
+      <text class="subscribe-data-text">就诊科室</text>
+      <text class="subscribe-data-content">{{subscribe_list.doctor_data.doctor_departments}}</text>
+    </view>
+    <view class="subscribe-data-list-li">
+      <text class="subscribe-data-text">预约时段</text>
+      <text class="subscribe-data-content orange">{{subscribe_list.subscribe_time}}</text>
+    </view>
+    <view class="subscribe-data-list-li">
+      <text class="subscribe-data-text">门诊类型</text>
+      <text class="subscribe-data-content">{{subscribe_list.scheduling_type}}</text>
+    </view>
+    <view class="subscribe-data-list-li">
+      <text class="subscribe-data-text">诊查费</text>
+      <text class="subscribe-data-content">{{subscribe_list.inspecting_fee}}</text>
+    </view>
+  </view>
+
+  <!--就诊人信息-->
+  <view class="subscribe-person-data-list">
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">就诊人</text>
+
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{FamilyMember}}" range-key="{{'User_Name'}}" mode="selector" class="subscribe-person-data-content">
+        <view class="picker">
+          {{SeekingPerson.seeking_person}}
+        </view>
+      </picker>
+
+    </view>
+
+
+    <!--证件类型-->
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">{{SeekingPerson.certificate_type}}</text>
+      <text class="subscribe-person-data-content">{{SeekingPerson.certificate_number}}</text>
+    </view>
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">手机</text>
+      <text class="subscribe-person-data-content">{{SeekingPerson.phone}}</text>
+    </view>
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">性别</text>
+      <text class="subscribe-person-data-content">{{SeekingPerson.sex}}</text>
+    </view>
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">支付方式</text>
+      <picker class="subscribe-person-data-content " value="0" range="{{pay_type_value}}" bindchange="bindPickerPayType">
+        <!--
+        <block wx:if="{{pay_type}}">{{pay_type}}</block>
+        <block wx:else> 必填
+          <image src="../../icon/icon-right-4.png"></image>
+        </block>
+        -->
+        {{pay_type_value[0]}}
+      </picker>
+
+    </view>
+
+
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">医保卡号</text>
+      <view class="subscribe-person-data-content">
+        <input type="number" placeholder="                选填" bindblur="YbCardIdInput" value="{{SeekingPerson.yb_cardid}}"/>
+       
+      </view>
+    </view>
+
+    <view class="subscribe-person-data-list-li">
+      <text class="subscribe-person-data-text">就诊卡号</text>
+      <view class="subscribe-person-data-content" >
+        <input type="number" placeholder="                选填" bindblur="JzCardIdInput" value="{{SeekingPerson.jz_cardid}}"/>
+      </view>
+    </view>
+
+
+  </view>
+  <view class="remind-groups">
+    <text class="strong-text">提醒：</text>
+    <text>1、您在医院需凭借就诊人的医保卡卡号，或该医院的就诊卡卡号,才能成功取号；</text>
+    <text>2、您可先预约挂号，后续在"设置">"家庭联系人"中绑定医保卡或就诊卡。</text>
+  </view>
+
+
+
+<button class="subscribe-btn" bindtap="SureSubscribe" disabled="{{BtnDisabled}}">预 约</button>

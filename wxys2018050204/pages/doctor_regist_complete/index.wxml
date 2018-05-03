@@ -1,0 +1,55 @@
+<!--pages/doctor_regist_complete/index.wxml-->
+<view class="remind" style="display:{{RemindShow}}">{{RemindText}}</view>
+
+<view class="logo-groups">
+  <image src="../../icon/icon-is-doctor.svg" class="logo-ico"></image>
+</view>
+<view class="top-tab-text">
+  <text>微笑医生 医生资料完善</text>
+</view>
+
+<!--输入框部分-->
+
+<view class="section ipt-group-top">
+  <image src="../../icon/icon-is-doctor.png" class="ipt-phone-ico"></image>
+
+  <input type="text" id="phone" placeholder="姓名" maxlength="11" class="ipt-group-import"  bindblur="NameInputChacnge"focus="true" placeholder-style="color:#ddd;"/>
+</view>
+
+
+<view class="section ipt-group">
+  <image src="../../icon/icon-hospital.png" class="select-hospital-ico"></image>
+  <picker bindchange="HospitalSelect" value="{{hospital_index}}" range="{{hospital_data}}" class="select-picker" range-key="{{'hospital_name'}}">
+    <view class="picker">
+      <block wx:if="{{hospital_index}}">{{hospital_data[hospital_index].hospital_name}}</block>
+      <block wx:else>请选择医院</block>
+
+    </view>
+  </picker>
+
+</view>
+
+<view class="section ipt-group">
+  <image src="../../icon/icon-household-contacts.png" class="select-departments-ico"></image>
+  <picker bindchange="DepartmentsSelect" value="{{departments_index}}" range="{{departments_list}}" range-key="{{'departments_name'}}" class="select-picker">
+    <view class="picker">
+      <block wx:if="{{departments_index}}">{{departments_list[departments_index].departments_name}}</block>
+      <block wx:else>请选择科室</block>
+
+    </view>
+  </picker>
+</view>
+
+<view class="section ipt-group">
+  <image src="../../icon/icon-seeking-person.png" class="select-professional-title-ico"></image>
+  <picker bindchange="ProfessionalTitleSelect" value="{{index}}" range="{{professional_title_list}}" range-key="{{'professional_title'}}"  class="select-picker">
+    <view class="picker">
+      <block wx:if="{{professional_index}}">{{professional_title_list[professional_index].professional_title}}</block>
+      <block wx:else>请选择职称</block>
+
+    </view>
+  </picker>
+</view>
+
+<button class="regist-btn" bindtap="UserLogin" disabled="{{BtnDisabled}}">开始使用微笑医生</button>
+

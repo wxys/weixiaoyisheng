@@ -1,0 +1,703 @@
+<!--pages/Follow_report/index.wxml-->
+<!-- 
+<view class="select_all">
+  <view class="select_left">  
+    <view class="phone_one" bindtap="clickPerson">
+      <view class="phone_personal">{{firstPerson}}</view>
+    </view>
+    <view class="person_box">
+      <view class="phone_select" hidden="{{selectPerson}}">
+        <view wx:for="{{name_arr}}"  wx:key="">
+          <view class="select_one" bindtap="mySelect" data-me="{{item}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="select_right">  
+    <view class="phone_one" bindtap="clickTime">
+      <view class="phone_personal">{{selectTime}}</view>
+    </view>
+    <view class="person_box">
+      <view class="phone_select" hidden="{{selectTime_hidden}}">
+        <view wx:for="{{time_arr}}"  wx:key="">
+          <view class="select_one" bindtap="selectTime" data-me="{{item}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="clear_both">
+  </view>
+</view>
+-->
+<block wx:if="{{loading}}">
+<loading  hidden="{{!loading}}">
+        加载中...
+    </loading>
+    </block>
+<block wx:else>
+<block wx:if="{{!isnull}}">
+<view class="top-select" catchtouchmove='true'>
+  <view class="top-select-left" bindtap='clickTopSelectLeft'> 
+    赵永铭<image class="top-select-left-image" src="{{isxialaleft==0?'../../icon/icon-xiala.png':'../../icon/icon-shouqi.png'}}"></image>
+  </view>
+  <view class="top-select-right" bindtap='clickTopSelectRight'>
+    2018.01.24<image class="top-select-right-image" src="{{isxialaright==0?'../../icon/icon-xiala.png':'../../icon/icon-shouqi.png'}}"></image>
+  </view>
+</view>
+
+<view class="top-select-shadow {{xialaleftshow==1?'xialaleftshow':''}} {{xialarightshow==1?'xialarightshow':''}}" bindtap='topSelectShouqi' catchtouchmove='true'>
+</view>
+<scroll-view scroll-y class="top-select-left-list {{xialaleftshow==1?'xialaleftshow':''}}">
+  <view class="top-select-left-list-row">
+    <view class="top-select-left-list-row1">
+      赵永铭
+    </view>
+    <view class="top-select-left-list-row2">
+      最近一次随访：2018.01.24
+    </view>
+  </view>
+</scroll-view>
+<view class="top-select-right-list {{xialarightshow==1?'xialarightshow':''}}">
+  <view class="top-select-right-list-row">
+    <view class="top-select-right-list-row1">
+      2018.01.24
+    </view>
+    <view class="top-select-right-list-row2">
+      星期三
+    </view>
+  </view>
+</view>
+
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav" >综述</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav" >检查</view>
+  <view  class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">疾病</view>
+  <view  class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">用药</view>
+
+</view>
+
+    <scroll-view scroll-y class="swiper-tab-list-content {{currentTab==0 ? 'swiper-tab-list-content-show' : ''}}">      
+      <view class="base_info">
+        <view class="top-vieo">
+          <video class="{{xialaleftshow==1?'videotype':''}} {{xialarightshow==1?'videotype':''}}" id="myVideo" style="margin:0 39rpx;width:672rpx;height:400rpx;" src="https://h5.12590.com/video/a03a41e2cd6a6376a4451fafab345be7.mp4" controls></video>
+        </view>
+        
+        <view class="bottom-jielun">    
+          <view class="jielun">结论：</view>   
+          <!--<import src="../../wxParse/wxParse.wxml"/>
+          <template is="wxParse" data="{{wxParseData:content.nodes}}"/>-->
+
+          <view class="zongjie_text">1、本次随访血压偏高，考虑与近期大幅度降温有关。天气寒冷，人体血压容易应激性升高，需每日监测血压，如果收缩压超过160mmHg，采用加服“络活喜，每日一次，午饭后服用，单次用量：5mg（1粒）”的方案控制血压。
+          </view>
+          <view class="zongjie_text">
+2、上周药物调整后，餐前和餐后血糖水平均有所下降，继续采用目前的降糖方案，每周检测一次空腹和餐后2小时血糖。
+          </view>
+        </view>
+      </view>
+
+    </scroll-view>  
+   
+    <scroll-view scroll-y class="swiper-tab-list-content {{currentTab==1 ? 'swiper-tab-list-content-show' : ''}}">  
+      <view class="base_info">
+        <view class="top-jiancha">
+          <!--
+          <view class="top-jiancha-list"> 
+            <view class="top-jiancha-list1">体温：{{showList.tw}} °C</view>
+            <view class="top-jiancha-list2"><image style="width: 30rpx; height: 30rpx;" src="../../icon/icon-shangsheng.png" mode="aspectFit"></image></view>
+          </view>
+          <view class="top-jiancha-list"> 
+            <view class="top-jiancha-list1">体重：{{showList.tz}} KG</view>
+            <view class="top-jiancha-list2"><image style="width: 30rpx; height: 30rpx;margin-top:25rpx;" src="../../icon/icon-xiajiang.png" mode="aspectFit"></image></view>
+          </view>
+          <view class="top-jiancha-list">  
+            <view class="top-jiancha-list1">心率：{{showList.xl}} bpm</view>
+            <view class="top-jiancha-list2"></view>
+          </view>
+          <view class="top-jiancha-list"> 
+            <view class="top-jiancha-list1">血压：{{showList.xy_s}}/{{showList.xy_z}} mmHg</view>
+            <view class="top-jiancha-list2"></view>
+          </view>-->   
+          <view class="top-jiancha-list"> 
+            <view class="top-jiancha-list1">体温：<text class="unit">36.4°C</text></view>
+            <view class="top-jiancha-list2"></view>
+          </view>
+          <view class="top-jiancha-list"> 
+            <view class="top-jiancha-list1">体重：<text class="unit">65KG</text></view>
+            <view class="top-jiancha-list2"></view>
+          </view>
+          <view class="top-jiancha-list"> 
+            <view class="top-jiancha-list1">心率：<text class="unit">61次/分钟</text></view>
+            <view class="top-jiancha-list2"></view>
+          </view>
+          <view class="top-jiancha-list"> 
+            <view class="top-jiancha-list1">血压：<text class="unit">150/86mmHg</text></view>
+            <view class="top-jiancha-list2"><image style="width: 30rpx;margin-top:4rpx; height: 30rpx;" src="../../icon/icon-shangsheng.png" mode="aspectFit"></image></view>
+          </view>
+        </view>  
+        <view class="bottom-jielun">    
+          <view class="jielun">结论：</view>   
+          <!--<import src="../../wxParse/wxParse.wxml"/>
+          <template is="wxParse" data="{{wxParseData:content.nodes}}"/>-->
+          <view class="zongjie_text">本次随访血压偏高，考虑与近期大幅度降温有关。天气寒冷，人体血压容易应激性升高，需每日监测血压，如果收缩压超过160mmHg，采用加服“络活喜，每日一次，午饭后服用，单次用量：5mg（1粒）”的方案控制血压。
+          </view>
+        </view>
+      </view>  
+    </scroll-view>  
+ 
+    <scroll-view scroll-y class="swiper-tab-list-content {{currentTab==2 ? 'swiper-tab-list-content-show' : ''}}">  
+    <!--
+      <block wx:if="{{showList.disease_name!=''}}">
+        {{showList.disease_name}}
+      </block>
+      <block wx:else>
+        无疾病
+      </block>
+      -->
+      <view class="base_info">
+        <view class="top-jibing"> 
+
+          <view class="top-diease">
+            高血压
+          </view>
+          <view class="top-jibing-list"> 
+            <view class="top-jibing-list1">血压：<text class="unit">150/86  mmHg</text></view>
+            <view class="top-jibing-list2"><image style="width: 30rpx; height: 30rpx;margin-top:25rpx;" src="../../icon/icon-shangsheng.png" mode="aspectFit"></image></view>
+          
+          </view>
+          <view class="top-jiancha-list"> 
+            <view class="top-jiancha-list1">心率：<text class="unit">61次/分钟</text></view>
+            <view class="top-jibing-list2"></view>
+            </view>
+
+          <view class="top-diease">
+            糖尿病
+          </view>
+          <view class="top-jibing-list"> 
+            <view class="top-jibing-list1">空腹血糖：<text class="unit">8.3mmol/L</text></view>
+            <view class="top-jibing-list2"><image style="width: 30rpx;margin-top:25rpx; height: 30rpx;" src="../../icon/icon-shangsheng.png" mode="aspectFit"></image></view>
+          </view>
+          <view class="top-jibing-list"> 
+            <view class="top-jibing-list1">餐后2小时血糖：<text class="unit">13.6mmol/L</text></view>
+            <view class="top-jibing-list2"><image style="width: 30rpx; height: 30rpx;margin-top:25rpx;" src="../../icon/icon-shangsheng.png" mode="aspectFit"></image></view>
+          </view>
+          <view class="top-jibing-list"> 
+            <view class="top-jibing-list1">糖化血红蛋白：<text class="unit">8.7%</text></view>
+           <view class="top-jibing-list2"><image style="width: 30rpx; height: 30rpx;margin-top:25rpx;" src="../../icon/icon-shangsheng.png" mode="aspectFit"></image></view>
+          </view>
+        </view>
+        <view class="bottom-jielun">    
+          <view class="jielun">结论：</view>   
+          <!--<import src="../../wxParse/wxParse.wxml"/>
+          <template is="wxParse" data="{{wxParseData:content.nodes}}"/>-->
+          <view class="zongjie_text">1、本次随访血压偏高，考虑与近期大幅度降温有关。天气寒冷，人体血压容易应激性升高，需每日监测血压，如果收缩压超过160mmHg，采用加服“络活喜，每日一次，午饭后服用）， 单次用量：5mg（1粒）”的方案控制血压。</view>
+          <view class="zongjie_text">2、本次随访自测空腹血糖8.3mmol/L，餐后2小时血糖13.6mmol/L，对比上周自测空腹血糖为8.8mmol/L，餐后2小时血糖14.2mmol/L。糖化血红蛋白水平仍在8%-9%范围内，说明血糖控制仍不太理想。上周药物调整后，餐前和餐后血糖水平均有所下降，仍需采用目前的降糖方案，继续每周自测一次空腹和餐后2小时血糖。
+          </view>
+        </view>
+      </view>
+    </scroll-view>  
+
+    <scroll-view scroll-y class="swiper-tab-list-content {{currentTab==3 ? 'swiper-tab-list-content-show' : ''}}">  
+    <!--
+    <block wx:if="{{showList.drug_name !=''}}">
+      {{showList.drug_name }}
+    </block>
+    <block wx:else>
+      无用药
+    </block>
+    -->
+      <view class="top-use-drug">
+        <view class="top-use-drug-list {{use_drug_tab==0 ? 'use-drug-tab' : ''}}" bindtap="swichusedrug" data-usedrug="0">
+          用药清单
+        </view>
+        <view class="top-use-drug-list {{use_drug_tab==1 ? 'use-drug-tab' : ''}}" bindtap="swichusedrug" data-usedrug="1">
+          用药时间
+        </view>
+        <view class="top-use-drug-list {{use_drug_tab==2 ? 'use-drug-tab' : ''}}" bindtap="swichusedrug" data-usedrug="2" style="border-right:2rpx solid #F9A64A;">
+          疾病用药
+        </view>
+      </view>
+      
+      <scroll-view scroll-y class="use-drug-tab-content {{use_drug_tab==0 ? 'use-drug-tab-content-type' : ''}}">
+        <view class="tianchong">
+        </view>
+        <view class="table">
+          <view class="tr">
+            <view class="th table-width1">
+              序号
+            </view>
+            <view class="th table-width2">
+              药品
+            </view>
+            <view class="th table-width3">
+              用药频率
+            </view>
+            <view class="th table-width4">
+              单次用量
+            </view>
+          </view>
+          <view class="tr">
+            <view class="td table-width1">
+              1
+            </view>
+            <view class="td table-width2">
+              代文<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='1' data-typeid='1'></image>
+            </view>
+            <view class="td table-width3">
+              每日一次，清晨起床后服用
+            </view>
+            <view class="td table-width4">
+                 <text> 80mg
+                 （1粒）</text>
+            </view>
+          </view>
+          <view class="tr">
+            <view class="td table-width1">
+              2
+            </view>
+            <view class="td table-width2">
+              格华止<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='2' data-typeid='1'></image> 
+            </view>
+            <view class="td table-width3">
+              每日两次，中午和晚上服用
+            </view>
+            <view class="td table-width4">
+             <text>  0.5g
+             （1粒）</text>
+            </view>
+          </view>
+          <view class="tr">
+            <view class="td table-width1">
+              3
+            </view>
+            <view class="td table-width2">
+              拜唐苹<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='3' data-typeid='1'></image>  
+            </view>
+            <view class="td table-width3">
+              每日三次
+            </view>
+            <view class="td table-width4">
+              <text> 50mg
+              （1粒）</text>
+            </view>
+          </view>
+          <view class="tr">
+            <view class="td table-width1">
+              4
+            </view>
+            <view class="td table-width2">
+              诺和龙<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='4' data-typeid='1'></image>  
+            </view>
+            <view class="td table-width3">
+              每日三次
+            </view>
+            <view class="td table-width4">
+              <text>2mg 
+              （1粒）</text>
+            </view>
+          </view>
+        </view>
+        <view class="bottom-jielun" style="margin-left:0">    
+          <view class="jielun">结论：</view>   
+          <!--<import src="../../wxParse/wxParse.wxml"/>
+          <template is="wxParse" data="{{wxParseData:content.nodes}}"/>-->
+          <view class="zongjie_text">1、目前降压药方案：代文 80mg，每日一次。如果收缩压超过160mmHg，采用加服一粒“络活喜，每日一次，午饭后服用，单次用量：5mg（1粒）”的方案控制血压。
+          </view>
+          <view class="zongjie_text">
+2、目前降糖药方案：格华止0.5g，每日两次，中午和晚上服用；拜糖平50mg，每日三次；诺和龙2mg，每日三次。
+          </view>
+        </view>
+      </scroll-view>
+
+      <scroll-view scroll-y class="use-drug-tab-content {{use_drug_tab==1 ? 'use-drug-tab-content-type' : ''}}">
+        <view class="use-drug-time-list">        
+          <view class="use-drug-time">
+            上午-清晨起床后
+          </view>
+          <view class="use-drug-time-table">
+            <view class="table">
+              <view class="tr">
+                <view class="th table-width1">
+                  序号
+                </view>
+                <view class="th table-width2">
+                  药品
+                </view>
+                <view class="th table-width4">
+                  单次用量
+                </view>
+              </view>
+              <view class="tr">
+                <view class="td table-width1">
+                  1
+                </view>
+                <view class="td table-width2">
+                  代文<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='1' data-typeid='1'></image>
+                </view>
+                <view class="td table-width4">
+               80mg（1粒）
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="use-drug-time-list">        
+          <view class="use-drug-time">
+            上午-早餐前15分钟内服用
+          </view>
+          <view class="use-drug-time-table">
+            <view class="table">
+              <view class="tr">
+                <view class="th table-width1">
+                  序号
+                </view>
+                <view class="th table-width2">
+                  药品
+                </view>
+                <view class="th table-width4">
+                  单次用量
+                </view>
+              </view>
+              <view class="tr">
+                <view class="td table-width1">
+                  1
+                </view>
+                <view class="td table-width2">
+                  诺和龙<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='4' data-typeid='1'></image> 
+                </view>
+                <view class="td table-width4">
+                  2mg （1粒）
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="use-drug-time-list">        
+          <view class="use-drug-time">
+            上午-早餐时与前几口食物同时服用
+          </view>
+          <view class="use-drug-time-table">
+            <view class="table">
+              <view class="tr">
+                <view class="th table-width1">
+                  序号
+                </view>
+                <view class="th table-width2">
+                  药品
+                </view>
+                <view class="th table-width4">
+                  单次用量
+                </view>
+              </view>
+              <view class="tr">
+                <view class="td table-width1">
+                  1
+                </view>
+                <view class="td table-width2">
+                  拜唐苹<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='3' data-typeid='1'></image>  
+                </view>
+                <view class="td table-width4">
+                  50mg （1粒）
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="use-drug-time-list">        
+          <view class="use-drug-time">
+            中午-午餐前15分钟内服用
+          </view>
+          <view class="use-drug-time-table">
+            <view class="table">
+              <view class="tr">
+                <view class="th table-width1">
+                  序号
+                </view>
+                <view class="th table-width2">
+                  药品
+                </view>
+                <view class="th table-width4">
+                  单次用量
+                </view>
+              </view>
+              <view class="tr">
+                <view class="td table-width1">
+                  1
+                </view>
+                <view class="td table-width2">
+                  诺和龙<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='4' data-typeid='1'></image> 
+                </view>
+                <view class="td table-width4">
+                  2mg （1粒）
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="use-drug-time-list">        
+          <view class="use-drug-time">
+            中午-午餐时与前几口食物同时服用
+          </view>
+          <view class="use-drug-time-table">
+            <view class="table">
+              <view class="tr">
+                <view class="th table-width1">
+                  序号
+                </view>
+                <view class="th table-width2">
+                  药品
+                </view>
+                <view class="th table-width4">
+                  单次用量
+                </view>
+              </view>
+              <view class="tr">
+                <view class="td table-width1">
+                  1
+                </view>
+                <view class="td table-width2">
+                  拜唐苹<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='3' data-typeid='1'></image>  
+                </view>
+                <view class="td table-width4">
+                  50mg （1粒）
+                </view>
+              </view>
+             
+                <view class="tr">
+                <view class="td table-width1">
+                  2
+                </view><view class="td table-width2">
+                  格华止<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='2' data-typeid='1'></image> 
+                </view>
+                <view class="td table-width4">
+                  0.5g （1粒）
+                </view></view> 
+              
+            </view>
+          </view>
+        </view>
+
+        <view class="use-drug-time-list">        
+          <view class="use-drug-time">
+            晚上-晚餐前15分钟内服用
+          </view>
+          <view class="use-drug-time-table">
+            <view class="table">
+              <view class="tr">
+                <view class="th table-width1">
+                  序号
+                </view>
+                <view class="th table-width2">
+                  药品
+                </view>
+                <view class="th table-width4">
+                  单次用量
+                </view>
+              </view>
+              <view class="tr">
+                <view class="td table-width1">
+                  1
+                </view>
+                <view class="td table-width2">
+                  诺和龙<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='4' data-typeid='1'></image> 
+                </view>
+                <view class="td table-width4">
+                  2mg （1粒）
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="use-drug-time-list">        
+          <view class="use-drug-time">
+            晚上-晚餐时与前几口食物同时服用
+          </view>
+          <view class="use-drug-time-table">
+            <view class="table">
+              <view class="tr">
+                <view class="th table-width1">
+                  序号
+                </view>
+                <view class="th table-width2">
+                  药品
+                </view>
+                <view class="th table-width4">
+                  单次用量
+                </view>
+              </view>
+              <view class="tr">
+                <view class="td table-width1">
+                  1
+                </view>
+                <view class="td table-width2">
+                  拜唐苹<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='3' data-typeid='1'></image>  
+                </view>
+                <view class="td table-width4">
+                  50mg （1粒）
+                </view>
+              </view>
+              <view class="tr">
+                <view class="td table-width1">
+                  2
+                </view>
+                <view class="td table-width2">
+                  格华止<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='2' data-typeid='1'></image> 
+                </view>
+                <view class="td table-width4">
+                  0.5g （1粒）
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+      </scroll-view>
+
+      <scroll-view scroll-y class="use-drug-tab-content {{use_drug_tab==2 ? 'use-drug-tab-content-type' : ''}}">
+        <view class="disease-use-drug-drug">
+          高血压
+        </view>
+        <view class="disease-use-drug-table">
+          <view class="table">
+            <view class="tr">
+              <view class="th table-width1">
+                序号
+              </view>
+              <view class="th table-width2">
+                药品
+              </view>
+              <view class="th table-width3">
+                用药频率
+              </view>
+              <view class="th table-width4">
+                单次用量
+              </view>
+            </view>
+            <view class="tr">
+              <view class="td table-width1">
+                1
+              </view>
+              <view class="td table-width2">
+                代文<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='1' data-typeid='1'></image>
+              </view>
+              <view class="td table-width3">
+                每日一次，清晨起床后服用
+              </view>
+              <view class="td table-width4">
+                <text> 80mg
+                （1粒）</text>
+              </view>
+            </view>
+          </view>                  
+        </view>
+
+
+        <view class="disease-use-drug-drug">
+          糖尿病
+        </view>
+        <view class="disease-use-drug-table">
+          <view class="table">
+            <view class="tr">
+              <view class="th table-width1">
+                序号
+              </view>
+              <view class="th table-width2">
+                药品
+              </view>
+              <view class="th table-width3">
+                用药频率
+              </view>
+              <view class="th table-width4">
+                单次用量
+              </view>
+            </view>
+            <view class="tr">
+              <view class="td table-width1">
+                1
+              </view>
+              <view class="td table-width2">
+                格华止<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='2' data-typeid='1'></image>  
+              </view>
+              <view class="td table-width3">
+                每日两次，中午和晚上服用
+              </view>
+              <view class="td table-width4">
+               <text> 0.5g
+                （1粒）</text>
+              </view>
+            </view>
+            <view class="tr">
+              <view class="td table-width1">
+                2
+              </view>
+              <view class="td table-width2">
+                拜唐苹<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='3' data-typeid='1'></image>   
+              </view>
+              <view class="td table-width3">
+                每日三次
+              </view>
+              <view class="td table-width4">
+               <text> 50mg
+               （1粒）</text>
+          
+              </view>
+            </view>
+            <view class="tr">
+              <view class="td table-width1">
+                3
+              </view>
+              <view class="td table-width2">
+                诺和龙<image class="icon-wenhao" src="../../icon/icon-wenhao.png" bindtap='showAlert' data-typeautoid='4' data-typeid='1'></image> 
+              </view>
+              <view class="td table-width3">
+                每日三次
+              </view>
+              <view class="td table-width4">
+               <text> 2mg 
+               （1粒）</text>
+              </view>
+            </view>
+          </view>                  
+        </view>
+
+        <view class="bottom-jielun" style="margin-left:0rpx;">    
+          <view class="jielun">结论：</view>   
+          <!--<import src="../../wxParse/wxParse.wxml"/>
+          <template is="wxParse" data="{{wxParseData:content.nodes}}"/>-->
+          <view class="zongjie_text">1、共使用降压药1种。
+          </view>
+          <view class="zongjie_text">
+2、共使用降糖药3种。
+          </view>
+        </view>
+      </scroll-view>
+    </scroll-view>  
+
+<view class="alert-bottom {{alerttype}}">
+</view>
+<view class="alert-top {{alerttype}}">
+  <image class="alert-close" src="../../icon/icon-clar-search.png" bindtap='alert_close'></image>
+  <view class="alert-title">
+    {{alert_title}}
+  </view>
+  <scroll-view scroll-y class="alert-content">
+    <import src="../../wxParse/wxParse.wxml"/>
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </scroll-view>
+</view>
+</block>
+<block wx:else>
+  <view class="promt-img-view">
+    <image mode="aspectFit" class="promt-img" src="../../icon/icon-empty-content.png"></image>
+  </view>
+  <view class="promt-text">
+   您暂无家庭医生随访报告
+  </view>
+</block>
+</block>
